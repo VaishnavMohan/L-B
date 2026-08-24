@@ -1728,9 +1728,9 @@ body::after {
 /* Footer Section */
 .invitation-footer {
   text-align: center;
-  padding: 16px 20px 18px;
+  padding: 24px 20px 105px;
   color: var(--text-muted);
-  margin-top: -8px;
+  margin-top: 8px;
 }
 
 .footer-compliments {
@@ -1760,20 +1760,24 @@ body::after {
 }
 
 .footer-signature {
-  margin-top: 14px;
+  margin-top: 24px;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   letter-spacing: 0.06em;
   color: var(--text-light);
-  opacity: 0.85;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
 }
-
 
 .signature-link {
   color: var(--gold-primary);
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
-  border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.5);
   padding-bottom: 1px;
   transition: all 0.3s ease;
 }
@@ -1783,6 +1787,7 @@ body::after {
   border-bottom-style: solid;
   border-bottom-color: var(--gold-primary);
 }
+
 
 @keyframes fadeSlideIn {
   from { opacity: 0; transform: translateY(14px); }
