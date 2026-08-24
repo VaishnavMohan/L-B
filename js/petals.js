@@ -1,6 +1,7 @@
 /**
  * ===================================================================
- * FLOATING ROSE PETALS & CELEBRATION BURST SYSTEM
+ * FLOATING ROSE PETALS & CELEBRATION BURST SYSTEM (LIGHT & SUBTLE)
+ * Ultra-lightweight, translucent, and non-intrusive for mobile & desktop
  * ===================================================================
  */
 
@@ -12,15 +13,18 @@ class PetalParticleSystem {
     this.ctx = this.canvas.getContext('2d');
     this.petals = [];
     this.burstParticles = [];
-    this.maxPetals = window.innerWidth < 768 ? 18 : 28;
+    
+    // Very gentle count: 7 on mobile, 12 on desktop
+    this.maxPetals = window.innerWidth < 768 ? 7 : 12;
     this.isRunning = true;
     this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // Translucent, soft pastel petals that never obscure text
     this.petalColors = [
-      { r: 247, g: 198, b: 198, a: 0.8 }, // Rose light
-      { r: 232, g: 165, b: 152, a: 0.85 }, // Peach rose
-      { r: 255, g: 220, b: 220, a: 0.75 }, // Blush soft
-      { r: 212, g: 175, b: 55, a: 0.7 }    // Gold dust
+      { r: 247, g: 198, b: 198, a: 0.38 }, // Soft rose (translucent)
+      { r: 232, g: 175, b: 165, a: 0.35 }, // Gentle peach
+      { r: 255, g: 230, b: 230, a: 0.32 }, // Subtle blush
+      { r: 212, g: 175, b: 55, a: 0.35 }   // Champagne gold
     ];
 
     this.init();
@@ -30,7 +34,7 @@ class PetalParticleSystem {
     this.resize();
     window.addEventListener('resize', () => this.resize(), { passive: true });
 
-    // Seed continuous floating petals
+    // Seed gentle floating petals
     for (let i = 0; i < this.maxPetals; i++) {
       this.petals.push(this.createPetal(true));
     }
@@ -42,47 +46,51 @@ class PetalParticleSystem {
   resize() {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
+    this.maxPetals = window.innerWidth < 768 ? 7 : 12;
   }
 
   createPetal(randomY = false) {
     const color = this.petalColors[Math.floor(Math.random() * this.petalColors.length)];
+    const isMobile = window.innerWidth < 768;
     return {
       x: Math.random() * this.canvas.width,
-      y: randomY ? Math.random() * this.canvas.height : -30,
-      size: Math.random() * 9 + 8,
-      speedY: Math.random() * 1.2 + 0.8,
-      speedX: Math.random() * 1.2 - 0.6,
+      y: randomY ? Math.random() * this.canvas.height : -25,
+      size: Math.random() * (isMobile ? 4 : 5) + 4.5, // Petite petals
+      speedY: Math.random() * 0.7 + 0.4, // Gentle slow drift
+      speedX: Math.random() * 0.8 - 0.4,
       rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() * 1.5 - 0.75),
-      sway: Math.random() * 2 + 1,
-      swaySpeed: Math.random() * 0.02 + 0.01,
+      rotationSpeed: (Math.random() * 0.8 - 0.4),
+      sway: Math.random() * 1.5 + 0.8,
+      swaySpeed: Math.random() * 0.015 + 0.008,
       swayAngle: Math.random() * Math.PI * 2,
       color: color,
-      gold: Math.random() > 0.85
+      gold: Math.random() > 0.88
     };
   }
 
-  // Trigger celebration explosion of petals & sparkles
-  burst(originX, originY, count = 45) {
+  // Trigger celebration pop of petals
+  burst(originX, originY, count = 22) {
     const x = originX || this.canvas.width / 2;
     const y = originY || this.canvas.height / 2;
+    const isMobile = window.innerWidth < 768;
+    const actualCount = isMobile ? Math.min(count, 18) : count;
 
-    for (let i = 0; i < count; i++) {
-      const angle = (Math.PI * 2 / count) * i + (Math.random() * 0.4 - 0.2);
-      const velocity = Math.random() * 8 + 4;
+    for (let i = 0; i < actualCount; i++) {
+      const angle = (Math.PI * 2 / actualCount) * i + (Math.random() * 0.4 - 0.2);
+      const velocity = Math.random() * 6 + 2.5;
       const color = this.petalColors[Math.floor(Math.random() * this.petalColors.length)];
 
       this.burstParticles.push({
         x: x,
         y: y,
         vx: Math.cos(angle) * velocity,
-        vy: Math.sin(angle) * velocity - 2,
-        gravity: 0.18,
-        size: Math.random() * 12 + 6,
+        vy: Math.sin(angle) * velocity - 1.5,
+        gravity: 0.15,
+        size: Math.random() * (isMobile ? 6 : 8) + 4,
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() * 8 - 4),
-        opacity: 1,
-        fadeSpeed: Math.random() * 0.015 + 0.008,
+        rotationSpeed: (Math.random() * 6 - 3),
+        opacity: 0.75,
+        fadeSpeed: Math.random() * 0.02 + 0.015,
         color: color,
         isGold: Math.random() > 0.5
       });
@@ -92,16 +100,12 @@ class PetalParticleSystem {
   drawPetalShape(ctx, size, color, isGold) {
     ctx.beginPath();
     ctx.moveTo(0, -size);
-    ctx.bezierCurveTo(size * 0.8, -size * 0.6, size * 0.9, size * 0.6, 0, size);
-    ctx.bezierCurveTo(-size * 0.9, size * 0.6, -size * 0.8, -size * 0.6, 0, -size);
+    ctx.bezierCurveTo(size * 0.75, -size * 0.5, size * 0.85, size * 0.5, 0, size);
+    ctx.bezierCurveTo(-size * 0.85, size * 0.5, -size * 0.75, -size * 0.5, 0, -size);
     ctx.closePath();
 
     if (isGold) {
-      const grad = ctx.createLinearGradient(-size, -size, size, size);
-      grad.addColorStop(0, '#FFF3B0');
-      grad.addColorStop(0.5, '#D4AF37');
-      grad.addColorStop(1, '#9A7432');
-      ctx.fillStyle = grad;
+      ctx.fillStyle = `rgba(212, 175, 55, ${color.a * 0.8})`;
     } else {
       ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
     }
@@ -118,20 +122,21 @@ class PetalParticleSystem {
       const p = this.petals[i];
 
       p.swayAngle += p.swaySpeed;
-      p.x += p.speedX + Math.sin(p.swayAngle) * p.sway;
+      p.x += Math.sin(p.swayAngle) * p.sway + p.speedX;
       p.y += p.speedY;
       p.rotation += p.rotationSpeed;
 
       // Wrap around
-      if (p.y > this.canvas.height + 20) {
-        this.petals[i] = this.createPetal(false);
+      if (p.y > this.canvas.height + 25) {
+        p.y = -25;
+        p.x = Math.random() * this.canvas.width;
       }
-      if (p.x < -20) p.x = this.canvas.width + 10;
-      if (p.x > this.canvas.width + 20) p.x = -10;
+      if (p.x < -25) p.x = this.canvas.width + 20;
+      if (p.x > this.canvas.width + 25) p.x = -20;
 
       this.ctx.save();
       this.ctx.translate(p.x, p.y);
-      this.ctx.rotate((p.rotation * Math.PI) / 180);
+      this.ctx.rotate(p.rotation * Math.PI / 180);
       this.drawPetalShape(this.ctx, p.size, p.color, p.gold);
       this.ctx.restore();
     }
@@ -143,19 +148,18 @@ class PetalParticleSystem {
       bp.x += bp.vx;
       bp.y += bp.vy;
       bp.vy += bp.gravity;
-      bp.vx *= 0.98;
       bp.rotation += bp.rotationSpeed;
       bp.opacity -= bp.fadeSpeed;
 
-      if (bp.opacity <= 0 || bp.y > this.canvas.height + 50) {
+      if (bp.opacity <= 0) {
         this.burstParticles.splice(i, 1);
         continue;
       }
 
       this.ctx.save();
-      this.ctx.globalAlpha = Math.max(0, bp.opacity);
+      this.ctx.globalAlpha = bp.opacity;
       this.ctx.translate(bp.x, bp.y);
-      this.ctx.rotate((bp.rotation * Math.PI) / 180);
+      this.ctx.rotate(bp.rotation * Math.PI / 180);
       this.drawPetalShape(this.ctx, bp.size, bp.color, bp.isGold);
       this.ctx.restore();
     }

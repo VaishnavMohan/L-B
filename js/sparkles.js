@@ -1,7 +1,7 @@
 /**
  * ===================================================================
- * MAGICAL GOLDEN STARDUST & AMBIENT FIREFLY AURA
- * Delightful, ultra-lightweight golden sparkle trail & ambient fairy dust
+ * MAGICAL GOLDEN STARDUST (MOBILE-OPTIMIZED & SUBTLE)
+ * Delicate, battery-friendly touch sparkles & soft ambient starlight
  * ===================================================================
  */
 
@@ -11,25 +11,27 @@ class MagicSparkleTrail {
     if (!this.canvas) {
       this.canvas = document.createElement('canvas');
       this.canvas.id = 'sparkle-trail-canvas';
-      this.canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;';
+      this.canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;';
       document.body.appendChild(this.canvas);
     }
 
     this.ctx = this.canvas.getContext('2d');
     this.particles = [];
     this.ambientFireflies = [];
-    this.maxParticles = 100;
-    this.maxFireflies = 18; // Subtle, elegant ambient glowing orbs
+    
+    // Light particle caps
+    const isMobile = window.innerWidth < 768;
+    this.maxParticles = isMobile ? 25 : 45;
+    this.maxFireflies = isMobile ? 5 : 8; // Very subtle starlight
     this.lastSpawnTime = 0;
-    this.spawnThrottle = 18;
+    this.spawnThrottle = isMobile ? 32 : 20;
 
-    // Royal Gold Palette
+    // Champagne & Soft Gold Palette
     this.colors = [
-      '#FFFFFF', // Diamond Starlight
-      '#FFF4C2', // Champagne Gold
-      '#FFD700', // Royal Gold
-      '#FFE082', // Warm Amber
-      '#E5BE5E'  // 24k Gold Sheen
+      '#FFFFFF', // Starlight
+      '#FFF4C2', // Champagne
+      '#FFD700', // Gold
+      '#E5BE5E'  // Soft Sheen
     ];
 
     this.init();
@@ -39,7 +41,7 @@ class MagicSparkleTrail {
     this.resize();
     window.addEventListener('resize', () => this.resize(), { passive: true });
 
-    // Initialize ambient fireflies
+    // Initialize subtle ambient fireflies
     this.initAmbientFireflies();
 
     // Desktop Mouse Events
@@ -48,36 +50,38 @@ class MagicSparkleTrail {
     }, { passive: true });
 
     window.addEventListener('mousedown', (e) => {
-      this.burst(e.clientX, e.clientY, 16);
+      this.burst(e.clientX, e.clientY, 8);
     }, { passive: true });
 
-    // Mobile Multi-Touch Events
+    // Mobile Touch Events
     window.addEventListener('touchmove', (e) => {
-      for (let i = 0; i < e.touches.length; i++) {
-        const touch = e.touches[i];
-        this.handleMove(touch.clientX, touch.clientY);
+      if (e.touches.length > 0) {
+        this.handleMove(e.touches[0].clientX, e.touches[0].clientY);
       }
     }, { passive: true });
 
     window.addEventListener('touchstart', (e) => {
-      for (let i = 0; i < e.touches.length; i++) {
-        const touch = e.touches[i];
-        this.burst(touch.clientX, touch.clientY, 14);
+      if (e.touches.length > 0) {
+        this.burst(e.touches[0].clientX, e.touches[0].clientY, 8);
       }
     }, { passive: true });
 
-    // 3D Parallax Tilt for Cards on Mouse Move & Gyro
-    this.init3DTilt();
+    // 3D Parallax Tilt for Desktop Cards
+    if (window.innerWidth >= 768) {
+      this.init3DTilt();
+    }
 
     this.animate = this.animate.bind(this);
     requestAnimationFrame(this.animate);
   }
 
   resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     this.canvas.width = window.innerWidth * dpr;
     this.canvas.height = window.innerHeight * dpr;
     this.ctx.scale(dpr, dpr);
+    const isMobile = window.innerWidth < 768;
+    this.maxParticles = isMobile ? 25 : 45;
   }
 
   initAmbientFireflies() {
@@ -89,11 +93,10 @@ class MagicSparkleTrail {
       this.ambientFireflies.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        radius: Math.random() * 2.2 + 1,
-        alpha: Math.random() * 0.6 + 0.2,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: -Math.random() * 0.4 - 0.2, // Drifts softly upwards
-        pulseSpeed: Math.random() * 0.02 + 0.01,
+        radius: Math.random() * 1.5 + 0.8,
+        alpha: Math.random() * 0.35 + 0.15, // Soft & subtle
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: -Math.random() * 0.3 - 0.1,
         pulseOffset: Math.random() * Math.PI * 2,
         color: this.colors[Math.floor(Math.random() * this.colors.length)]
       });
@@ -112,24 +115,24 @@ class MagicSparkleTrail {
 
   createParticle(x, y, isBurst = false) {
     const angle = Math.random() * Math.PI * 2;
-    const speed = isBurst ? (Math.random() * 3.5 + 1.5) : (Math.random() * 1.5 + 0.5);
+    const speed = isBurst ? (Math.random() * 2.5 + 1) : (Math.random() * 1 + 0.4);
 
     return {
-      x: x + (Math.random() - 0.5) * 8,
-      y: y + (Math.random() - 0.5) * 8,
+      x: x + (Math.random() - 0.5) * 6,
+      y: y + (Math.random() - 0.5) * 6,
       vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed - (isBurst ? 0.5 : 0.8),
-      size: Math.random() * (isBurst ? 4.5 : 3.5) + 1.5,
-      alpha: 1,
-      decay: Math.random() * 0.025 + 0.015,
+      vy: Math.sin(angle) * speed - (isBurst ? 0.3 : 0.5),
+      size: Math.random() * 2.5 + 1.2,
+      alpha: 0.8,
+      decay: Math.random() * 0.035 + 0.025, // Quick clean fade
       color: this.colors[Math.floor(Math.random() * this.colors.length)],
-      isStar: Math.random() > 0.4,
+      isStar: Math.random() > 0.6,
       rotation: Math.random() * Math.PI * 2,
-      vRot: (Math.random() - 0.5) * 0.15
+      vRot: (Math.random() - 0.5) * 0.1
     };
   }
 
-  burst(x, y, count = 16) {
+  burst(x, y, count = 8) {
     for (let i = 0; i < count; i++) {
       if (this.particles.length < this.maxParticles) {
         this.particles.push(this.createParticle(x, y, true));
@@ -167,30 +170,27 @@ class MagicSparkleTrail {
 
     this.ctx.clearRect(0, 0, w, h);
 
-    // 1. Draw Ambient Fireflies
+    // 1. Draw subtle ambient fireflies
     this.ambientFireflies.forEach(f => {
       f.x += f.speedX;
       f.y += f.speedY;
 
-      // Wrap around edges
-      if (f.y < -20) f.y = h + 10;
-      if (f.x < -20) f.x = w + 10;
-      if (f.x > w + 20) f.x = -10;
+      if (f.y < -10) f.y = h + 10;
+      if (f.x < -10) f.x = w + 10;
+      if (f.x > w + 10) f.x = -10;
 
-      const currentAlpha = (Math.sin(timestamp * 0.002 + f.pulseOffset) * 0.35 + 0.5) * f.alpha;
+      const currentAlpha = (Math.sin(timestamp * 0.0015 + f.pulseOffset) * 0.2 + 0.3) * f.alpha;
 
       this.ctx.save();
       this.ctx.globalAlpha = Math.max(0, Math.min(1, currentAlpha));
       this.ctx.fillStyle = f.color;
-      this.ctx.shadowColor = f.color;
-      this.ctx.shadowBlur = 8;
       this.ctx.beginPath();
       this.ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
       this.ctx.fill();
       this.ctx.restore();
     });
 
-    // 2. Draw Touch Sparkles & Stardust
+    // 2. Draw touch sparkles
     for (let i = this.particles.length - 1; i >= 0; i--) {
       const p = this.particles[i];
 
@@ -198,9 +198,8 @@ class MagicSparkleTrail {
       p.y += p.vy;
       p.rotation += p.vRot;
       p.alpha -= p.decay;
-      p.size *= 0.97;
 
-      if (p.alpha <= 0 || p.size <= 0.3) {
+      if (p.alpha <= 0) {
         this.particles.splice(i, 1);
         continue;
       }
@@ -208,16 +207,14 @@ class MagicSparkleTrail {
       this.ctx.save();
       this.ctx.globalAlpha = Math.max(0, p.alpha);
       this.ctx.fillStyle = p.color;
-      this.ctx.shadowColor = p.color;
-      this.ctx.shadowBlur = 6;
       this.ctx.translate(p.x, p.y);
       this.ctx.rotate(p.rotation);
 
       if (p.isStar) {
-        this.draw4PointStar(this.ctx, 0, 0, 4, p.size, p.size * 0.35);
+        this.draw4PointStar(this.ctx, 0, 0, 4, p.size, p.size * 0.3);
       } else {
         this.ctx.beginPath();
-        this.ctx.arc(0, 0, p.size * 0.6, 0, Math.PI * 2);
+        this.ctx.arc(0, 0, p.size * 0.5, 0, Math.PI * 2);
         this.ctx.fill();
       }
 
@@ -227,7 +224,6 @@ class MagicSparkleTrail {
     requestAnimationFrame(this.animate);
   }
 
-  /* 3D Micro-Tilt Interaction for Cards */
   init3DTilt() {
     const cards = document.querySelectorAll('.invitation-card-section');
     if (!cards.length) return;
@@ -235,23 +231,22 @@ class MagicSparkleTrail {
     window.addEventListener('mousemove', (e) => {
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
-      const dx = (e.clientX - cx) / cx; // -1 to 1
-      const dy = (e.clientY - cy) / cy; // -1 to 1
+      const dx = (e.clientX - cx) / cx;
+      const dy = (e.clientY - cy) / cy;
 
       cards.forEach(card => {
         const rect = card.getBoundingClientRect();
-        // Only tilt cards currently visible in viewport
         if (rect.top < window.innerHeight && rect.bottom > 0) {
-          const tiltX = -dy * 2.5;
-          const tiltY = dx * 2.5;
-          card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
+          const tiltX = -dy * 2;
+          const tiltY = dx * 2;
+          card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(1)}deg) rotateY(${tiltY.toFixed(1)}deg)`;
         }
       });
     }, { passive: true });
   }
 }
 
-// Initialize on DOM load
+// Global instance
 window.magicSparkleTrail = null;
 document.addEventListener('DOMContentLoaded', () => {
   window.magicSparkleTrail = new MagicSparkleTrail();
