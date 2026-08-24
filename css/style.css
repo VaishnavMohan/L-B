@@ -257,16 +257,17 @@ body::after {
 .main-wrapper {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 16px 100px;
+  padding: 0 16px 20px;
   position: relative;
   z-index: 10;
 }
 
 @media (min-width: 768px) {
   .main-wrapper {
-    padding: 0 24px 120px;
+    padding: 0 24px 24px;
   }
 }
+
 
 /* ===================================================================
    TYPOGRAPHY & GOLD UTILITIES
@@ -555,8 +556,24 @@ body::after {
   color: var(--gold-primary);
   line-height: 0.8;
   display: inline-block;
-  animation: heartPulse 3s ease-in-out infinite;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
+  animation: ampersandGlow 3s ease-in-out infinite alternate;
 }
+
+@keyframes ampersandGlow {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.2));
+  }
+  100% {
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+  }
+}
+
 
 .gold-shine {
   background: linear-gradient(
@@ -1728,41 +1745,41 @@ body::after {
 /* Footer Section */
 .invitation-footer {
   text-align: center;
-  padding: 24px 20px 105px;
+  padding: 16px 20px 18px;
   color: var(--text-muted);
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .footer-compliments {
   font-family: var(--font-serif-classic);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-style: italic;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .footer-compliments strong {
   font-family: var(--font-serif-luxury);
   font-style: normal;
   display: block;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   color: var(--gold-primary);
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .footer-hashtag {
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   color: var(--gold-primary);
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .footer-signature {
-  margin-top: 24px;
+  margin-top: 12px;
   font-family: var(--font-sans);
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   color: var(--text-light);
   opacity: 0.9;
@@ -1772,6 +1789,7 @@ body::after {
   gap: 4px;
   flex-wrap: wrap;
 }
+
 
 .signature-link {
   color: var(--gold-primary);
