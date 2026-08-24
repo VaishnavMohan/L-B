@@ -5,7 +5,17 @@
  * ===================================================================
  */
 
+// Ensure browser does not restore previous scroll position on refresh
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 document.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+
   const overlay = document.getElementById('envelope-overlay');
   const stage = document.querySelector('.gateway-stage');
   const frame = document.querySelector('.gateway-frame');
@@ -46,6 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hasOpened) return;
     hasOpened = true;
 
+    // Force scroll to top immediately upon opening
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
     // Reset frame tilt transform for clean 3D door swing
     if (frame) {
       frame.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
@@ -79,18 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => window.petalSystem.burst(cx, cy - 80, 40), 850);
     }
 
-    // F. Smooth Dissolve into Digital Wedding Invitation Card
+    // F. Smooth Dissolve into Digital Wedding Invitation Card (Always Top)
     setTimeout(() => {
       overlay.classList.add('opened');
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
 
       // Trigger scroll animations for visible sections
       if (window.revealSections) {
         window.revealSections();
       }
-    }, 1500);
-
-    // Save state in sessionStorage
-    sessionStorage.setItem('royal_gateway_opened', 'true');
+    }, 1400);
   }
 
   /* ── 3. Golden Sparks Explosion Generator ────────────────────── */
@@ -99,32 +114,46 @@ document.addEventListener('DOMContentLoaded', () => {
     sparksContainer.className = 'gateway-sparks-container';
     overlay.appendChild(sparksContainer);
 
-    const count = 36;
-    for (let i = 0; i < count; i++) {
+    const colors = ['#FFF3B0', '#FFD700', '#FF8F1F', '#FFFFFF', '#FFA726'];
+    const sparkCount = 38;
+
+    for (let i = 0; i < sparkCount; i++) {
       const spark = document.createElement('div');
-      spark.className = 'gateway-spark';
-      const angle = (360 / count) * i + (Math.random() * 15 - 7.5);
-      const dist = 140 + Math.random() * 180;
-      const size = 5 + Math.random() * 7;
+      spark.className = 'gateway-spark-particle';
+
+      const angle = (Math.PI * 2 * i) / sparkCount + (Math.random() - 0.5) * 0.4;
+      const distance = 80 + Math.random() * 240;
+      const tx = Math.cos(angle) * distance;
+      const ty = Math.sin(angle) * distance;
+      const size = 3 + Math.random() * 5;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const delay = Math.random() * 0.2;
 
       spark.style.cssText = `
-        --angle: ${angle}deg;
-        --dist: -${dist}px;
         width: ${size}px;
         height: ${size}px;
+        background: ${color};
+        box-shadow: 0 0 10px ${color}, 0 0 20px ${color};
+        --tx: ${tx}px;
+        --ty: ${ty}px;
+        animation-delay: ${delay}s;
       `;
-      sparksContainer.appendChild(spark);
 
-      requestAnimationFrame(() => {
-        setTimeout(() => spark.classList.add('animate'), i * 8);
-      });
+      sparksContainer.appendChild(spark);
     }
 
-    setTimeout(() => sparksContainer.remove(), 2000);
+    // Remove particles from DOM after animation finishes
+    setTimeout(() => sparksContainer.remove(), 1600);
   }
 
-  /* ── 4. Event Listeners (Tap lock, button, or anywhere) ────────── */
-  if (lock) lock.addEventListener('click', openRoyalGateway);
-  if (tapBtn) tapBtn.addEventListener('click', openRoyalGateway);
-  overlay.addEventListener('click', openRoyalGateway);
+  // Bind click & touch triggers
+  if (lock) {
+    lock.addEventListener('click', openRoyalGateway);
+  }
+  if (tapBtn) {
+    tapBtn.addEventListener('click', openRoyalGateway);
+  }
+  if (stage) {
+    stage.addEventListener('click', openRoyalGateway);
+  }
 });
