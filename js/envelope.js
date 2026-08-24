@@ -74,8 +74,15 @@ document.addEventListener('DOMContentLoaded', () => {
     shockwave.className = 'gateway-shockwave fire';
     overlay.appendChild(shockwave);
 
-    // C. Launch Radial Golden Sparks Explosion
-    launchGatewaySparks();
+    // C. Launch Canvas Golden Stardust & Fairy Sparkles in 360 degrees
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight * 0.45;
+
+    if (window.magicSparkleTrail) {
+      window.magicSparkleTrail.burst(cx, cy, 40);
+      setTimeout(() => window.magicSparkleTrail.burst(cx, cy, 30), 300);
+      setTimeout(() => window.magicSparkleTrail.burst(cx, cy, 25), 600);
+    }
 
     // D. Start Background Music ("O Rangrez") & Chime
     if (window.weddingAudio) {
@@ -84,14 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // E. Shower of Fresh Rose & Marigold Petals from Sanctum Doorway
     if (window.petalSystem) {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight * 0.45;
-
-      // Multi-wave petal burst
-      setTimeout(() => window.petalSystem.burst(cx, cy, 50), 250);
-      setTimeout(() => window.petalSystem.burst(cx - 70, cy - 40, 35), 500);
-      setTimeout(() => window.petalSystem.burst(cx + 70, cy - 40, 35), 500);
-      setTimeout(() => window.petalSystem.burst(cx, cy - 80, 40), 850);
+      setTimeout(() => window.petalSystem.burst(cx, cy, 45), 200);
+      setTimeout(() => window.petalSystem.burst(cx - 70, cy - 30, 30), 450);
+      setTimeout(() => window.petalSystem.burst(cx + 70, cy - 30, 30), 450);
+      setTimeout(() => window.petalSystem.burst(cx, cy - 60, 35), 750);
     }
 
     // F. Smooth Dissolve into Digital Wedding Invitation Card (Always Top)
@@ -106,44 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.revealSections();
       }
     }, 1400);
-  }
-
-  /* ── 3. Golden Sparks Explosion Generator ────────────────────── */
-  function launchGatewaySparks() {
-    const sparksContainer = document.createElement('div');
-    sparksContainer.className = 'gateway-sparks-container';
-    overlay.appendChild(sparksContainer);
-
-    const colors = ['#FFF3B0', '#FFD700', '#FF8F1F', '#FFFFFF', '#FFA726'];
-    const sparkCount = 38;
-
-    for (let i = 0; i < sparkCount; i++) {
-      const spark = document.createElement('div');
-      spark.className = 'gateway-spark-particle';
-
-      const angle = (Math.PI * 2 * i) / sparkCount + (Math.random() - 0.5) * 0.4;
-      const distance = 80 + Math.random() * 240;
-      const tx = Math.cos(angle) * distance;
-      const ty = Math.sin(angle) * distance;
-      const size = 3 + Math.random() * 5;
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      const delay = Math.random() * 0.2;
-
-      spark.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        background: ${color};
-        box-shadow: 0 0 10px ${color}, 0 0 20px ${color};
-        --tx: ${tx}px;
-        --ty: ${ty}px;
-        animation-delay: ${delay}s;
-      `;
-
-      sparksContainer.appendChild(spark);
-    }
-
-    // Remove particles from DOM after animation finishes
-    setTimeout(() => sparksContainer.remove(), 1600);
   }
 
   // Bind click & touch triggers

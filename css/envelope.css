@@ -570,33 +570,3 @@
   100% { transform: translate(-50%, -50%) scale(8); opacity: 0; border-width: 1px; }
 }
 
-/* Flying Gold Spark Particles */
-.gateway-sparks-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 45;
-}
-
-.gateway-spark {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #FFF7D0 0%, #FFC837 50%, #FF8008 100%);
-  box-shadow: 0 0 12px #FFD700, 0 0 24px #FFA500;
-  transform-origin: center center;
-  opacity: 0;
-}
-
-.gateway-spark.animate {
-  animation: sparkFly 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes sparkFly {
-  0%   { transform: rotate(var(--angle)) translateY(0) scale(1.4); opacity: 1; }
-  70%  { opacity: 0.9; }
-  100% { transform: rotate(var(--angle)) translateY(var(--dist)) scale(0.2); opacity: 0; }
-}
