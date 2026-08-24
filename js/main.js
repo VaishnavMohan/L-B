@@ -308,6 +308,26 @@ function setupActionButtons() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // 5. Travel & Transit Assistance WhatsApp Handler
+  const travelForm = document.getElementById('travel-request-form');
+  if (travelForm) {
+    travelForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const guestName = document.getElementById('travel-guest-name')?.value?.trim() || 'Guest';
+      const arrivalPoint = document.getElementById('travel-arrival-point')?.value || 'Transit Hub';
+      const passengers = document.getElementById('travel-passengers')?.value || '1';
+      const arrivalTime = document.getElementById('travel-arrival-time')?.value?.trim() || '13 Sep 2026 Morning';
+
+      const phone = (window.WEDDING_CONFIG && window.WEDDING_CONFIG.rsvp && window.WEDDING_CONFIG.rsvp.whatsappNumber) || '919446162155';
+      const message = `🚗 *Wedding Travel & Pickup Request*\n*Keerthana & Sarath Wedding (13 Sep 2026)*\n\n• *Guest / Family:* ${guestName}\n• *Arriving By / Hub:* ${arrivalPoint}\n• *Expected Arrival:* ${arrivalTime}\n• *Number of Guests:* ${passengers}\n\nKindly assist with transport coordination & pickup. Thank you!`;
+
+      const encodedMsg = encodeURIComponent(message);
+      window.open(`https://wa.me/${phone}?text=${encodedMsg}`, '_blank');
+      showToast("🚗 Opening WhatsApp to coordinate travel...");
+    });
+  }
+
 }
 
 /**

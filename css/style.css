@@ -1314,6 +1314,100 @@ body::after {
   line-height: 1.5;
 }
 
+/* Transit Hubs Grid */
+.transit-hubs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .transit-hubs-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.transit-hub-card {
+  background: var(--bg-card-elevated);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-bounce);
+}
+
+.transit-hub-card:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+.hub-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.hub-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hub-name {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-cream);
+  line-height: 1.2;
+}
+
+.hub-distance {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--gold-primary);
+  font-weight: 500;
+}
+
+/* Travel Coordination Box */
+.travel-coordination-box {
+  background: rgba(197, 160, 89, 0.07);
+  border: 1.5px solid rgba(197, 160, 89, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: left;
+}
+
+.travel-box-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.travel-box-icon {
+  font-size: 2.2rem;
+}
+
+.travel-box-title {
+  font-family: var(--font-serif-luxury);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-cream);
+}
+
+.travel-box-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+
 /* Attendance Option Chips (Yes / No) */
 .attendance-grid {
   display: grid;
