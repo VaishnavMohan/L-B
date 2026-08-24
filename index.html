@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <title>Wedding Invitation | Dr. Keerthana & Dr. Sarath</title>
+  <meta name="description" content="We joyfully invite you to celebrate the wedding ceremony of Dr. Keerthana & Dr. Sarath on Sunday, 13 September 2026 at Puzhayoram Gardens Convention Centre, Thrissur." />
+  
+  <!-- OpenGraph Meta Tags for WhatsApp, iMessage, and Social Previews -->
+  <meta property="og:title" content="Wedding Invitation | Dr. Keerthana & Dr. Sarath" />
+  <meta property="og:description" content="Sunday, 13 September 2026 | Puzhayoram Gardens Convention Centre, Thrissur. Tap to open the digital wedding invitation." />
+  <meta property="og:image" content="assets/images/couple_cartoon_hero.jpg" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wedding Invitation | Dr. Keerthana & Dr. Sarath" />
+  <meta name="twitter:description" content="Sunday, 13 September 2026 | Puzhayoram Gardens Convention Centre, Thrissur." />
+  <meta name="twitter:image" content="assets/images/couple_cartoon_hero.jpg" />
+
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#FAF7F2" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+  <!-- Google Fonts: Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500;600;700&family=Great+Vibes&display=swap" />
+
+  <!-- Stylesheets with Cache-Busting -->
+  <link rel="stylesheet" href="css/style.css?v=6.0" />
+  <link rel="stylesheet" href="css/envelope.css?v=6.0" />
+  <link rel="stylesheet" href="css/scratch.css?v=6.0" />
+</head>
+<body>
+
+  <!-- Shared SVG Gradients Definition -->
+  <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+    <defs>
+      <linearGradient id="goldFiligree" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#D4AF37" />
+        <stop offset="30%" stop-color="#FFF3B0" />
+        <stop offset="60%" stop-color="#C5A059" />
+        <stop offset="100%" stop-color="#9A7432" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Background Music Audio Element -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/audio/wedding-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Falling Rose Petals Canvas -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- Interactive Magic Touch / Cursor Sparkle Trail Canvas -->
+  <canvas id="sparkle-trail-canvas"></canvas>
+
+  <!-- ===================================================================
+       3D INVITATION ENVELOPE OPENING OVERLAY (Tap to Open)
+       =================================================================== -->
+  <div id="envelope-overlay" role="dialog" aria-label="Royal Heritage Gateway Wedding Invitation">
+    <!-- Ambient Golden Glow & Drifting Stardust -->
+    <div class="gateway-ambient-light"></div>
+    <div class="gateway-stardust"></div>
+    <div class="gateway-god-rays"></div>
+
+    <!-- Romantic Royal Top Header -->
+    <div class="gateway-header">
+      <div class="romantic-crest-icon" title="Forever in Love">
+        <svg viewBox="0 0 100 100">
+          <!-- Intertwined Golden Wedding Rings with Diamond Sparkle -->
+          <circle cx="38" cy="52" r="24" fill="none" stroke="#FFE89E" stroke-width="6"/>
+          <circle cx="62" cy="52" r="24" fill="none" stroke="#E5BE5E" stroke-width="6"/>
+          <!-- Diamond Crest atop the ring -->
+          <polygon points="38,20 44,28 38,36 32,28" fill="#FFFFFF"/>
+          <circle cx="38" cy="28" r="3" fill="#FFF4D0"/>
+        </svg>
+      </div>
+      <div class="romantic-shloka-text">✦ A Celebration of Eternal Love ✦</div>
+    </div>
+
+    <!-- 3D Royal Gateway Stage -->
+    <div class="gateway-stage">
+
+      <!-- Left Royal Glass & Gold Lantern (Candlelit) -->
+      <div class="royal-lantern lantern-left">
+        <svg viewBox="0 0 60 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldLanternGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFF5C2"/>
+              <stop offset="35%" stop-color="#E5BE5E"/>
+              <stop offset="75%" stop-color="#9E7422"/>
+              <stop offset="100%" stop-color="#5C3F0C"/>
+            </linearGradient>
+            <radialGradient id="candleGlow" cx="50%" cy="40%" r="50%">
+              <stop offset="0%" stop-color="#FFFDF0" stop-opacity="1"/>
+              <stop offset="40%" stop-color="#FFBE3B" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#FF5722" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <!-- Top Hanging Ring & Chain -->
+          <circle cx="30" cy="12" r="8" stroke="url(#goldLanternGrad)" stroke-width="2.5" fill="none"/>
+          <line x1="30" y1="20" x2="30" y2="40" stroke="url(#goldLanternGrad)" stroke-width="2"/>
+          <!-- Lantern Crown Dome -->
+          <path d="M12 55 C12 38 48 38 48 55 Z" fill="url(#goldLanternGrad)"/>
+          <circle cx="30" cy="38" r="3" fill="#FFF3B5"/>
+          <!-- Glass Chamber with Candle -->
+          <rect x="14" y="55" width="32" height="75" rx="3" stroke="url(#goldLanternGrad)" stroke-width="2" fill="rgba(255,230,150,0.12)"/>
+          <!-- Glass Corner Struts -->
+          <line x1="22" y1="55" x2="22" y2="130" stroke="url(#goldLanternGrad)" stroke-width="1.2" opacity="0.7"/>
+          <line x1="38" y1="55" x2="38" y2="130" stroke="url(#goldLanternGrad)" stroke-width="1.2" opacity="0.7"/>
+          <!-- Candle Pillar -->
+          <rect x="25" y="95" width="10" height="30" rx="2" fill="#FFF8E7"/>
+          <!-- Glowing Candle Flame -->
+          <ellipse cx="30" cy="85" rx="14" ry="14" fill="url(#candleGlow)"/>
+          <path class="lantern-flame" d="M30 74 C27 80 25 84 27 88 C29 92 31 92 33 88 C35 84 33 80 30 74Z" fill="#FFE875"/>
+          <path class="lantern-flame-inner" d="M30 78 C28 82 28 85 29 87 C30 89 31 89 32 87 C33 85 32 82 30 78Z" fill="#FF8F1F"/>
+          <!-- Lantern Base -->
+          <path d="M10 130 L50 130 L45 142 L15 142 Z" fill="url(#goldLanternGrad)"/>
+          <!-- Bottom Pendant Finial -->
+          <path d="M30 142 L26 155 L34 155 Z" fill="url(#goldLanternGrad)"/>
+          <circle cx="30" cy="158" r="2.5" fill="#FFF3B5"/>
+        </svg>
+      </div>
+
+      <!-- Right Royal Glass & Gold Lantern (Candlelit) -->
+      <div class="royal-lantern lantern-right">
+        <svg viewBox="0 0 60 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Top Hanging Ring & Chain -->
+          <circle cx="30" cy="12" r="8" stroke="url(#goldLanternGrad)" stroke-width="2.5" fill="none"/>
+          <line x1="30" y1="20" x2="30" y2="40" stroke="url(#goldLanternGrad)" stroke-width="2"/>
+          <!-- Lantern Crown Dome -->
+          <path d="M12 55 C12 38 48 38 48 55 Z" fill="url(#goldLanternGrad)"/>
+          <circle cx="30" cy="38" r="3" fill="#FFF3B5"/>
+          <!-- Glass Chamber with Candle -->
+          <rect x="14" y="55" width="32" height="75" rx="3" stroke="url(#goldLanternGrad)" stroke-width="2" fill="rgba(255,230,150,0.12)"/>
+          <!-- Glass Corner Struts -->
+          <line x1="22" y1="55" x2="22" y2="130" stroke="url(#goldLanternGrad)" stroke-width="1.2" opacity="0.7"/>
+          <line x1="38" y1="55" x2="38" y2="130" stroke="url(#goldLanternGrad)" stroke-width="1.2" opacity="0.7"/>
+          <!-- Candle Pillar -->
+          <rect x="25" y="95" width="10" height="30" rx="2" fill="#FFF8E7"/>
+          <!-- Glowing Candle Flame -->
+          <ellipse cx="30" cy="85" rx="14" ry="14" fill="url(#candleGlow)"/>
+          <path class="lantern-flame" d="M30 74 C27 80 25 84 27 88 C29 92 31 92 33 88 C35 84 33 80 30 74Z" fill="#FFE875"/>
+          <path class="lantern-flame-inner" d="M30 78 C28 82 28 85 29 87 C30 89 31 89 32 87 C33 85 32 82 30 78Z" fill="#FF8F1F"/>
+          <!-- Lantern Base -->
+          <path d="M10 130 L50 130 L45 142 L15 142 Z" fill="url(#goldLanternGrad)"/>
+          <!-- Bottom Pendant Finial -->
+          <path d="M30 142 L26 155 L34 155 Z" fill="url(#goldLanternGrad)"/>
+          <circle cx="30" cy="158" r="2.5" fill="#FFF3B5"/>
+        </svg>
+      </div>
+
+      <!-- The Grand Palace Gateway Arch Frame -->
+      <div class="gateway-frame">
+
+        <!-- Top Ornate Botanical Arch with Gold Crown Filigree -->
+        <svg class="gateway-torana" viewBox="0 0 320 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldArchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#C5A059"/>
+              <stop offset="25%" stop-color="#FFF3B5"/>
+              <stop offset="50%" stop-color="#E5BE5E"/>
+              <stop offset="75%" stop-color="#FFF3B5"/>
+              <stop offset="100%" stop-color="#C5A059"/>
+            </linearGradient>
+          </defs>
+          <!-- Arch Curve -->
+          <path d="M10 82 C60 12 260 12 310 82" stroke="url(#goldArchGrad)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          <path d="M22 80 C68 22 252 22 298 80" stroke="rgba(255,245,200,0.65)" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+          <!-- Center Royal Crown Crest -->
+          <circle cx="160" cy="22" r="14" fill="url(#goldArchGrad)"/>
+          <circle cx="160" cy="22" r="7" fill="#3D1C08"/>
+          <circle cx="160" cy="22" r="3" fill="#FFF5C2"/>
+          <!-- Botanical Floral Scroll Left & Right -->
+          <path d="M110 40 Q135 25 160 36 Q185 25 210 40" stroke="url(#goldArchGrad)" stroke-width="2" fill="none"/>
+          <circle cx="120" cy="38" r="3" fill="url(#goldArchGrad)"/>
+          <circle cx="200" cy="38" r="3" fill="url(#goldArchGrad)"/>
+        </svg>
+
+        <!-- Inner Sanctum Glow Backdrop: REVEALING BRIDE & GROOM NAMES! -->
+        <div class="sanctum-glow-backdrop">
+          <div class="sanctum-couple-reveal">
+            <div class="sanctum-sparkle-crest">✨ 💍 ✨</div>
+            <div class="sanctum-together-tag">Together With Their Families</div>
+            <div class="sanctum-bride-name">Dr. Keerthana</div>
+            <div class="sanctum-ampersand">&amp;</div>
+            <div class="sanctum-groom-name">Dr. Sarath</div>
+            <div class="sanctum-date-badge">13 • 09 • 2026</div>
+            <div class="sanctum-quote">Forever Begins Here</div>
+          </div>
+        </div>
+
+        <!-- The 3D Double Carved Doors -->
+        <div class="gateway-doors-container">
+
+          <!-- Left Carved Royal Door -->
+          <div class="door-panel door-left">
+            <svg class="door-carving-svg" viewBox="0 0 145 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="doorGoldLine" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E5BE5E"/>
+                  <stop offset="100%" stop-color="#8B6214"/>
+                </linearGradient>
+              </defs>
+              <!-- Outer Arch Inset Border -->
+              <path d="M8 332 L8 140 C8 60 70 8 138 8 L138 332 Z" stroke="url(#doorGoldLine)" stroke-width="1.5" fill="none" opacity="0.65"/>
+              <!-- Door Panels Division -->
+              <rect x="18" y="55" width="112" height="75" rx="6" stroke="url(#doorGoldLine)" stroke-width="1.2" fill="rgba(212,175,55,0.05)"/>
+              <rect x="18" y="142" width="112" height="85" rx="6" stroke="url(#doorGoldLine)" stroke-width="1.2" fill="rgba(212,175,55,0.05)"/>
+              <rect x="18" y="238" width="112" height="85" rx="6" stroke="url(#doorGoldLine)" stroke-width="1.2" fill="rgba(212,175,55,0.05)"/>
+              <!-- Brass Studs (Rivets) -->
+              <circle cx="28" cy="65" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="120" cy="65" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="28" cy="120" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="120" cy="120" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="28" cy="152" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="120" cy="152" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="28" cy="217" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="120" cy="217" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="28" cy="248" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="120" cy="248" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="28" cy="313" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="120" cy="313" r="3" fill="url(#doorGoldLine)"/>
+              <!-- Botanical Rose / Jasmine Vine Engraving (Top & Bottom) -->
+              <path d="M74 75 Q60 90 74 105 Q88 90 74 75Z" fill="url(#doorGoldLine)" opacity="0.85"/>
+              <circle cx="74" cy="90" r="4" fill="#FFF5C2"/>
+              <path d="M74 260 Q58 275 74 290 Q90 275 74 260Z" fill="url(#doorGoldLine)" opacity="0.85"/>
+              <circle cx="74" cy="275" r="4" fill="#FFF5C2"/>
+            </svg>
+
+            <!-- Traditional Brass Door Knocker (Left) -->
+            <div class="door-knocker">
+              <svg viewBox="0 0 40 50" fill="none">
+                <circle cx="20" cy="14" r="9" fill="url(#goldLanternGrad)"/>
+                <path d="M12 22 C12 34 28 34 28 22" stroke="url(#goldLanternGrad)" stroke-width="4" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Right Carved Royal Door -->
+          <div class="door-panel door-right">
+            <svg class="door-carving-svg" viewBox="0 0 145 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Outer Arch Inset Border (Mirrored) -->
+              <path d="M137 332 L137 140 C137 60 75 8 7 8 L7 332 Z" stroke="url(#doorGoldLine)" stroke-width="1.5" fill="none" opacity="0.65"/>
+              <!-- Door Panels Division -->
+              <rect x="15" y="55" width="112" height="75" rx="6" stroke="url(#doorGoldLine)" stroke-width="1.2" fill="rgba(212,175,55,0.05)"/>
+              <rect x="15" y="142" width="112" height="85" rx="6" stroke="url(#doorGoldLine)" stroke-width="1.2" fill="rgba(212,175,55,0.05)"/>
+              <rect x="15" y="238" width="112" height="85" rx="6" stroke="url(#doorGoldLine)" stroke-width="1.2" fill="rgba(212,175,55,0.05)"/>
+              <!-- Brass Studs (Rivets) -->
+              <circle cx="25" cy="65" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="117" cy="65" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="25" cy="120" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="117" cy="120" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="25" cy="152" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="117" cy="152" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="25" cy="217" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="117" cy="217" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="25" cy="248" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="117" cy="248" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="25" cy="313" r="3" fill="url(#doorGoldLine)"/>
+              <circle cx="117" cy="313" r="3" fill="url(#doorGoldLine)"/>
+              <!-- Botanical Rose / Jasmine Vine Engraving (Top & Bottom) -->
+              <path d="M71 75 Q57 90 71 105 Q85 90 71 75Z" fill="url(#doorGoldLine)" opacity="0.85"/>
+              <circle cx="71" cy="90" r="4" fill="#FFF5C2"/>
+              <path d="M71 260 Q55 275 71 290 Q87 275 71 260Z" fill="url(#doorGoldLine)" opacity="0.85"/>
+              <circle cx="71" cy="275" r="4" fill="#FFF5C2"/>
+            </svg>
+
+            <!-- Traditional Brass Door Knocker (Right) -->
+            <div class="door-knocker">
+              <svg viewBox="0 0 40 50" fill="none">
+                <circle cx="20" cy="14" r="9" fill="url(#goldLanternGrad)"/>
+                <path d="M12 22 C12 34 28 34 28 22" stroke="url(#goldLanternGrad)" stroke-width="4" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Central Royal Golden Embossed Seal (Monogram Lock) -->
+          <div class="central-monogram-lock" title="Tap to Open the Royal Gateway">
+            <div class="monogram-mandala-ring"></div>
+            <span class="monogram-text-inner">K &amp; S</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Couple Names & Call-to-Action Footer -->
+    <div class="gateway-footer">
+      <div class="gateway-wedding-date">Sunday, 13 September 2026 • Thrissur</div>
+      <div class="gateway-couple-title">Dr. Keerthana &amp; Dr. Sarath</div>
+      
+      <button class="gateway-tap-btn" type="button" aria-label="Tap to enter wedding invitation">
+        <span>💍</span>
+        <span>Tap to Open Invitation</span>
+        <span>✨</span>
+      </button>
+
+      <p class="gateway-audio-note">🎵 Playing "O Rangrez"</p>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       MAIN DIGITAL INVITATION WEBSITE CONTENT
+       =================================================================== -->
+  <main class="main-wrapper">
+
+    <!-- 1. HERO & BLESSINGS INVITATION CARD -->
+    <section class="invitation-card-section header-hero reveal-on-scroll is-revealed">
+      <!-- Crisp Vector Transparent Corner Accents (No square image boxes!) -->
+      <svg class="card-corner-svg corner-top-left" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 C35 0 60 5 80 25 C60 30 45 45 40 65 C35 45 20 30 0 0 Z" fill="url(#goldFiligree)" opacity="0.85"/>
+        <path d="M4 4 Q 30 12 45 45 Q 12 30 4 4" stroke="url(#goldFiligree)" stroke-width="1.5"/>
+        <circle cx="16" cy="16" r="3" fill="url(#goldFiligree)"/>
+        <circle cx="28" cy="12" r="2" fill="url(#goldFiligree)"/>
+        <circle cx="12" cy="28" r="2" fill="url(#goldFiligree)"/>
+      </svg>
+      <svg class="card-corner-svg corner-top-right" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 C35 0 60 5 80 25 C60 30 45 45 40 65 C35 45 20 30 0 0 Z" fill="url(#goldFiligree)" opacity="0.85"/>
+        <path d="M4 4 Q 30 12 45 45 Q 12 30 4 4" stroke="url(#goldFiligree)" stroke-width="1.5"/>
+        <circle cx="16" cy="16" r="3" fill="url(#goldFiligree)"/>
+        <circle cx="28" cy="12" r="2" fill="url(#goldFiligree)"/>
+        <circle cx="12" cy="28" r="2" fill="url(#goldFiligree)"/>
+      </svg>
+
+      <!-- Royal Wedding Crest -->
+      <div class="ganesha-emblem" title="Royal Wedding Crest">
+        <svg viewBox="0 0 100 100">
+          <circle cx="38" cy="52" r="24" fill="none" stroke="#FFE89E" stroke-width="5"/>
+          <circle cx="62" cy="52" r="24" fill="none" stroke="#E5BE5E" stroke-width="5"/>
+          <polygon points="38,20 44,28 38,36 32,28" fill="#FFFFFF"/>
+          <circle cx="38" cy="28" r="3" fill="#FFF4D0"/>
+        </svg>
+      </div>
+      <div class="ganesha-text">✦ WITH JOYFUL HEARTS &amp; FAMILY BLESSINGS ✦</div>
+
+      <p class="intro-greeting">We,</p>
+      <h2 class="parents-names">Mr. Narayanan K T &amp; Mrs. Vasanthi Narayanan</h2>
+      <p class="parents-residence">Kattil thazhathethil House, Kololamba, Edappal</p>
+      <div class="parents-contact">
+        <span>📞</span> <a href="tel:9446162155">Mob: 9446162155</a>
+      </div>
+
+      <p class="invite-statement">
+        are extremely glad to invite you and your family to the wedding of our beloved daughter
+      </p>
+
+      <div class="gold-divider">
+        <span class="gold-divider-icon">❦</span>
+      </div>
+
+      <!-- Couple Names with Royal Gold Shine -->
+      <div class="couple-name-banner">
+        <h1 class="bride-name gold-shine gold-text">DR. KEERTHANA</h1>
+        <div class="ampersand-wrap">
+          <span class="ampersand">&amp;</span>
+        </div>
+        <h1 class="groom-name gold-shine gold-text">DR. SARATH</h1>
+      </div>
+
+      <!-- Emotional Quote -->
+      <div class="emotional-quote-box">
+        <p>“Two hearts, one love, forever blessed. With the divine blessings of our elders and almighty, we step into our new journey together.”</p>
+      </div>
+
+      <svg class="card-corner-svg corner-bottom-left" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 C35 0 60 5 80 25 C60 30 45 45 40 65 C35 45 20 30 0 0 Z" fill="url(#goldFiligree)" opacity="0.85"/>
+        <path d="M4 4 Q 30 12 45 45 Q 12 30 4 4" stroke="url(#goldFiligree)" stroke-width="1.5"/>
+        <circle cx="16" cy="16" r="3" fill="url(#goldFiligree)"/>
+        <circle cx="28" cy="12" r="2" fill="url(#goldFiligree)"/>
+        <circle cx="12" cy="28" r="2" fill="url(#goldFiligree)"/>
+      </svg>
+      <svg class="card-corner-svg corner-bottom-right" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 C35 0 60 5 80 25 C60 30 45 45 40 65 C35 45 20 30 0 0 Z" fill="url(#goldFiligree)" opacity="0.85"/>
+        <path d="M4 4 Q 30 12 45 45 Q 12 30 4 4" stroke="url(#goldFiligree)" stroke-width="1.5"/>
+        <circle cx="16" cy="16" r="3" fill="url(#goldFiligree)"/>
+        <circle cx="28" cy="12" r="2" fill="url(#goldFiligree)"/>
+        <circle cx="12" cy="28" r="2" fill="url(#goldFiligree)"/>
+      </svg>
+    </section>
+
+    <!-- 2. INTERACTIVE SCRATCH-TO-REVEAL DATE SECTION (Right after opening card) -->
+    <section class="invitation-card-section scratch-section reveal-on-scroll">
+      <div class="section-subtitle-tag">— Save the Date —</div>
+      <h2 class="section-headline">Scratch to Reveal</h2>
+      
+      <p class="scratch-instruction">
+        <span>✨</span> Scratch the golden foil below to reveal the date &amp; muhurtham <span>✨</span>
+      </p>
+
+      <div class="scratch-card-box">
+        <!-- Underneath Revealed Date Card -->
+        <div class="scratch-revealed-content">
+          <span class="revealed-date-badge">Wedding Day</span>
+          
+          <div class="revealed-main-date">
+            <span>SUNDAY</span>
+            <span class="date-day-num">13</span>
+            <span>SEP-2026</span>
+          </div>
+
+          <div class="revealed-time-slot">
+            <span>⏰</span> Between 9:30 AM – 10:30 AM
+          </div>
+          <span class="revealed-muhurthamTag revealed-muhurtham-tag">Auspicious Muhurtham</span>
+        </div>
+
+        <!-- Gold Foil Scratch Canvas Overlay -->
+        <canvas id="scratch-canvas"></canvas>
+      </div>
+
+      <!-- Scratch Controls & Auto Reveal -->
+      <div class="scratch-controls-bar">
+        <div class="scratch-progress-wrap" title="Scratch Progress">
+          <div class="scratch-progress-bar"></div>
+        </div>
+        <button class="btn-auto-reveal" type="button">✨ Reveal Instantly</button>
+      </div>
+    </section>
+
+    <!-- 3. THE COUPLE — TWO SOULS, ONE JOURNEY (Cartoon Profile Cards) -->
+    <section class="invitation-card-section reveal-on-scroll">
+      <div class="section-subtitle-tag">— The Couple —</div>
+      <h2 class="section-headline">Two Souls, One Journey</h2>
+
+      <div class="couple-profiles-grid">
+        <!-- Groom Card -->
+        <div class="couple-profile-card groom-card">
+          <div class="card-top-ornament" aria-hidden="true">✦</div>
+          <div class="royal-monogram-emblem groom-emblem">
+            <div class="emblem-ring-outer"></div>
+            <div class="emblem-ring-inner">
+              <span class="monogram-letter">S</span>
+            </div>
+          </div>
+          <div class="profile-title-badge">The Groom</div>
+          <h3 class="profile-name">Dr. Sarath</h3>
+          <p class="profile-parents-info">
+            S/o. <strong>Mr. Shaji K &amp; Mrs. Sheeja K</strong><br />
+            Kodakkatt House, Ponnani
+          </p>
+          <div class="profile-card-line"></div>
+          <p class="profile-invite-note">
+            With gratitude and joy, the family of the groom invites you to bless this beautiful union.
+          </p>
+        </div>
+
+        <!-- Floating Heart Connector -->
+        <div class="couple-heart-connector" aria-hidden="true">
+          <div class="heart-circle-badge">❤</div>
+        </div>
+
+        <!-- Bride Card -->
+        <div class="couple-profile-card bride-card">
+          <div class="card-top-ornament" aria-hidden="true">✦</div>
+          <div class="royal-monogram-emblem bride-emblem">
+            <div class="emblem-ring-outer"></div>
+            <div class="emblem-ring-inner">
+              <span class="monogram-letter">K</span>
+            </div>
+          </div>
+          <div class="profile-title-badge">The Bride</div>
+          <h3 class="profile-name">Dr. Keerthana</h3>
+          <p class="profile-parents-info">
+            D/o. <strong>Mr. Narayanan K T &amp; Mrs. Vasanthi Narayanan</strong><br />
+            Kattil thazhathethil House, Edappal
+          </p>
+          <div class="profile-card-line"></div>
+          <p class="profile-invite-note">
+            With love and happiness, the family of the bride invites you to celebrate this sacred bond.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. WEDDING CELEBRATIONS / EVENTS (Thalikettu & Grand Sadhya) -->
+    <section class="invitation-card-section reveal-on-scroll">
+      <div class="section-subtitle-tag">— Celebrations —</div>
+      <h2 class="section-headline">Wedding Events</h2>
+
+      <div id="events-cards-container" class="events-cards-grid">
+        <!-- Rendered dynamically by main.js from config.js -->
+      </div>
+    </section>
+
+    <!-- 5. LIVE COUNTDOWN & CALENDAR INTEGRATION -->
+    <section class="invitation-card-section countdown-section reveal-on-scroll">
+      <div class="section-subtitle-tag">Counting Down To Forever</div>
+      <h2 class="section-headline">Sunday, 13th September 2026</h2>
+
+      <div class="countdown-grid">
+        <div class="countdown-card">
+          <div class="countdown-number" id="cd-days">--</div>
+          <div class="countdown-unit">Days</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-number" id="cd-hours">--</div>
+          <div class="countdown-unit">Hours</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-number" id="cd-minutes">--</div>
+          <div class="countdown-unit">Mins</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-number" id="cd-seconds">--</div>
+          <div class="countdown-unit">Secs</div>
+        </div>
+      </div>
+
+      <div class="calendar-actions">
+        <button id="add-google-cal" class="btn-luxury btn-gold" type="button">
+          <span>📅</span> Add to Google Calendar
+        </button>
+        <button id="add-ical" class="btn-luxury btn-outline-gold" type="button">
+          <span></span> Apple / Outlook (.ics)
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. VENUE & 1-TOUCH NAVIGATION (Puzhayoram Gardens Thrissur) -->
+    <section class="invitation-card-section reveal-on-scroll">
+      <div class="section-subtitle-tag">— Location —</div>
+      <h2 class="section-headline">The Wedding Venue</h2>
+
+      <div class="venue-card-inner">
+        <div class="venue-image-wrapper">
+          <img src="assets/images/venue.jpg" alt="Puzhayoram Gardens Convention Centre Thrissur" loading="lazy" />
+          <div class="venue-overlay-badge">Nadathara, Thrissur</div>
+        </div>
+
+        <h3 class="venue-name">Puzhayoram Gardens Convention Centre</h3>
+        <p class="venue-address">
+          Eravimangalam, Nadathara, Thrissur, Kerala - 680751
+        </p>
+
+        <div class="venue-action-buttons">
+          <a href="https://www.google.com/maps/search/?api=1&query=Puzhayoram+Gardens+Convention+Centre+Nadathara+Thrissur" target="_blank" rel="noopener" class="btn-luxury btn-gold">
+            <span>🗺️</span> Open Google Maps
+          </a>
+          <button id="btn-copy-address" class="btn-luxury btn-outline-gold" type="button">
+            <span>📋</span> Copy Address
+          </button>
+          <a href="tel:9446162155" class="btn-luxury btn-outline-gold">
+            <span>📞</span> Call Host
+          </a>
+        </div>
+
+        <!-- Embedded Interactive Google Map -->
+        <div class="venue-map-frame">
+          <iframe 
+            title="Puzhayoram Gardens Location Map"
+            src="https://maps.google.com/maps?q=Puzhayoram+Gardens+Convention+Centre+Nadathara+Thrissur&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. TRAVEL ASSISTANCE & RSVP SECTION -->
+    <section class="invitation-card-section travel-section reveal-on-scroll">
+      <div class="section-subtitle-tag">— RSVP &amp; Transportation —</div>
+      <h2 class="section-headline">Will You Join Us?</h2>
+      
+      <p class="travel-section-intro">
+        Please let us know if you will be joining our wedding celebration and if you require transportation assistance.
+      </p>
+
+      <form id="travel-rsvp-form" class="blessings-form">
+        
+        <!-- Attendance Selection -->
+        <div class="form-group">
+          <label>Will you be attending?</label>
+          <div class="attendance-grid">
+            <input type="radio" name="attendance" id="att-yes" value="yes" class="attendance-radio-input" checked />
+            <label for="att-yes" class="attendance-chip-label">
+              <span>🎉</span> Joyfully Accept
+            </label>
+
+            <input type="radio" name="attendance" id="att-no" value="no" class="attendance-radio-input" />
+            <label for="att-no" class="attendance-chip-label">
+              <span>💌</span> Regretfully Decline
+            </label>
+          </div>
+        </div>
+
+        <!-- Guest Name & WhatsApp -->
+        <div class="form-group">
+          <label for="guest-name">Your Full Name / Family</label>
+          <input type="text" id="guest-name" class="form-input" placeholder="e.g. Dr. Anand &amp; Family" required />
+        </div>
+
+        <div class="form-group">
+          <label for="guest-phone">WhatsApp / Contact Number</label>
+          <input type="tel" id="guest-phone" class="form-input" placeholder="e.g. +91 98765 43210" required />
+        </div>
+
+        <!-- Simple Transportation Question (Yes / No) -->
+        <div class="form-group" id="travel-mode-group">
+          <label>Do you need transportation?</label>
+          <div class="attendance-grid">
+            <input type="radio" name="transportation" id="trans-yes" value="yes" class="attendance-radio-input" />
+            <label for="trans-yes" class="attendance-chip-label">
+              <span>🚌</span> Yes, Need Transportation
+            </label>
+
+            <input type="radio" name="transportation" id="trans-no" value="no" class="attendance-radio-input" checked />
+            <label for="trans-no" class="attendance-chip-label">
+              <span>🚗</span> No, Traveling by Self
+            </label>
+          </div>
+        </div>
+
+        <!-- Heartfelt Blessing Message -->
+        <div class="form-group">
+          <label for="guest-message">Warm Wishes &amp; Blessings</label>
+          <textarea id="guest-message" class="form-textarea" placeholder="Write your heartfelt blessing for Keerthana &amp; Sarath..." required></textarea>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px;">
+          <button type="submit" class="btn-luxury btn-gold" id="btn-submit-travel">
+            <span>✨</span> Send RSVP &amp; Wishes
+          </button>
+          <button id="btn-whatsapp-travel-rsvp" type="button" class="btn-luxury btn-outline-gold">
+            <span>💬</span> Confirm on WhatsApp
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Live Blessings Wall -->
+      <div id="blessings-wall" class="blessings-wall">
+        <!-- Rendered dynamically by rsvp.js -->
+      </div>
+
+      <!-- Organizer Travel Manifest Trigger -->
+      <div class="travel-admin-bar">
+        <button type="button" id="btn-open-travel-manifest" class="btn-travel-manifest">
+          <span>📋</span> View &amp; Download Guest List (CSV)
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Travel Manifest Organizer Modal -->
+    <div id="travel-manifest-modal" class="travel-manifest-modal" role="dialog" aria-modal="true" aria-label="Travel Assistance Manifest">
+      <div class="travel-modal-box">
+        <div class="travel-modal-header">
+          <h3 style="font-family: var(--font-royal); color: var(--gold-primary); font-size: 1.15rem; margin: 0;">
+            🚆 Guest RSVP &amp; Transportation List
+          </h3>
+          <button type="button" id="btn-close-travel-modal" style="font-size: 1.4rem; color: var(--text-muted); cursor: pointer; border: none; background: none;">✕</button>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="travel-stats-summary">
+          <div class="travel-stat-card">
+            <div class="travel-stat-num" id="stat-total-guests">0</div>
+            <div class="travel-stat-label">Total Responses</div>
+          </div>
+          <div class="travel-stat-card">
+            <div class="travel-stat-num" id="stat-attending-count">0</div>
+            <div class="travel-stat-label">Attending</div>
+          </div>
+          <div class="travel-stat-card">
+            <div class="travel-stat-num" id="stat-transport-needed">0</div>
+            <div class="travel-stat-label">Need Transport</div>
+          </div>
+        </div>
+
+        <!-- Manifest Table -->
+        <div style="overflow-x: auto; max-height: 280px;">
+          <table class="travel-table">
+            <thead>
+              <tr>
+                <th>Guest Name</th>
+                <th>Phone</th>
+                <th>Attendance</th>
+                <th>Transport Needed?</th>
+                <th>Wishes</th>
+              </tr>
+            </thead>
+            <tbody id="travel-table-body">
+              <!-- Rendered dynamically by rsvp.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Export Actions -->
+        <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; flex-wrap: wrap;">
+          <button type="button" id="btn-download-travel-csv" class="btn-luxury btn-gold">
+            <span>📥</span> Download Excel / CSV
+          </button>
+          <button type="button" id="btn-clear-travel-data" class="btn-luxury btn-outline-gold" style="font-size: 0.76rem;">
+            Clear Demo List
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <footer class="invitation-footer reveal-on-scroll">
+      <div class="gold-divider">
+        <span class="gold-divider-icon">❦</span>
+      </div>
+      <p class="footer-compliments">
+        With best compliments from:
+        <strong>Friends and Family</strong>
+      </p>
+      <div class="footer-hashtag">#KeerthanaWedsSarath • September 13, 2026</div>
+    </footer>
+
+  </main>
+
+  <!-- ===================================================================
+       FLOATING ACTION BAR (WITH THEME TOGGLE ☀️/🌙)
+       =================================================================== -->
+  <div class="floating-controls-bar" role="toolbar" aria-label="Quick Controls">
+    <!-- Music Play/Pause with Visualizer -->
+    <button id="music-toggle-btn" class="floating-btn" aria-label="Toggle Background Music" title="Play/Pause 'O Rangrez'">
+      <div class="music-equalizer">
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+      </div>
+    </button>
+
+    <!-- Theme Switcher Button (☀️ / 🌙) -->
+    <button id="theme-toggle-btn" class="floating-btn" aria-label="Toggle Light / Dark Mode" title="Toggle Theme">
+      <span id="theme-toggle-icon">🌙</span>
+    </button>
+
+    <!-- Petals Toggle -->
+    <button id="petals-toggle-btn" class="floating-btn" aria-label="Toggle Rose Petals" title="Toggle Falling Petals">
+      🌸
+    </button>
+
+    <!-- Share on WhatsApp -->
+    <button id="share-whatsapp-btn" class="floating-btn" aria-label="Share on WhatsApp" title="Share Invitation">
+      <svg viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.302c-.087.087-.179.182-.077.357.101.174.45 1.002 1.488 1.621.365.217.671.306.908.38.238.075.454.065.626.04.19-.028.604-.247.69-.485.086-.239.086-.444.06-.487-.026-.044-.1-.07-.213-.127z"/>
+      </svg>
+    </button>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-top-btn" class="floating-btn" aria-label="Scroll to Top" title="Top">
+      ↑
+    </button>
+  </div>
+
+  <!-- Toast Notice Container -->
+  <div class="toast-notice" role="alert"></div>
+
+  <!-- JavaScript Modules with Cache-Busting -->
+  <script src="js/config.js?v=6.0"></script>
+  <script src="js/petals.js?v=6.0"></script>
+  <script src="js/sparkles.js?v=6.0"></script>
+  <script src="js/audio.js?v=6.0"></script>
+  <script src="js/envelope.js?v=6.0"></script>
+  <script src="js/scratch.js?v=6.0"></script>
+  <script src="js/countdown.js?v=6.0"></script>
+  <script src="js/rsvp.js?v=6.0"></script>
+  <script src="js/main.js?v=6.0"></script>
+
+</body>
+</html>

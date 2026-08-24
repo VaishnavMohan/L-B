@@ -1,0 +1,198 @@
+/* ===================================================================
+   WEDDING INVITATION - SCRATCH TO REVEAL DATE SECTION (THEME ADAPTIVE)
+   =================================================================== */
+
+.scratch-section {
+  position: relative;
+  background: var(--bg-card);
+  border: var(--border-card);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-luxe);
+}
+
+.scratch-instruction {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gold-dark);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  animation: pulseSubtle 2.5s infinite;
+}
+
+[data-theme="dark"] .scratch-instruction {
+  color: var(--gold-light);
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+/* Scratch Card Main Canvas Container */
+.scratch-card-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  min-height: 220px;
+  margin: 0 auto 18px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  border: var(--border-subtle);
+}
+
+/* Underneath Revealed Content (The Date & Time) */
+.scratch-revealed-content {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-card-elevated);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--gold-primary);
+  text-align: center;
+  z-index: 1;
+  transition: background-color 0.4s ease;
+}
+
+.revealed-date-badge {
+  font-family: var(--font-royal);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+[data-theme="dark"] .revealed-date-badge {
+  color: var(--gold-primary);
+}
+
+.revealed-main-date {
+  font-family: var(--font-serif-luxury);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-cream);
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.revealed-main-date .date-day-num {
+  font-size: 2.8rem;
+  font-family: var(--font-royal);
+  color: var(--gold-primary);
+  border-left: 2px solid var(--gold-light);
+  border-right: 2px solid var(--gold-light);
+  padding: 0 12px;
+  line-height: 1;
+}
+
+.revealed-time-slot {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.revealed-muhurtham-tag {
+  background: rgba(197, 160, 89, 0.15);
+  color: var(--gold-dark);
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  margin-top: 6px;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+[data-theme="dark"] .revealed-muhurtham-tag {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-light);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Canvas Scratch Overlay */
+#scratch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="%23D4AF37" stroke="%23FFF" stroke-width="2"/><text x="12" y="16" font-size="10" font-weight="bold" fill="%23FFF" text-anchor="middle">✨</text></svg>'), crosshair;
+  transition: opacity 0.5s ease;
+}
+
+#scratch-canvas.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Scratch Progress & Auto-Reveal Button */
+.scratch-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 440px;
+  margin: 0 auto;
+  gap: 12px;
+}
+
+.scratch-progress-wrap {
+  flex: 1;
+  background: rgba(197, 160, 89, 0.15);
+  height: 8px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.scratch-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--gold-gradient);
+  border-radius: var(--radius-full);
+  transition: width 0.2s ease;
+}
+
+.btn-auto-reveal {
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-dark);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-bounce);
+}
+
+[data-theme="dark"] .btn-auto-reveal {
+  color: var(--gold-light);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.btn-auto-reveal:hover {
+  background: var(--gold-gradient);
+  color: #2D2727;
+  border-color: transparent;
+}
