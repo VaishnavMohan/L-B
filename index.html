@@ -37,10 +37,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500;600;700&family=Great+Vibes&display=swap" />
 
   <!-- Stylesheets with Cache-Busting -->
-  <link rel="stylesheet" href="css/style.css?v=26.0" />
-  <link rel="stylesheet" href="css/envelope.css?v=26.0" />
-  <link rel="stylesheet" href="css/scratch.css?v=26.0" />
+  <link rel="stylesheet" href="css/style.css?v=27.0" />
+  <link rel="stylesheet" href="css/envelope.css?v=27.0" />
+  <link rel="stylesheet" href="css/scratch.css?v=27.0" />
 </head>
+
 
 
 
@@ -618,34 +619,63 @@
           <input type="text" id="guest-name" class="form-input" placeholder="e.g. Dr. Rajesh &amp; Family" required />
         </div>
 
-        <!-- Attendance & Guest Count -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
-          <div class="form-group" style="margin-bottom: 0;">
-            <label for="rsvp-attendance">Attendance</label>
-            <select id="rsvp-attendance" class="form-input" style="background: var(--bg-card-elevated); color: var(--text-cream); cursor: pointer;">
-              <option value="Joyfully Attending">🌸 Joyfully Attending</option>
-              <option value="Celebrating in Spirit">💐 Celebrating in Spirit</option>
-            </select>
+        <!-- 1. Visual Attendance Choice Chips -->
+        <div class="form-group">
+          <label class="form-section-label">Will you be joining us?</label>
+          <div class="choice-chips-grid attendance-chips" role="radiogroup" aria-label="Attendance">
+            <button type="button" class="choice-chip active" id="chip-attending" data-value="🌸 Joyfully Attending">
+              <span class="chip-icon">🌸</span>
+              <span class="chip-text">Joyfully Attending</span>
+              <span class="chip-check">✓</span>
+            </button>
+            <button type="button" class="choice-chip" id="chip-afar" data-value="💐 Celebrating in Spirit">
+              <span class="chip-icon">💐</span>
+              <span class="chip-text">Celebrating in Spirit</span>
+              <span class="chip-check">✓</span>
+            </button>
           </div>
-
-          <div class="form-group" style="margin-bottom: 0;">
-            <label for="rsvp-guest-count">Total Guests</label>
-            <select id="rsvp-guest-count" class="form-input" style="background: var(--bg-card-elevated); color: var(--text-cream); cursor: pointer;">
-              <option value="1 Person">1 Person</option>
-              <option value="2 Persons" selected>2 Persons</option>
-              <option value="3 Persons">3 Persons</option>
-              <option value="4 Persons">4 Persons</option>
-              <option value="5+ Persons">5+ Persons</option>
-            </select>
-          </div>
+          <input type="hidden" id="rsvp-attendance" value="🌸 Joyfully Attending" />
         </div>
 
-        <!-- Simple Travel Assistance Toggle -->
-        <div class="form-group" style="margin-bottom: 14px;">
-          <label class="travel-toggle-label" style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px 14px; background: rgba(184, 142, 62, 0.08); border: 1px solid rgba(184, 142, 62, 0.28); border-radius: var(--radius-md); user-select: none;">
-            <input type="checkbox" id="need-travel-checkbox" style="width: 18px; height: 18px; accent-color: var(--gold-primary); cursor: pointer;" />
-            <span style="font-size: 0.88rem; font-weight: 600; color: var(--text-cream);">🚗 Need travel / pickup assistance?</span>
-          </label>
+        <!-- 2. Visual Guest Counter & Quick Preset Pills -->
+        <div class="form-group" id="guest-count-group">
+          <label class="form-section-label">Number of Guests Attending</label>
+          <div class="guest-counter-wrap">
+            <button type="button" class="counter-btn" id="btn-guest-minus" aria-label="Decrease Guests">−</button>
+            <div class="guest-count-display">
+              <span id="guest-count-number">2</span>
+              <span class="guest-count-label" id="guest-count-label">Guests</span>
+            </div>
+            <button type="button" class="counter-btn" id="btn-guest-plus" aria-label="Increase Guests">+</button>
+          </div>
+          <!-- Quick Preset Pills -->
+          <div class="guest-quick-pills">
+            <button type="button" class="guest-pill" data-count="1">1</button>
+            <button type="button" class="guest-pill active" data-count="2">2</button>
+            <button type="button" class="guest-pill" data-count="3">3</button>
+            <button type="button" class="guest-pill" data-count="4">4</button>
+            <button type="button" class="guest-pill" data-count="5">5+</button>
+          </div>
+          <input type="hidden" id="rsvp-guest-count" value="2 Persons" />
+        </div>
+
+        <!-- 3. Visual 1-Tap Travel Assistance Card -->
+        <div class="form-group">
+          <label class="form-section-label">Travel &amp; Pickup Assistance</label>
+          <div class="travel-assistance-card" id="travel-toggle-card" role="button" tabindex="0">
+            <div class="travel-card-left">
+              <div class="travel-card-icon">🚗</div>
+              <div class="travel-card-info">
+                <div class="travel-card-title">Need Pickup / Travel Coordination?</div>
+                <div class="travel-card-subtitle">Tap if arriving by train, flight, or bus</div>
+              </div>
+            </div>
+            <div class="travel-toggle-switch">
+              <span class="toggle-status-text" id="travel-status-text">NO</span>
+              <div class="toggle-knob"></div>
+            </div>
+          </div>
+          <input type="hidden" id="need-travel-hidden" value="false" />
         </div>
 
         <!-- Blessing Message -->
@@ -653,6 +683,7 @@
           <label for="guest-message">Your Warm Wishes &amp; Blessings</label>
           <textarea id="guest-message" class="form-textarea" placeholder="Write your heartfelt blessing for Keerthana &amp; Sarath..." required></textarea>
         </div>
+
 
         <!-- Actions -->
         <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
@@ -739,15 +770,16 @@
   <div class="toast-notice" role="alert"></div>
 
   <!-- JavaScript Modules with Cache-Busting -->
-  <script src="js/config.js?v=26.0"></script>
-  <script src="js/petals.js?v=26.0"></script>
-  <script src="js/sparkles.js?v=26.0"></script>
-  <script src="js/audio.js?v=26.0"></script>
-  <script src="js/envelope.js?v=26.0"></script>
-  <script src="js/scratch.js?v=26.0"></script>
-  <script src="js/countdown.js?v=26.0"></script>
-  <script src="js/rsvp.js?v=26.0"></script>
-  <script src="js/main.js?v=26.0"></script>
+  <script src="js/config.js?v=27.0"></script>
+  <script src="js/petals.js?v=27.0"></script>
+  <script src="js/sparkles.js?v=27.0"></script>
+  <script src="js/audio.js?v=27.0"></script>
+  <script src="js/envelope.js?v=27.0"></script>
+  <script src="js/scratch.js?v=27.0"></script>
+  <script src="js/countdown.js?v=27.0"></script>
+  <script src="js/rsvp.js?v=27.0"></script>
+  <script src="js/main.js?v=27.0"></script>
+
 
 
 

@@ -1217,18 +1217,280 @@ body::after {
   display: block;
   font-family: var(--font-sans);
   font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--gold-primary);
+  letter-spacing: 0.08em;
   margin-bottom: 8px;
   text-transform: uppercase;
+  font-size: 0.78rem;
+  display: block;
+  text-align: left;
+}
+
+.form-section-label {
+  font-family: var(--font-royal);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+  text-align: left;
+}
+
+/* ── 1. Visual Attendance Choice Chips ────────────────────────────── */
+.choice-chips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.choice-chip {
+  background: var(--bg-card-elevated);
+  border: 1.5px solid rgba(229, 197, 120, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.88rem;
+  position: relative;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.choice-chip:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+.choice-chip.active {
+  background: linear-gradient(135deg, rgba(229, 197, 120, 0.22) 0%, rgba(16, 185, 129, 0.18) 100%);
+  border: 2px solid var(--gold-primary);
+  color: var(--text-cream);
+  box-shadow: 0 4px 16px rgba(229, 197, 120, 0.25);
+  transform: translateY(-1px);
+}
+
+.chip-icon {
+  font-size: 1.15rem;
+}
+
+.chip-check {
+  display: none;
+  width: 18px;
+  height: 18px;
+  background: var(--gold-primary);
+  color: #071914;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 900;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.choice-chip.active .chip-check {
+  display: flex;
+}
+
+/* ── 2. Visual Guest Counter & Quick Preset Pills ────────────────── */
+.guest-counter-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--bg-card-elevated);
+  border: 1.5px solid rgba(229, 197, 120, 0.3);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  margin-bottom: 8px;
+}
+
+.counter-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(229, 197, 120, 0.15);
+  border: 1.5px solid var(--gold-primary);
+  color: var(--text-cream);
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.counter-btn:hover {
+  background: var(--gold-primary);
+  color: #071914;
+  transform: scale(1.08);
+}
+
+.counter-btn:active {
+  transform: scale(0.92);
+}
+
+.guest-count-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+}
+
+#guest-count-number {
+  font-family: var(--font-royal);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-cream);
+  line-height: 1;
+}
+
+.guest-count-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+.guest-quick-pills {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.guest-pill {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card-elevated);
+  border: 1px solid rgba(229, 197, 120, 0.25);
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.guest-pill:hover, .guest-pill.active {
+  background: var(--gold-primary);
+  color: #071914;
+  border-color: var(--gold-primary);
+  box-shadow: 0 2px 8px rgba(229, 197, 120, 0.3);
+}
+
+/* ── 3. Visual 1-Tap Travel Assistance Card ──────────────────────── */
+.travel-assistance-card {
+  background: var(--bg-card-elevated);
+  border: 1.5px solid rgba(229, 197, 120, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.travel-assistance-card:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+.travel-assistance-card.active {
+  background: linear-gradient(135deg, rgba(229, 197, 120, 0.2) 0%, rgba(16, 185, 129, 0.22) 100%);
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 4px 18px rgba(229, 197, 120, 0.25);
+}
+
+.travel-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.travel-card-icon {
+  font-size: 1.6rem;
+}
+
+.travel-card-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-cream);
+  line-height: 1.25;
+}
+
+.travel-card-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.travel-toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 4px 8px;
+  border-radius: 9999px;
+  border: 1px solid rgba(229, 197, 120, 0.3);
+  transition: all 0.3s ease;
+}
+
+.travel-assistance-card.active .travel-toggle-switch {
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+}
+
+.toggle-status-text {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.travel-assistance-card.active .toggle-status-text {
+  color: #071914;
+}
+
+.toggle-knob {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.travel-assistance-card.active .toggle-knob {
+  background: #071914;
+  transform: translateX(2px);
 }
 
 .form-input, .form-textarea {
   width: 100%;
   padding: 14px 18px;
   background: var(--bg-card-elevated);
-  border: 1px solid rgba(197, 160, 89, 0.35);
+  border: 1.5px solid rgba(229, 197, 120, 0.35);
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
   font-size: 0.95rem;
@@ -1243,13 +1505,14 @@ body::after {
 .form-input:focus, .form-textarea:focus {
   outline: none;
   border-color: var(--gold-primary);
-  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+  box-shadow: 0 0 0 3px rgba(229, 197, 120, 0.2);
 }
 
 .form-textarea {
   resize: vertical;
   min-height: 90px;
 }
+
 
 .blessings-wall {
   margin-top: 16px;

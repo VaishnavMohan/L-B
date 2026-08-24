@@ -24,6 +24,7 @@ class WeddingRSVPManager {
     // Automatically purge any dummy "test" / "das" entry from previous runs
     this.cleanTestEntries();
     this.renderBlessings();
+    this.setupInteractiveForm();
 
     if (this.blessingsForm) {
       this.blessingsForm.addEventListener('submit', (e) => this.handleSubmit(e));
@@ -33,6 +34,7 @@ class WeddingRSVPManager {
       this.whatsappRsvpBtn.addEventListener('click', () => this.sendWhatsAppRSVP());
     }
   }
+
 
   cleanTestEntries() {
     try {
@@ -156,12 +158,98 @@ class WeddingRSVPManager {
     messageInput.value = '';
   }
 
+  setupInteractiveForm() {
+    // 1. Attendance Chips (Single tap switch)
+    const chipAttending = document.getElementById('chip-attending');
+    const chipAfar = document.getElementById('chip-afar');
+    const rsvpAttendanceInput = document.getElementById('rsvp-attendance');
+    const guestGroup = document.getElementById('guest-count-group');
+
+    if (chipAttending && chipAfar && rsvpAttendanceInput) {
+      chipAttending.addEventListener('click', () => {
+        chipAttending.classList.add('active');
+        chipAfar.classList.remove('active');
+        rsvpAttendanceInput.value = '🌸 Joyfully Attending';
+        if (guestGroup) {
+          guestGroup.style.display = 'block';
+        }
+      });
+
+      chipAfar.addEventListener('click', () => {
+        chipAfar.classList.add('active');
+        chipAttending.classList.remove('active');
+        rsvpAttendanceInput.value = '💐 Celebrating in Spirit';
+        if (guestGroup) {
+          guestGroup.style.display = 'none';
+        }
+      });
+    }
+
+    // 2. Guest Count (+ / - and Quick Preset Pills)
+    let currentGuestCount = 2;
+    const countDisplay = document.getElementById('guest-count-number');
+    const countLabel = document.getElementById('guest-count-label');
+    const rsvpGuestCountInput = document.getElementById('rsvp-guest-count');
+    const minusBtn = document.getElementById('btn-guest-minus');
+    const plusBtn = document.getElementById('btn-guest-plus');
+    const pills = document.querySelectorAll('.guest-pill');
+
+    const updateGuestCount = (count) => {
+      currentGuestCount = Math.max(1, Math.min(10, count));
+      if (countDisplay) countDisplay.textContent = currentGuestCount >= 5 ? '5+' : currentGuestCount;
+      if (countLabel) countLabel.textContent = currentGuestCount === 1 ? 'Guest' : 'Guests';
+      if (rsvpGuestCountInput) rsvpGuestCountInput.value = `${currentGuestCount >= 5 ? '5+' : currentGuestCount} ${currentGuestCount === 1 ? 'Person' : 'Persons'}`;
+
+      pills.forEach(p => {
+        const pCount = parseInt(p.getAttribute('data-count'), 10);
+        if ((currentGuestCount >= 5 && pCount === 5) || pCount === currentGuestCount) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+    };
+
+    if (minusBtn) minusBtn.addEventListener('click', () => updateGuestCount(currentGuestCount - 1));
+    if (plusBtn) plusBtn.addEventListener('click', () => updateGuestCount(currentGuestCount + 1));
+
+    pills.forEach(p => {
+      p.addEventListener('click', () => {
+        const count = parseInt(p.getAttribute('data-count'), 10);
+        updateGuestCount(count);
+      });
+    });
+
+    // 3. Travel 1-Tap Toggle Card
+    const travelCard = document.getElementById('travel-toggle-card');
+    const travelHidden = document.getElementById('need-travel-hidden');
+    const travelStatusText = document.getElementById('travel-status-text');
+
+    if (travelCard && travelHidden) {
+      const toggleTravel = () => {
+        const isActive = travelCard.classList.toggle('active');
+        travelHidden.value = isActive ? 'true' : 'false';
+        if (travelStatusText) {
+          travelStatusText.textContent = isActive ? 'YES ✓' : 'NO';
+        }
+      };
+
+      travelCard.addEventListener('click', toggleTravel);
+      travelCard.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleTravel();
+        }
+      });
+    }
+  }
+
   sendWhatsAppRSVP() {
     const hostPhone = (this.config.couple?.bride?.formattedPhone) || "9446162155";
     const name = document.getElementById('guest-name')?.value?.trim() || "";
     const attendance = document.getElementById('rsvp-attendance')?.value || "🌸 Joyfully Attending";
     const guestCount = document.getElementById('rsvp-guest-count')?.value || "2 Persons";
-    const needTravel = document.getElementById('need-travel-checkbox')?.checked;
+    const needTravel = document.getElementById('need-travel-hidden')?.value === 'true';
     const message = document.getElementById('guest-message')?.value?.trim() || "";
 
     let text = `🌸 *Wedding RSVP & Wishes*\n*Keerthana & Sarath Wedding (13 Sep 2026)*\n\n`;
@@ -169,7 +257,12 @@ class WeddingRSVPManager {
     if (name) {
       text += `• *Family / Guest:* ${name}\n`;
     }
-    text += `• *Attendance:* ${attendance} (${guestCount})\n`;
+    text += `• *Attendance:* ${attendance}`;
+    if (!attendance.includes('Spirit')) {
+      text += ` (${guestCount})\n`;
+    } else {
+      text += `\n`;
+    }
     text += `• *Travel Assistance:* ${needTravel ? '🚗 Yes, please coordinate transport / pickup' : 'No travel assistance required'}\n`;
     
     if (message) {
@@ -184,8 +277,8 @@ class WeddingRSVPManager {
       window.showToast("💬 Opening WhatsApp to confirm RSVP...");
     }
   }
-
 }
+
 
 // Global instance
 window.weddingRSVP = null;
