@@ -37,10 +37,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500;600;700&family=Great+Vibes&display=swap" />
 
   <!-- Stylesheets with Cache-Busting -->
-  <link rel="stylesheet" href="css/style.css?v=24.0" />
-  <link rel="stylesheet" href="css/envelope.css?v=24.0" />
-  <link rel="stylesheet" href="css/scratch.css?v=24.0" />
+  <link rel="stylesheet" href="css/style.css?v=25.0" />
+  <link rel="stylesheet" href="css/envelope.css?v=25.0" />
+  <link rel="stylesheet" href="css/scratch.css?v=25.0" />
 </head>
+
 
 
 
@@ -559,11 +560,33 @@
             <span>🗺️</span> Open Google Maps
           </a>
           <button id="btn-copy-address" class="btn-luxury btn-outline-gold" type="button">
-            <span>📋</span> Copy Address
-          </button>
-          <a href="tel:9446162155" class="btn-luxury btn-outline-gold">
-            <span>📞</span> Call Host
+            <span>📋</span> Copy Address            <span>📞</span> Call Host
           </a>
+        </div>
+
+        <!-- Transit Hub Distances Guide -->
+        <div class="transit-hubs-grid" style="margin-top: 20px; margin-bottom: 16px;">
+          <div class="transit-hub-card">
+            <div class="hub-icon">🚆</div>
+            <div class="hub-details">
+              <div class="hub-name">Thrissur Railway Station</div>
+              <div class="hub-distance">~6 km • 15 mins drive</div>
+            </div>
+          </div>
+          <div class="transit-hub-card">
+            <div class="hub-icon">✈️</div>
+            <div class="hub-details">
+              <div class="hub-name">Cochin Airport (COK)</div>
+              <div class="hub-distance">~52 km • 1 hr 15 mins</div>
+            </div>
+          </div>
+          <div class="transit-hub-card">
+            <div class="hub-icon">🚌</div>
+            <div class="hub-details">
+              <div class="hub-name">Thrissur KSRTC Stand</div>
+              <div class="hub-distance">~5 km • 12 mins drive</div>
+            </div>
+          </div>
         </div>
 
         <!-- Embedded Interactive Google Map -->
@@ -578,112 +601,62 @@
       </div>
     </section>
 
-    <!-- 7. TRAVEL & TRANSIT ASSISTANCE -->
-    <section class="invitation-card-section reveal-on-scroll" id="travel-section">
-      <div class="section-subtitle-tag">— Getting Here —</div>
-      <h2 class="section-headline">Travel &amp; Transit Guide</h2>
+    <!-- 7. UNIFIED RSVP, TRAVEL & BLESSINGS (ALL-IN-ONE) -->
+    <section class="invitation-card-section reveal-on-scroll" id="rsvp-section">
+      <div class="section-subtitle-tag">— Celebrate With Us —</div>
+      <h2 class="section-headline">RSVP &amp; Warm Wishes</h2>
       
       <p class="travel-section-intro">
-        Conveniently located near major transit hubs in Thrissur. Let us know if you need pickup or travel coordination.
+        Please let us know if you'll be joining our wedding celebration &amp; share your heartfelt blessing.
       </p>
-
-      <!-- Key Transit Hubs -->
-      <div class="transit-hubs-grid">
-        <div class="transit-hub-card">
-          <div class="hub-icon">🚆</div>
-          <div class="hub-details">
-            <div class="hub-name">Thrissur Railway Station (TCR)</div>
-            <div class="hub-distance">~6 km • 15 mins drive</div>
-          </div>
-        </div>
-        <div class="transit-hub-card">
-          <div class="hub-icon">✈️</div>
-          <div class="hub-details">
-            <div class="hub-name">Cochin International Airport (COK)</div>
-            <div class="hub-distance">~52 km • 1 hr 15 mins (NH 544)</div>
-          </div>
-        </div>
-        <div class="transit-hub-card">
-          <div class="hub-icon">🚌</div>
-          <div class="hub-details">
-            <div class="hub-name">Thrissur KSRTC / Shakthan Stand</div>
-            <div class="hub-distance">~5 km • 12 mins drive</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quick WhatsApp Travel Coordination Box -->
-      <div class="travel-coordination-box">
-        <div class="travel-box-header">
-          <span class="travel-box-icon">🚗</span>
-          <div>
-            <h3 class="travel-box-title">Need Pickup or Travel Assistance?</h3>
-            <p class="travel-box-subtitle">Fill in your arrival point to notify the family transport coordinator via WhatsApp</p>
-          </div>
-        </div>
-
-        <form id="travel-request-form" class="travel-request-form">
-          <div class="form-group">
-            <label for="travel-guest-name">Your Name / Family</label>
-            <input type="text" id="travel-guest-name" class="form-input" placeholder="e.g. Dr. Rajesh &amp; Family" required />
-          </div>
-
-          <div class="form-group">
-            <label for="travel-arrival-point">Arriving By / Transit Hub</label>
-            <select id="travel-arrival-point" class="form-input" style="background: var(--bg-card-elevated); color: var(--text-cream); cursor: pointer;">
-              <option value="🚆 Thrissur Railway Station (TCR)">🚆 Thrissur Railway Station (TCR)</option>
-              <option value="✈️ Cochin International Airport (COK)">✈️ Cochin International Airport (COK)</option>
-              <option value="🚌 Thrissur Bus Terminal / KSRTC">🚌 Thrissur Bus Terminal / KSRTC</option>
-              <option value="🚗 Driving Own Vehicle (Need Directions Assistance)">🚗 Driving Own Vehicle (Need Directions Assistance)</option>
-              <option value="🚕 Other / Local Pickup">🚕 Other / Local Pickup</option>
-            </select>
-          </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <div class="form-group">
-              <label for="travel-passengers">Guests / Passengers</label>
-              <input type="number" id="travel-passengers" class="form-input" min="1" max="20" value="2" required />
-            </div>
-            <div class="form-group">
-              <label for="travel-arrival-time">Expected Arrival Time</label>
-              <input type="text" id="travel-arrival-time" class="form-input" placeholder="e.g. 13 Sep, 8:30 AM" />
-            </div>
-          </div>
-
-          <button type="submit" id="btn-submit-travel" class="btn-luxury btn-gold" style="width: 100%; margin-top: 8px;">
-            <span>💬</span> Request Travel Coordination on WhatsApp
-          </button>
-        </form>
-      </div>
-    </section>
-
-    <!-- 8. GUEST BLESSINGS & WISHES WALL -->
-    <section class="invitation-card-section reveal-on-scroll">
-      <div class="section-subtitle-tag">— Bless Us —</div>
-      <h2 class="section-headline">Send Your Warm Wishes</h2>
-      
-      <p class="travel-section-intro">
-        Share your heartfelt blessings and warm wishes for Keerthana &amp; Sarath.
-      </p>
-
 
       <form id="blessings-form" class="blessings-form">
         <!-- Guest Name -->
         <div class="form-group">
           <label for="guest-name">Your Name / Family</label>
-          <input type="text" id="guest-name" class="form-input" placeholder="e.g. Dr. Anand &amp; Family" required />
+          <input type="text" id="guest-name" class="form-input" placeholder="e.g. Dr. Rajesh &amp; Family" required />
+        </div>
+
+        <!-- Attendance & Guest Count -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="rsvp-attendance">Attendance</label>
+            <select id="rsvp-attendance" class="form-input" style="background: var(--bg-card-elevated); color: var(--text-cream); cursor: pointer;">
+              <option value="Joyfully Attending">🌸 Joyfully Attending</option>
+              <option value="Celebrating in Spirit">💐 Celebrating in Spirit</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="rsvp-guest-count">Total Guests</label>
+            <select id="rsvp-guest-count" class="form-input" style="background: var(--bg-card-elevated); color: var(--text-cream); cursor: pointer;">
+              <option value="1 Person">1 Person</option>
+              <option value="2 Persons" selected>2 Persons</option>
+              <option value="3 Persons">3 Persons</option>
+              <option value="4 Persons">4 Persons</option>
+              <option value="5+ Persons">5+ Persons</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Simple Travel Assistance Toggle -->
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label class="travel-toggle-label" style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px 14px; background: rgba(184, 142, 62, 0.08); border: 1px solid rgba(184, 142, 62, 0.28); border-radius: var(--radius-md); user-select: none;">
+            <input type="checkbox" id="need-travel-checkbox" style="width: 18px; height: 18px; accent-color: var(--gold-primary); cursor: pointer;" />
+            <span style="font-size: 0.88rem; font-weight: 600; color: var(--text-cream);">🚗 Need travel / pickup assistance?</span>
+          </label>
         </div>
 
         <!-- Blessing Message -->
         <div class="form-group">
-          <label for="guest-message">Warm Wishes &amp; Blessings</label>
+          <label for="guest-message">Your Warm Wishes &amp; Blessings</label>
           <textarea id="guest-message" class="form-textarea" placeholder="Write your heartfelt blessing for Keerthana &amp; Sarath..." required></textarea>
         </div>
 
         <!-- Actions -->
         <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
           <button type="submit" class="btn-luxury btn-gold" id="btn-post-blessing">
-            <span>🌸</span> Post Blessing
+            <span>🌸</span> Post Blessing on Wall
           </button>
           <button id="btn-whatsapp-rsvp" type="button" class="btn-luxury btn-outline-gold">
             <span>💬</span> Confirm RSVP on WhatsApp
@@ -696,6 +669,7 @@
         <!-- Rendered dynamically by rsvp.js -->
       </div>
     </section>
+
 
 
 
@@ -764,15 +738,16 @@
   <div class="toast-notice" role="alert"></div>
 
   <!-- JavaScript Modules with Cache-Busting -->
-  <script src="js/config.js?v=24.0"></script>
-  <script src="js/petals.js?v=24.0"></script>
-  <script src="js/sparkles.js?v=24.0"></script>
-  <script src="js/audio.js?v=24.0"></script>
-  <script src="js/envelope.js?v=24.0"></script>
-  <script src="js/scratch.js?v=24.0"></script>
-  <script src="js/countdown.js?v=24.0"></script>
-  <script src="js/rsvp.js?v=24.0"></script>
-  <script src="js/main.js?v=24.0"></script>
+  <script src="js/config.js?v=25.0"></script>
+  <script src="js/petals.js?v=25.0"></script>
+  <script src="js/sparkles.js?v=25.0"></script>
+  <script src="js/audio.js?v=25.0"></script>
+  <script src="js/envelope.js?v=25.0"></script>
+  <script src="js/scratch.js?v=25.0"></script>
+  <script src="js/countdown.js?v=25.0"></script>
+  <script src="js/rsvp.js?v=25.0"></script>
+  <script src="js/main.js?v=25.0"></script>
+
 
 
 

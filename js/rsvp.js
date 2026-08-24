@@ -158,13 +158,33 @@ class WeddingRSVPManager {
 
   sendWhatsAppRSVP() {
     const hostPhone = (this.config.couple?.bride?.formattedPhone) || "9446162155";
-    const text = encodeURIComponent(
-      `Dear Keerthana & Sarath,\n\nWe are overjoyed to receive your wedding invitation! We will gladly be attending the auspicious wedding on Sunday, 13 September 2026 at Puzhayoram Gardens Convention Centre, Thrissur.\n\nHeartiest congratulations and our warmest blessings! 🌸✨`
-    );
+    const name = document.getElementById('guest-name')?.value?.trim() || "";
+    const attendance = document.getElementById('rsvp-attendance')?.value || "🌸 Joyfully Attending";
+    const guestCount = document.getElementById('rsvp-guest-count')?.value || "2 Persons";
+    const needTravel = document.getElementById('need-travel-checkbox')?.checked;
+    const message = document.getElementById('guest-message')?.value?.trim() || "";
 
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=91${hostPhone}&text=${text}`;
+    let text = `🌸 *Wedding RSVP & Wishes*\n*Keerthana & Sarath Wedding (13 Sep 2026)*\n\n`;
+
+    if (name) {
+      text += `• *Family / Guest:* ${name}\n`;
+    }
+    text += `• *Attendance:* ${attendance} (${guestCount})\n`;
+    text += `• *Travel Assistance:* ${needTravel ? '🚗 Yes, please coordinate transport / pickup' : 'No travel assistance required'}\n`;
+    
+    if (message) {
+      text += `• *Warm Wishes:* "${message}"\n`;
+    }
+    text += `\nLooking forward to celebrating with you! ✨`;
+
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=91${hostPhone}&text=${encodedText}`;
     window.open(whatsappUrl, '_blank');
+    if (window.showToast) {
+      window.showToast("💬 Opening WhatsApp to confirm RSVP...");
+    }
   }
+
 }
 
 // Global instance
