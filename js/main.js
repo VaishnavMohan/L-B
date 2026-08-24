@@ -281,12 +281,14 @@ function setupActionButtons() {
   const shareBtn = document.getElementById('share-whatsapp-btn');
   if (shareBtn) {
     shareBtn.addEventListener('click', () => {
+      const url = window.location.href;
       const text = encodeURIComponent(
-        `💍 *Wedding Invitation | Dr. Keerthana & Dr. Sarath*\n\nYou are cordially invited to celebrate the wedding ceremony of Dr. Keerthana & Dr. Sarath on Sunday, 13 September 2026 at Puzhayoram Gardens Convention Centre, Nadathara, Thrissur.\n\n✨ Open the digital invitation card: ${window.location.href}`
+        `🌸 *Royal Wedding Invitation*\n*Dr. Keerthana & Dr. Sarath*\n\nTogether with our families, we joyfully invite you to celebrate our wedding on *Sunday, 13 September 2026* at *Puzhayoram Gardens Convention Centre, Thrissur*.\n\n✨ *Tap the link below to open our royal invitation:*\n${url}`
       );
       window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
     });
   }
+
 
   // 3. Petals Toggle Button
   const petalsToggleBtn = document.getElementById('petals-toggle-btn');
