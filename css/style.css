@@ -1757,7 +1757,32 @@ body::after {
   margin-top: 16px;
 }
 
+.footer-signature {
+  margin-top: 22px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+  opacity: 0.85;
+}
+
+.signature-link {
+  color: var(--gold-primary);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
+  padding-bottom: 1px;
+  transition: all 0.3s ease;
+}
+
+.signature-link:hover {
+  color: var(--gold-light);
+  border-bottom-style: solid;
+  border-bottom-color: var(--gold-primary);
+}
+
 @keyframes fadeSlideIn {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
