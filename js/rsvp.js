@@ -14,18 +14,15 @@ class WeddingRSVPManager {
     this.config = window.WEDDING_CONFIG || {};
     this.storageKey = 'wedding_blessings_keerthana_sarath';
 
-    this.defaultBlessings = [
-      {
-        name: "Dr. Anand & Family",
-        message: "Wishing you both a lifetime of happiness, endless love, and joy together! Congratulations Dr. Keerthana & Dr. Sarath!",
-        time: "1 hour ago"
-      }
-    ];
+    // No test blessings by default
+    this.defaultBlessings = [];
 
     this.init();
   }
 
   init() {
+    // Automatically purge any dummy "test" / "das" entry from previous runs
+    this.cleanTestEntries();
     this.renderBlessings();
 
     if (this.blessingsForm) {
@@ -34,6 +31,21 @@ class WeddingRSVPManager {
 
     if (this.whatsappRsvpBtn) {
       this.whatsappRsvpBtn.addEventListener('click', () => this.sendWhatsAppRSVP());
+    }
+  }
+
+  cleanTestEntries() {
+    try {
+      let stored = this.getStoredBlessings();
+      // Remove any test or single word dummy messages
+      stored = stored.filter(b => {
+        const name = (b.name || '').trim().toLowerCase();
+        const msg = (b.message || '').trim().toLowerCase();
+        return name !== 'test' && msg !== 'das' && msg.length > 2;
+      });
+      this.saveBlessings(stored);
+    } catch (e) {
+      // Ignore
     }
   }
 
@@ -54,22 +66,50 @@ class WeddingRSVPManager {
     }
   }
 
+  deleteBlessing(index) {
+    let list = this.getStoredBlessings();
+    list.splice(index, 1);
+    this.saveBlessings(list);
+    this.renderBlessings();
+    if (window.showToast) {
+      window.showToast("Message removed");
+    }
+  }
+
   renderBlessings() {
     if (!this.blessingsWall) return;
 
     const blessings = this.getStoredBlessings();
     this.blessingsWall.innerHTML = '';
 
-    blessings.forEach(b => {
+    if (blessings.length === 0) {
+      this.blessingsWall.innerHTML = `
+        <div style="text-align: center; color: var(--text-light); font-size: 0.86rem; font-style: italic; padding: 20px 10px;">
+          Be the first to send your warm blessing to Keerthana &amp; Sarath! 🌸
+        </div>
+      `;
+      return;
+    }
+
+    blessings.forEach((b, idx) => {
       const card = document.createElement('div');
       card.className = 'blessing-card';
       card.innerHTML = `
         <div class="blessing-author">
           <span>${b.name}</span>
-          <span class="blessing-time">${b.time}</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="blessing-time">${b.time}</span>
+            <button type="button" class="btn-delete-blessing" title="Delete Blessing" style="background:none; border:none; color:var(--text-light); font-size:0.8rem; cursor:pointer; opacity:0.6;">✕</button>
+          </div>
         </div>
         <p class="blessing-text">“${b.message}”</p>
       `;
+
+      const delBtn = card.querySelector('.btn-delete-blessing');
+      if (delBtn) {
+        delBtn.addEventListener('click', () => this.deleteBlessing(idx));
+      }
+
       this.blessingsWall.appendChild(card);
     });
   }
@@ -101,7 +141,7 @@ class WeddingRSVPManager {
     this.saveBlessings(current);
     this.renderBlessings();
 
-    // Trigger celebration petals
+    // Trigger celebration petal pop
     if (window.petalSystem) {
       window.petalSystem.burst(window.innerWidth / 2, window.innerHeight * 0.7, 45);
     }
