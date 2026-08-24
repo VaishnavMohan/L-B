@@ -84,12 +84,13 @@ class WeddingRSVPManager {
 
     if (blessings.length === 0) {
       this.blessingsWall.innerHTML = `
-        <div style="text-align: center; color: var(--text-light); font-size: 0.86rem; font-style: italic; padding: 20px 10px;">
+        <div style="text-align: center; color: var(--text-light); font-size: 0.82rem; font-style: italic; padding: 6px 10px; margin-top: 4px;">
           Be the first to send your warm blessing to Keerthana &amp; Sarath! 🌸
         </div>
       `;
       return;
     }
+
 
     blessings.forEach((b, idx) => {
       const card = document.createElement('div');
