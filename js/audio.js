@@ -1,6 +1,7 @@
 /**
  * ===================================================================
- * BACKGROUND AUDIO CONTROLLER
+ * BACKGROUND AUDIO CONTROLLER (AUTO-PAUSES ON LEAVING / TAB SWITCH)
+ * Immediately stops audio when switching tabs, opening maps, or minimizing
  * ===================================================================
  */
 
@@ -8,6 +9,7 @@ class WeddingAudioManager {
   constructor() {
     this.audio = document.getElementById('bg-music');
     this.isPlaying = false;
+    this.wasPlayingBeforeLeave = false;
     this.equalizerElement = document.querySelector('.music-equalizer');
     this.toggleButton = document.getElementById('music-toggle-btn');
     this.config = (window.WEDDING_CONFIG && window.WEDDING_CONFIG.audio) || {};
@@ -29,7 +31,11 @@ class WeddingAudioManager {
     this.audio.preload = 'auto';
 
     if (this.toggleButton) {
-      this.toggleButton.addEventListener('click', () => this.togglePlay());
+      this.toggleButton.addEventListener('click', () => {
+        this.togglePlay();
+        // If user manually clicks, clear the auto-resume flag
+        this.wasPlayingBeforeLeave = false;
+      });
     }
 
     this.audio.addEventListener('play', () => {
@@ -40,6 +46,44 @@ class WeddingAudioManager {
     this.audio.addEventListener('pause', () => {
       this.isPlaying = false;
       this.updateUI(false);
+    });
+
+    // ── AUTO-PAUSE WHEN LEAVING PAGE OR SWITCHING TABS / APPS ──
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (this.isPlaying) {
+          this.wasPlayingBeforeLeave = true;
+          this.pause();
+        }
+      } else {
+        if (this.wasPlayingBeforeLeave) {
+          this.play();
+          this.wasPlayingBeforeLeave = false;
+        }
+      }
+    });
+
+    // Extra safeguards for mobile browser exit, maps redirection, and tab unload
+    window.addEventListener('pagehide', () => {
+      this.pause();
+    });
+
+    window.addEventListener('beforeunload', () => {
+      this.pause();
+    });
+
+    window.addEventListener('blur', () => {
+      if (this.isPlaying) {
+        this.wasPlayingBeforeLeave = true;
+        this.pause();
+      }
+    });
+
+    window.addEventListener('focus', () => {
+      if (this.wasPlayingBeforeLeave && !document.hidden) {
+        this.play();
+        this.wasPlayingBeforeLeave = false;
+      }
     });
   }
 
@@ -111,6 +155,7 @@ class WeddingAudioManager {
 
         gain.gain.setValueAtTime(0, now + idx * 0.08);
         gain.gain.linearRampToValueAtTime(0.2, now + idx * 0.08 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.02);
         gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.9);
 
         osc.connect(gain);
