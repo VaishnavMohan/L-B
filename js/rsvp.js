@@ -169,7 +169,7 @@ class WeddingRSVPManager {
       chipAttending.addEventListener('click', () => {
         chipAttending.classList.add('active');
         chipAfar.classList.remove('active');
-        rsvpAttendanceInput.value = '🌸 Joyfully Attending';
+        rsvpAttendanceInput.value = '🌸 Yes, We Are Coming!';
         if (guestGroup) {
           guestGroup.style.display = 'block';
         }
@@ -178,7 +178,7 @@ class WeddingRSVPManager {
       chipAfar.addEventListener('click', () => {
         chipAfar.classList.add('active');
         chipAttending.classList.remove('active');
-        rsvpAttendanceInput.value = '💐 Celebrating in Spirit';
+        rsvpAttendanceInput.value = '💐 Sorry, Sending Blessings';
         if (guestGroup) {
           guestGroup.style.display = 'none';
         }
@@ -197,8 +197,8 @@ class WeddingRSVPManager {
     const updateGuestCount = (count) => {
       currentGuestCount = Math.max(1, Math.min(10, count));
       if (countDisplay) countDisplay.textContent = currentGuestCount >= 5 ? '5+' : currentGuestCount;
-      if (countLabel) countLabel.textContent = currentGuestCount === 1 ? 'Guest' : 'Guests';
-      if (rsvpGuestCountInput) rsvpGuestCountInput.value = `${currentGuestCount >= 5 ? '5+' : currentGuestCount} ${currentGuestCount === 1 ? 'Person' : 'Persons'}`;
+      if (countLabel) countLabel.textContent = currentGuestCount === 1 ? 'Person' : 'People';
+      if (rsvpGuestCountInput) rsvpGuestCountInput.value = `${currentGuestCount >= 5 ? '5+' : currentGuestCount} ${currentGuestCount === 1 ? 'Person' : 'People'}`;
 
       pills.forEach(p => {
         const pCount = parseInt(p.getAttribute('data-count'), 10);
@@ -247,18 +247,18 @@ class WeddingRSVPManager {
   sendWhatsAppRSVP() {
     const hostPhone = (this.config.couple?.bride?.formattedPhone) || "9446162155";
     const name = document.getElementById('guest-name')?.value?.trim() || "";
-    const attendance = document.getElementById('rsvp-attendance')?.value || "🌸 Joyfully Attending";
-    const guestCount = document.getElementById('rsvp-guest-count')?.value || "2 Persons";
+    const attendance = document.getElementById('rsvp-attendance')?.value || "🌸 Yes, We Are Coming!";
+    const guestCount = document.getElementById('rsvp-guest-count')?.value || "2 People";
     const needTravel = document.getElementById('need-travel-hidden')?.value === 'true';
     const message = document.getElementById('guest-message')?.value?.trim() || "";
 
-    let text = `🌸 *Wedding RSVP & Wishes*\n*Keerthana & Sarath Wedding (13 Sep 2026)*\n\n`;
+    let text = `🌸 *Wedding Attendance & Wishes*\n*Keerthana & Sarath Wedding (13 Sep 2026)*\n\n`;
 
     if (name) {
       text += `• *Family / Guest:* ${name}\n`;
     }
     text += `• *Attendance:* ${attendance}`;
-    if (!attendance.includes('Spirit')) {
+    if (!attendance.includes('Sorry')) {
       text += ` (${guestCount})\n`;
     } else {
       text += `\n`;
@@ -274,10 +274,11 @@ class WeddingRSVPManager {
     const whatsappUrl = `https://api.whatsapp.com/send?phone=91${hostPhone}&text=${encodedText}`;
     window.open(whatsappUrl, '_blank');
     if (window.showToast) {
-      window.showToast("💬 Opening WhatsApp to confirm RSVP...");
+      window.showToast("💬 Opening WhatsApp to send confirmation...");
     }
   }
 }
+
 
 
 // Global instance

@@ -37,10 +37,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500;600;700&family=Great+Vibes&display=swap" />
 
   <!-- Stylesheets with Cache-Busting -->
-  <link rel="stylesheet" href="css/style.css?v=27.0" />
-  <link rel="stylesheet" href="css/envelope.css?v=27.0" />
-  <link rel="stylesheet" href="css/scratch.css?v=27.0" />
+  <link rel="stylesheet" href="css/style.css?v=28.0" />
+  <link rel="stylesheet" href="css/envelope.css?v=28.0" />
+  <link rel="stylesheet" href="css/scratch.css?v=28.0" />
 </head>
+
 
 
 
@@ -603,13 +604,14 @@
       </div>
     </section>
 
-    <!-- 7. UNIFIED RSVP, TRAVEL & BLESSINGS (ALL-IN-ONE) -->
+    <!-- 7. WILL YOU JOIN US? (FAMILY FRIENDLY CONFIRMATION) -->
     <section class="invitation-card-section reveal-on-scroll" id="rsvp-section">
+
       <div class="section-subtitle-tag">— Celebrate With Us —</div>
-      <h2 class="section-headline">RSVP &amp; Warm Wishes</h2>
+      <h2 class="section-headline">Will You Join Us?</h2>
       
       <p class="travel-section-intro">
-        Please let us know if you'll be joining our wedding celebration &amp; share your heartfelt blessing.
+        Please let us know if your family can join our wedding celebration &amp; share your heartfelt blessings.
       </p>
 
       <form id="blessings-form" class="blessings-form">
@@ -621,32 +623,32 @@
 
         <!-- 1. Visual Attendance Choice Chips -->
         <div class="form-group">
-          <label class="form-section-label">Will you be joining us?</label>
-          <div class="choice-chips-grid attendance-chips" role="radiogroup" aria-label="Attendance">
-            <button type="button" class="choice-chip active" id="chip-attending" data-value="🌸 Joyfully Attending">
+          <label class="form-section-label">Are you coming to the wedding?</label>
+          <div class="choice-chips-grid attendance-chips" role="radiogroup" aria-label="Attendance Choice">
+            <button type="button" class="choice-chip active" id="chip-attending" data-value="🌸 Yes, We Are Coming!">
               <span class="chip-icon">🌸</span>
-              <span class="chip-text">Joyfully Attending</span>
+              <span class="chip-text">Yes, We Are Coming!</span>
               <span class="chip-check">✓</span>
             </button>
-            <button type="button" class="choice-chip" id="chip-afar" data-value="💐 Celebrating in Spirit">
+            <button type="button" class="choice-chip" id="chip-afar" data-value="💐 Sorry, Sending Blessings">
               <span class="chip-icon">💐</span>
-              <span class="chip-text">Celebrating in Spirit</span>
+              <span class="chip-text">Sorry, Sending Blessings</span>
               <span class="chip-check">✓</span>
             </button>
           </div>
-          <input type="hidden" id="rsvp-attendance" value="🌸 Joyfully Attending" />
+          <input type="hidden" id="rsvp-attendance" value="🌸 Yes, We Are Coming!" />
         </div>
 
         <!-- 2. Visual Guest Counter & Quick Preset Pills -->
         <div class="form-group" id="guest-count-group">
-          <label class="form-section-label">Number of Guests Attending</label>
+          <label class="form-section-label">How many people are coming?</label>
           <div class="guest-counter-wrap">
-            <button type="button" class="counter-btn" id="btn-guest-minus" aria-label="Decrease Guests">−</button>
+            <button type="button" class="counter-btn" id="btn-guest-minus" aria-label="Decrease People">−</button>
             <div class="guest-count-display">
               <span id="guest-count-number">2</span>
-              <span class="guest-count-label" id="guest-count-label">Guests</span>
+              <span class="guest-count-label" id="guest-count-label">People</span>
             </div>
-            <button type="button" class="counter-btn" id="btn-guest-plus" aria-label="Increase Guests">+</button>
+            <button type="button" class="counter-btn" id="btn-guest-plus" aria-label="Increase People">+</button>
           </div>
           <!-- Quick Preset Pills -->
           <div class="guest-quick-pills">
@@ -656,7 +658,7 @@
             <button type="button" class="guest-pill" data-count="4">4</button>
             <button type="button" class="guest-pill" data-count="5">5+</button>
           </div>
-          <input type="hidden" id="rsvp-guest-count" value="2 Persons" />
+          <input type="hidden" id="rsvp-guest-count" value="2 People" />
         </div>
 
         <!-- 3. Visual 1-Tap Travel Assistance Card -->
@@ -666,8 +668,7 @@
             <div class="travel-card-left">
               <div class="travel-card-icon">🚗</div>
               <div class="travel-card-info">
-                <div class="travel-card-title">Need Pickup / Travel Coordination?</div>
-                <div class="travel-card-subtitle">Tap if arriving by train, flight, or bus</div>
+                <div class="travel-card-title">Need travel or pickup assistance?</div>
               </div>
             </div>
             <div class="travel-toggle-switch">
@@ -681,9 +682,8 @@
         <!-- Blessing Message -->
         <div class="form-group">
           <label for="guest-message">Your Warm Wishes &amp; Blessings</label>
-          <textarea id="guest-message" class="form-textarea" placeholder="Write your heartfelt blessing for Keerthana &amp; Sarath..." required></textarea>
+          <textarea id="guest-message" class="form-textarea" placeholder="Write your heartfelt blessings for Keerthana &amp; Sarath..." required></textarea>
         </div>
-
 
         <!-- Actions -->
         <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
@@ -691,12 +691,13 @@
             <span>🌸</span> Post Blessing on Wall
           </button>
           <button id="btn-whatsapp-rsvp" type="button" class="btn-luxury btn-outline-gold">
-            <span>💬</span> Confirm RSVP on WhatsApp
+            <span>💬</span> Send Confirmation on WhatsApp
           </button>
         </div>
       </form>
 
       <!-- Live Blessings Wall -->
+
       <div id="blessings-wall" class="blessings-wall">
         <!-- Rendered dynamically by rsvp.js -->
       </div>
@@ -770,15 +771,16 @@
   <div class="toast-notice" role="alert"></div>
 
   <!-- JavaScript Modules with Cache-Busting -->
-  <script src="js/config.js?v=27.0"></script>
-  <script src="js/petals.js?v=27.0"></script>
-  <script src="js/sparkles.js?v=27.0"></script>
-  <script src="js/audio.js?v=27.0"></script>
-  <script src="js/envelope.js?v=27.0"></script>
-  <script src="js/scratch.js?v=27.0"></script>
-  <script src="js/countdown.js?v=27.0"></script>
-  <script src="js/rsvp.js?v=27.0"></script>
-  <script src="js/main.js?v=27.0"></script>
+  <script src="js/config.js?v=28.0"></script>
+  <script src="js/petals.js?v=28.0"></script>
+  <script src="js/sparkles.js?v=28.0"></script>
+  <script src="js/audio.js?v=28.0"></script>
+  <script src="js/envelope.js?v=28.0"></script>
+  <script src="js/scratch.js?v=28.0"></script>
+  <script src="js/countdown.js?v=28.0"></script>
+  <script src="js/rsvp.js?v=28.0"></script>
+  <script src="js/main.js?v=28.0"></script>
+
 
 
 
