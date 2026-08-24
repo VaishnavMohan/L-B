@@ -29,9 +29,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500;600;700&family=Great+Vibes&display=swap" />
 
   <!-- Stylesheets with Cache-Busting -->
-  <link rel="stylesheet" href="css/style.css?v=6.0" />
-  <link rel="stylesheet" href="css/envelope.css?v=6.0" />
-  <link rel="stylesheet" href="css/scratch.css?v=6.0" />
+  <link rel="stylesheet" href="css/style.css?v=9.0" />
+  <link rel="stylesheet" href="css/envelope.css?v=9.0" />
+  <link rel="stylesheet" href="css/scratch.css?v=9.0" />
 </head>
 <body>
 
@@ -422,7 +422,7 @@
       </div>
     </section>
 
-    <!-- 3. THE COUPLE — TWO SOULS, ONE JOURNEY (Cartoon Profile Cards) -->
+    <!-- 3. THE COUPLE — TWO SOULS, ONE JOURNEY (Royal Gold Monogram Crests) -->
     <section class="invitation-card-section reveal-on-scroll">
       <div class="section-subtitle-tag">— The Couple —</div>
       <h2 class="section-headline">Two Souls, One Journey</h2>
@@ -476,6 +476,8 @@
         </div>
       </div>
     </section>
+
+
 
     <!-- 4. WEDDING CELEBRATIONS / EVENTS (Thalikettu & Grand Sadhya) -->
     <section class="invitation-card-section reveal-on-scroll">
@@ -561,147 +563,44 @@
       </div>
     </section>
 
-    <!-- 7. TRAVEL ASSISTANCE & RSVP SECTION -->
-    <section class="invitation-card-section travel-section reveal-on-scroll">
-      <div class="section-subtitle-tag">— RSVP &amp; Transportation —</div>
-      <h2 class="section-headline">Will You Join Us?</h2>
+    <!-- 7. GUEST BLESSINGS & WISHES WALL -->
+    <section class="invitation-card-section reveal-on-scroll">
+      <div class="section-subtitle-tag">— Bless Us —</div>
+      <h2 class="section-headline">Send Your Warm Wishes</h2>
       
       <p class="travel-section-intro">
-        Please let us know if you will be joining our wedding celebration and if you require transportation assistance.
+        Share your heartfelt blessings and warm wishes for Keerthana &amp; Sarath.
       </p>
 
-      <form id="travel-rsvp-form" class="blessings-form">
-        
-        <!-- Attendance Selection -->
+      <form id="blessings-form" class="blessings-form">
+        <!-- Guest Name -->
         <div class="form-group">
-          <label>Will you be attending?</label>
-          <div class="attendance-grid">
-            <input type="radio" name="attendance" id="att-yes" value="yes" class="attendance-radio-input" checked />
-            <label for="att-yes" class="attendance-chip-label">
-              <span>🎉</span> Joyfully Accept
-            </label>
-
-            <input type="radio" name="attendance" id="att-no" value="no" class="attendance-radio-input" />
-            <label for="att-no" class="attendance-chip-label">
-              <span>💌</span> Regretfully Decline
-            </label>
-          </div>
-        </div>
-
-        <!-- Guest Name & WhatsApp -->
-        <div class="form-group">
-          <label for="guest-name">Your Full Name / Family</label>
+          <label for="guest-name">Your Name / Family</label>
           <input type="text" id="guest-name" class="form-input" placeholder="e.g. Dr. Anand &amp; Family" required />
         </div>
 
-        <div class="form-group">
-          <label for="guest-phone">WhatsApp / Contact Number</label>
-          <input type="tel" id="guest-phone" class="form-input" placeholder="e.g. +91 98765 43210" required />
-        </div>
-
-        <!-- Simple Transportation Question (Yes / No) -->
-        <div class="form-group" id="travel-mode-group">
-          <label>Do you need transportation?</label>
-          <div class="attendance-grid">
-            <input type="radio" name="transportation" id="trans-yes" value="yes" class="attendance-radio-input" />
-            <label for="trans-yes" class="attendance-chip-label">
-              <span>🚌</span> Yes, Need Transportation
-            </label>
-
-            <input type="radio" name="transportation" id="trans-no" value="no" class="attendance-radio-input" checked />
-            <label for="trans-no" class="attendance-chip-label">
-              <span>🚗</span> No, Traveling by Self
-            </label>
-          </div>
-        </div>
-
-        <!-- Heartfelt Blessing Message -->
+        <!-- Blessing Message -->
         <div class="form-group">
           <label for="guest-message">Warm Wishes &amp; Blessings</label>
           <textarea id="guest-message" class="form-textarea" placeholder="Write your heartfelt blessing for Keerthana &amp; Sarath..." required></textarea>
         </div>
 
-        <!-- Action Buttons -->
-        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px;">
-          <button type="submit" class="btn-luxury btn-gold" id="btn-submit-travel">
-            <span>✨</span> Send RSVP &amp; Wishes
+        <!-- Actions -->
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 14px;">
+          <button type="submit" class="btn-luxury btn-gold" id="btn-post-blessing">
+            <span>🌸</span> Post Blessing
           </button>
-          <button id="btn-whatsapp-travel-rsvp" type="button" class="btn-luxury btn-outline-gold">
-            <span>💬</span> Confirm on WhatsApp
+          <button id="btn-whatsapp-rsvp" type="button" class="btn-luxury btn-outline-gold">
+            <span>💬</span> Confirm RSVP on WhatsApp
           </button>
         </div>
-
       </form>
 
       <!-- Live Blessings Wall -->
       <div id="blessings-wall" class="blessings-wall">
         <!-- Rendered dynamically by rsvp.js -->
       </div>
-
-      <!-- Organizer Travel Manifest Trigger -->
-      <div class="travel-admin-bar">
-        <button type="button" id="btn-open-travel-manifest" class="btn-travel-manifest">
-          <span>📋</span> View &amp; Download Guest List (CSV)
-        </button>
-      </div>
-
     </section>
-
-    <!-- Travel Manifest Organizer Modal -->
-    <div id="travel-manifest-modal" class="travel-manifest-modal" role="dialog" aria-modal="true" aria-label="Travel Assistance Manifest">
-      <div class="travel-modal-box">
-        <div class="travel-modal-header">
-          <h3 style="font-family: var(--font-royal); color: var(--gold-primary); font-size: 1.15rem; margin: 0;">
-            🚆 Guest RSVP &amp; Transportation List
-          </h3>
-          <button type="button" id="btn-close-travel-modal" style="font-size: 1.4rem; color: var(--text-muted); cursor: pointer; border: none; background: none;">✕</button>
-        </div>
-
-        <!-- Summary Stats -->
-        <div class="travel-stats-summary">
-          <div class="travel-stat-card">
-            <div class="travel-stat-num" id="stat-total-guests">0</div>
-            <div class="travel-stat-label">Total Responses</div>
-          </div>
-          <div class="travel-stat-card">
-            <div class="travel-stat-num" id="stat-attending-count">0</div>
-            <div class="travel-stat-label">Attending</div>
-          </div>
-          <div class="travel-stat-card">
-            <div class="travel-stat-num" id="stat-transport-needed">0</div>
-            <div class="travel-stat-label">Need Transport</div>
-          </div>
-        </div>
-
-        <!-- Manifest Table -->
-        <div style="overflow-x: auto; max-height: 280px;">
-          <table class="travel-table">
-            <thead>
-              <tr>
-                <th>Guest Name</th>
-                <th>Phone</th>
-                <th>Attendance</th>
-                <th>Transport Needed?</th>
-                <th>Wishes</th>
-              </tr>
-            </thead>
-            <tbody id="travel-table-body">
-              <!-- Rendered dynamically by rsvp.js -->
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Export Actions -->
-        <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; flex-wrap: wrap;">
-          <button type="button" id="btn-download-travel-csv" class="btn-luxury btn-gold">
-            <span>📥</span> Download Excel / CSV
-          </button>
-          <button type="button" id="btn-clear-travel-data" class="btn-luxury btn-outline-gold" style="font-size: 0.76rem;">
-            Clear Demo List
-          </button>
-        </div>
-      </div>
-    </div>
 
 
 
@@ -760,15 +659,15 @@
   <div class="toast-notice" role="alert"></div>
 
   <!-- JavaScript Modules with Cache-Busting -->
-  <script src="js/config.js?v=6.0"></script>
-  <script src="js/petals.js?v=6.0"></script>
-  <script src="js/sparkles.js?v=6.0"></script>
-  <script src="js/audio.js?v=6.0"></script>
-  <script src="js/envelope.js?v=6.0"></script>
-  <script src="js/scratch.js?v=6.0"></script>
-  <script src="js/countdown.js?v=6.0"></script>
-  <script src="js/rsvp.js?v=6.0"></script>
-  <script src="js/main.js?v=6.0"></script>
+  <script src="js/config.js?v=9.0"></script>
+  <script src="js/petals.js?v=9.0"></script>
+  <script src="js/sparkles.js?v=9.0"></script>
+  <script src="js/audio.js?v=9.0"></script>
+  <script src="js/envelope.js?v=9.0"></script>
+  <script src="js/scratch.js?v=9.0"></script>
+  <script src="js/countdown.js?v=9.0"></script>
+  <script src="js/rsvp.js?v=9.0"></script>
+  <script src="js/main.js?v=9.0"></script>
 
 </body>
 </html>

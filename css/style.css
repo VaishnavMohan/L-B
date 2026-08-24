@@ -408,41 +408,15 @@ body::after {
    =================================================================== */
 
 /* ===================================================================
-   HERO / MAIN INVITATION HEADER (WITH WATERMARK OVERLAY)
+   HERO / MAIN INVITATION HEADER (ROYAL GOLD DESIGN)
    =================================================================== */
 
 .header-hero {
   padding-top: 56px;
   margin-top: 24px;
   position: relative;
-  overflow: hidden;
 }
 
-/* Atmospheric Couple Caricature Watermark Overlay (Reference Style) */
-.header-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('../assets/images/couple_cartoon_hero.jpg?v=4.0') no-repeat center 58%;
-  background-size: min(85%, 380px) auto;
-  opacity: 0.12;
-  mix-blend-mode: luminosity;
-  pointer-events: none;
-  z-index: 1;
-  filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.4));
-  mask-image: radial-gradient(circle at center, black 45%, transparent 80%);
-  -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 80%);
-}
-
-[data-theme="dark"] .header-hero::after {
-  opacity: 0.20;
-  mix-blend-mode: screen;
-}
-
-.header-hero > * {
-  position: relative;
-  z-index: 2;
-}
 
 .ganesha-emblem {
   width: 72px;
@@ -582,6 +556,37 @@ body::after {
   line-height: 0.8;
 }
 
+/* Accurate Couple Caricature Hero Portrait */
+.couple-hero-portrait-frame {
+  margin: 28px auto 20px;
+  max-width: 310px;
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  background: var(--gold-gradient);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), 0 0 25px rgba(212, 175, 55, 0.35);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.couple-hero-portrait-frame:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.3), 0 0 35px rgba(212, 175, 55, 0.5);
+}
+
+.portrait-img-wrap {
+  border-radius: calc(var(--radius-lg) - 4px);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--bg-card);
+}
+
+.couple-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Emotional Quote Box */
 .emotional-quote-box {
   margin-top: 28px;
@@ -591,6 +596,7 @@ body::after {
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   text-align: left;
 }
+
 
 .emotional-quote-box p {
   font-family: var(--font-serif-classic);
