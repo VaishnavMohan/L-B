@@ -5,42 +5,42 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Serif+Display&display=swap');
 
-/* 1. Base Default Light Theme (Kerala Kasavu & Temple Ivory Luxury) */
+/* 1. Base Default Light Theme (Soft Pearl & Royal Emerald) */
 :root {
-  --bg-primary: #FAF6EF;
-  --bg-secondary: #F2EBE0;
-  --bg-card: rgba(255, 255, 255, 0.98);
-  --bg-card-glass: rgba(255, 255, 255, 0.92);
+  --bg-primary: #F4F8F5;
+  --bg-secondary: #E8F0EB;
+  --bg-card: rgba(255, 255, 255, 0.97);
+  --bg-card-glass: rgba(255, 255, 255, 0.90);
   --bg-card-elevated: #FFFFFF;
 
-  --text-main: #2C1D18;
-  --text-muted: #695850;
-  --text-light: #96837B;
-  --text-cream: #1E120E;
+  --text-main: #142820;
+  --text-muted: #566D63;
+  --text-light: #83978E;
+  --text-cream: #0B1C15;
 
   --gold-primary: #B88E3E;
   --gold-light: #DFCA9B;
   --gold-dark: #7D5C1E;
   --gold-rose: #C28662;
-  --gold-gradient: linear-gradient(135deg, #C59B3F 0%, #F7E7B8 45%, #B88E3E 80%, #8C6621 100%);
-  --gold-text-gradient: linear-gradient(135deg, #7D1D2B 0%, #B88E3E 50%, #7D1D2B 100%);
+  --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FFF3B0 45%, #C5A059 80%, #9A7432 100%);
+  --gold-text-gradient: linear-gradient(135deg, #134B38 0%, #B88E3E 50%, #134B38 100%);
 
-  --burgundy: #7D1D2B;
-  --burgundy-soft: #9E2B3E;
-  --quote-bg: rgba(125, 29, 43, 0.05);
+  --burgundy: #134B38;
+  --burgundy-soft: #1E6B52;
+  --quote-bg: rgba(19, 75, 56, 0.06);
 
-  --shadow-sm: 0 4px 16px rgba(60, 40, 25, 0.05);
-  --shadow-md: 0 10px 28px rgba(60, 40, 25, 0.08);
-  --shadow-lg: 0 20px 48px rgba(60, 40, 25, 0.12);
+  --shadow-sm: 0 4px 16px rgba(10, 35, 25, 0.05);
+  --shadow-md: 0 10px 28px rgba(10, 35, 25, 0.08);
+  --shadow-lg: 0 20px 48px rgba(10, 35, 25, 0.12);
   --shadow-gold: 0 6px 24px rgba(184, 142, 62, 0.25);
   --shadow-glow: 0 0 25px rgba(184, 142, 62, 0.18);
-  --shadow-card: 0 10px 35px rgba(60, 40, 25, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  --border-card: 1.5px solid rgba(184, 142, 62, 0.32);
-  --border-subtle: 1px solid rgba(184, 142, 62, 0.22);
+  --shadow-card: 0 10px 35px rgba(10, 35, 25, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --border-card: 1.5px solid rgba(19, 75, 56, 0.22);
+  --border-subtle: 1px solid rgba(19, 75, 56, 0.15);
 
-  --ambient-gradient: radial-gradient(ellipse at 20% 50%, rgba(184, 142, 62, 0.06) 0%, transparent 60%),
-                      radial-gradient(ellipse at 80% 20%, rgba(125, 29, 43, 0.04) 0%, transparent 50%);
-  --particle-color: rgba(184, 142, 62, 0.06);
+  --ambient-gradient: radial-gradient(ellipse at 20% 50%, rgba(19, 75, 56, 0.08) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 20%, rgba(184, 142, 62, 0.08) 0%, transparent 50%);
+  --particle-color: rgba(19, 75, 56, 0.06);
 
   --font-serif-luxury: 'Playfair Display', Georgia, serif;
   --font-serif-classic: 'Cormorant Garamond', Garamond, serif;
@@ -60,123 +60,111 @@
   --transition-luxe: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 2. System Dark Theme (Temple Midnight & Kasavu Gold) */
+/* 2. System Dark Theme (Royal Emerald & Champagne Palace Luxury) */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg-primary: #140A0D;
-    --bg-secondary: #1E1015;
-    --bg-card: rgba(30, 16, 21, 0.95);
-    --bg-card-glass: rgba(38, 20, 27, 0.80);
-    --bg-card-elevated: #241318;
+    --bg-primary: #071914;
+    --bg-secondary: #0D261F;
+    --bg-card: rgba(13, 36, 29, 0.92);
+    --bg-card-glass: rgba(16, 44, 35, 0.80);
+    --bg-card-elevated: #113128;
 
-    --text-main: #F7EFE9;
-    --text-muted: #CBBAB0;
-    --text-light: #8E7E74;
-    --text-cream: #FFF6F0;
+    --text-main: #F4F9F6;
+    --text-muted: #B8CCC3;
+    --text-light: #7E978C;
+    --text-cream: #FFFDF8;
 
-    --gold-primary: #D4AF37;
-    --gold-light: #F0D98A;
-    --gold-dark: #C5A059;
-    --gold-rose: #C9956B;
-    --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FFF3B0 35%, #C5A059 70%, #9A7432 100%);
-    --gold-text-gradient: linear-gradient(135deg, #F0D98A 0%, #D4AF37 50%, #F0D98A 100%);
+    --gold-primary: #E5C578;
+    --gold-light: #FFF0C2;
+    --gold-dark: #C49E4A;
+    --gold-rose: #D1A377;
+    --gold-gradient: linear-gradient(135deg, #E5C578 0%, #FFF4D0 40%, #D4AF37 75%, #A8812E 100%);
+    --gold-text-gradient: linear-gradient(135deg, #FFF0C2 0%, #E5C578 50%, #FFF0C2 100%);
 
-    --burgundy: #8B2032;
-    --burgundy-soft: #A83246;
-    --quote-bg: rgba(139, 32, 50, 0.18);
+    --burgundy: #10B981;
+    --burgundy-soft: #34D399;
+    --quote-bg: rgba(16, 185, 129, 0.12);
 
-    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
-    --shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.25);
-    --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.18);
-    --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(212, 175, 55, 0.15);
-    --border-card: 1.5px solid rgba(212, 175, 55, 0.25);
-    --border-subtle: 1px solid rgba(212, 175, 55, 0.18);
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.65);
+    --shadow-gold: 0 8px 32px rgba(229, 197, 120, 0.3);
+    --shadow-glow: 0 0 40px rgba(229, 197, 120, 0.22);
+    --shadow-card: 0 12px 45px rgba(2, 18, 13, 0.7), inset 0 1px 0 rgba(229, 197, 120, 0.25);
+    --border-card: 1.5px solid rgba(229, 197, 120, 0.35);
+    --border-subtle: 1px solid rgba(229, 197, 120, 0.22);
 
-    --ambient-gradient: radial-gradient(ellipse at 20% 50%, rgba(139, 32, 50, 0.22) 0%, transparent 60%),
-                        radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.12) 0%, transparent 50%);
-    --particle-color: rgba(212, 175, 55, 0.04);
+    --ambient-gradient: radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.16) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 20%, rgba(229, 197, 120, 0.14) 0%, transparent 50%);
+    --particle-color: rgba(229, 197, 120, 0.05);
   }
 }
 
 /* 3. Explicit Dark Theme (When user clicks dark mode button) */
 html[data-theme="dark"],
 body[data-theme="dark"] {
-  --bg-primary: #140A0D !important;
-  --bg-secondary: #1E1015 !important;
-  --bg-card: rgba(30, 16, 21, 0.95) !important;
-  --bg-card-glass: rgba(38, 20, 27, 0.80) !important;
-  --bg-card-elevated: #241318 !important;
+  --bg-primary: #071914 !important;
+  --bg-secondary: #0D261F !important;
+  --bg-card: rgba(13, 36, 29, 0.92) !important;
+  --bg-card-glass: rgba(16, 44, 35, 0.80) !important;
+  --bg-card-elevated: #113128 !important;
 
-  --text-main: #F7EFE9 !important;
-  --text-muted: #CBBAB0 !important;
-  --text-light: #8E7E74 !important;
-  --text-cream: #FFF6F0 !important;
+  --text-main: #F4F9F6 !important;
+  --text-muted: #B8CCC3 !important;
+  --text-light: #7E978C !important;
+  --text-cream: #FFFDF8 !important;
 
-  --gold-primary: #D4AF37 !important;
-  --gold-light: #F0D98A !important;
-  --gold-dark: #C5A059 !important;
-  --gold-rose: #C9956B !important;
-  --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FFF3B0 35%, #C5A059 70%, #9A7432 100%) !important;
-  --gold-text-gradient: linear-gradient(135deg, #F0D98A 0%, #D4AF37 50%, #F0D98A 100%) !important;
+  --gold-primary: #E5C578 !important;
+  --gold-light: #FFF0C2 !important;
+  --gold-dark: #C49E4A !important;
+  --gold-rose: #D1A377 !important;
+  --gold-gradient: linear-gradient(135deg, #E5C578 0%, #FFF4D0 40%, #D4AF37 75%, #A8812E 100%) !important;
+  --gold-text-gradient: linear-gradient(135deg, #FFF0C2 0%, #E5C578 50%, #FFF0C2 100%) !important;
 
-  --burgundy: #8B2032 !important;
-  --burgundy-soft: #A83246 !important;
-  --quote-bg: rgba(139, 32, 50, 0.18) !important;
-  
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55) !important;
-  --shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.25) !important;
-  --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.18) !important;
-  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(212, 175, 55, 0.15) !important;
-  --border-card: 1.5px solid rgba(212, 175, 55, 0.25) !important;
-  --border-subtle: 1px solid rgba(212, 175, 55, 0.18) !important;
+  --burgundy: #10B981 !important;
+  --burgundy-soft: #34D399 !important;
+  --quote-bg: rgba(16, 185, 129, 0.12) !important;
 
-  --ambient-gradient: radial-gradient(ellipse at 20% 50%, rgba(139, 32, 50, 0.22) 0%, transparent 60%),
-                      radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.12) 0%, transparent 50%) !important;
-  --particle-color: rgba(212, 175, 55, 0.04) !important;
+  --shadow-card: 0 12px 45px rgba(2, 18, 13, 0.7), inset 0 1px 0 rgba(229, 197, 120, 0.25) !important;
+  --border-card: 1.5px solid rgba(229, 197, 120, 0.35) !important;
+  --border-subtle: 1px solid rgba(229, 197, 120, 0.22) !important;
 }
 
 /* 4. Explicit Light Theme (When user clicks light mode button) */
 html[data-theme="light"],
 body[data-theme="light"] {
-  --bg-primary: #FAF6EF !important;
-  --bg-secondary: #F2EBE0 !important;
-  --bg-card: rgba(255, 255, 255, 0.98) !important;
-  --bg-card-glass: rgba(255, 255, 255, 0.92) !important;
+  --bg-primary: #F4F8F5 !important;
+  --bg-secondary: #E8F0EB !important;
+  --bg-card: rgba(255, 255, 255, 0.97) !important;
+  --bg-card-glass: rgba(255, 255, 255, 0.90) !important;
   --bg-card-elevated: #FFFFFF !important;
 
-  --text-main: #2C1D18 !important;
-  --text-muted: #695850 !important;
-  --text-light: #96837B !important;
-  --text-cream: #1E120E !important;
+  --text-main: #142820 !important;
+  --text-muted: #566D63 !important;
+  --text-light: #83978E !important;
+  --text-cream: #0B1C15 !important;
 
   --gold-primary: #B88E3E !important;
   --gold-light: #DFCA9B !important;
   --gold-dark: #7D5C1E !important;
   --gold-rose: #C28662 !important;
-  --gold-gradient: linear-gradient(135deg, #C59B3F 0%, #F7E7B8 45%, #B88E3E 80%, #8C6621 100%) !important;
-  --gold-text-gradient: linear-gradient(135deg, #7D1D2B 0%, #B88E3E 50%, #7D1D2B 100%) !important;
+  --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FFF3B0 45%, #C5A059 80%, #9A7432 100%) !important;
+  --gold-text-gradient: linear-gradient(135deg, #134B38 0%, #B88E3E 50%, #134B38 100%) !important;
 
-  --burgundy: #7D1D2B !important;
-  --burgundy-soft: #9E2B3E !important;
-  --quote-bg: rgba(125, 29, 43, 0.05) !important;
+  --burgundy: #134B38 !important;
+  --burgundy-soft: #1E6B52 !important;
+  --quote-bg: rgba(19, 75, 56, 0.06) !important;
 
-  --shadow-sm: 0 4px 16px rgba(60, 40, 25, 0.05) !important;
-  --shadow-md: 0 10px 28px rgba(60, 40, 25, 0.08) !important;
-  --shadow-lg: 0 20px 48px rgba(60, 40, 25, 0.12) !important;
+  --shadow-sm: 0 4px 16px rgba(10, 35, 25, 0.05) !important;
+  --shadow-md: 0 10px 28px rgba(10, 35, 25, 0.08) !important;
+  --shadow-lg: 0 20px 48px rgba(10, 35, 25, 0.12) !important;
   --shadow-gold: 0 6px 24px rgba(184, 142, 62, 0.25) !important;
   --shadow-glow: 0 0 25px rgba(184, 142, 62, 0.18) !important;
-  --shadow-card: 0 10px 35px rgba(60, 40, 25, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-  --border-card: 1.5px solid rgba(184, 142, 62, 0.32) !important;
-  --border-subtle: 1px solid rgba(184, 142, 62, 0.22) !important;
-
-  --ambient-gradient: radial-gradient(ellipse at 20% 50%, rgba(184, 142, 62, 0.06) 0%, transparent 60%),
-                      radial-gradient(ellipse at 80% 20%, rgba(125, 29, 43, 0.04) 0%, transparent 50%) !important;
-  --particle-color: rgba(184, 142, 62, 0.06) !important;
+  --shadow-card: 0 10px 35px rgba(10, 35, 25, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  --border-card: 1.5px solid rgba(19, 75, 56, 0.22) !important;
+  --border-subtle: 1px solid rgba(19, 75, 56, 0.15) !important;
 }
+
 
 
 /* ===================================================================
@@ -742,11 +730,12 @@ body::after {
   width: 84px;
   height: 84px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #FFF5D0 0%, #E5BE5E 40%, #9E7422 80%, #68480C 100%);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), 0 0 20px rgba(212, 175, 55, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  background: radial-gradient(circle at 35% 30%, #10B981 0%, #064E3B 60%, #022C22 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(16, 185, 129, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid var(--gold-primary);
 }
 
 .couple-profile-card:hover .royal-monogram-emblem {
@@ -757,10 +746,11 @@ body::after {
   font-family: var(--font-royal);
   font-size: 2.3rem;
   font-weight: 900;
-  color: #381C06;
-  text-shadow: 0 1px 2px rgba(255, 245, 200, 0.8), 0 -1px 1px rgba(0, 0, 0, 0.4);
+  color: #FFF0C2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 12px rgba(229, 197, 120, 0.7);
   line-height: 1;
 }
+
 
 .profile-card-line {
   width: 50px;
@@ -1840,17 +1830,18 @@ body::after {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Scroll Animation */
+/* Scroll Animation - Reliable Visibility */
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal-on-scroll.is-revealed {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 /* Footer Section */
 .invitation-footer {

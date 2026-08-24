@@ -104,12 +104,17 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
 
-      // Trigger scroll animations for visible sections
+      // Reveal all cards instantly with zero delay
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+        el.classList.add('is-revealed');
+      });
+
       if (window.revealSections) {
         window.revealSections();
       }
     }, 1400);
   }
+
 
   // Bind click & touch triggers
   if (lock) {
