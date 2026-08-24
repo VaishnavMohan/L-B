@@ -163,24 +163,24 @@ class WeddingRSVPManager {
     const chipAttending = document.getElementById('chip-attending');
     const chipAfar = document.getElementById('chip-afar');
     const rsvpAttendanceInput = document.getElementById('rsvp-attendance');
-    const guestGroup = document.getElementById('guest-count-group');
+    const attendingContainer = document.getElementById('attending-details-container');
 
     if (chipAttending && chipAfar && rsvpAttendanceInput) {
       chipAttending.addEventListener('click', () => {
         chipAttending.classList.add('active');
         chipAfar.classList.remove('active');
         rsvpAttendanceInput.value = '🌸 Yes, We Are Coming!';
-        if (guestGroup) {
-          guestGroup.style.display = 'block';
+        if (attendingContainer) {
+          attendingContainer.style.display = 'block';
         }
       });
 
       chipAfar.addEventListener('click', () => {
         chipAfar.classList.add('active');
         chipAttending.classList.remove('active');
-        rsvpAttendanceInput.value = '💐 Sorry, Sending Blessings';
-        if (guestGroup) {
-          guestGroup.style.display = 'none';
+        rsvpAttendanceInput.value = "💐 Sorry, Can't Attend";
+        if (attendingContainer) {
+          attendingContainer.style.display = 'none';
         }
       });
     }
@@ -190,19 +190,21 @@ class WeddingRSVPManager {
     const countDisplay = document.getElementById('guest-count-number');
     const countLabel = document.getElementById('guest-count-label');
     const rsvpGuestCountInput = document.getElementById('rsvp-guest-count');
+    const travelCountText = document.getElementById('travel-count-text');
     const minusBtn = document.getElementById('btn-guest-minus');
     const plusBtn = document.getElementById('btn-guest-plus');
     const pills = document.querySelectorAll('.guest-pill');
 
     const updateGuestCount = (count) => {
-      currentGuestCount = Math.max(1, Math.min(10, count));
-      if (countDisplay) countDisplay.textContent = currentGuestCount >= 5 ? '5+' : currentGuestCount;
+      currentGuestCount = Math.max(1, Math.min(30, count));
+      if (countDisplay) countDisplay.textContent = currentGuestCount;
       if (countLabel) countLabel.textContent = currentGuestCount === 1 ? 'Person' : 'People';
-      if (rsvpGuestCountInput) rsvpGuestCountInput.value = `${currentGuestCount >= 5 ? '5+' : currentGuestCount} ${currentGuestCount === 1 ? 'Person' : 'People'}`;
+      if (rsvpGuestCountInput) rsvpGuestCountInput.value = `${currentGuestCount} ${currentGuestCount === 1 ? 'Person' : 'People'}`;
+      if (travelCountText) travelCountText.textContent = currentGuestCount;
 
       pills.forEach(p => {
         const pCount = parseInt(p.getAttribute('data-count'), 10);
-        if ((currentGuestCount >= 5 && pCount === 5) || pCount === currentGuestCount) {
+        if ((currentGuestCount >= 10 && pCount === 10) || pCount === currentGuestCount) {
           p.classList.add('active');
         } else {
           p.classList.remove('active');
@@ -224,6 +226,7 @@ class WeddingRSVPManager {
     const travelCard = document.getElementById('travel-toggle-card');
     const travelHidden = document.getElementById('need-travel-hidden');
     const travelStatusText = document.getElementById('travel-status-text');
+    const travelPassengersNote = document.getElementById('travel-passengers-note');
 
     if (travelCard && travelHidden) {
       const toggleTravel = () => {
@@ -231,6 +234,9 @@ class WeddingRSVPManager {
         travelHidden.value = isActive ? 'true' : 'false';
         if (travelStatusText) {
           travelStatusText.textContent = isActive ? 'YES ✓' : 'NO';
+        }
+        if (travelPassengersNote) {
+          travelPassengersNote.style.display = isActive ? 'block' : 'none';
         }
       };
 
@@ -243,6 +249,7 @@ class WeddingRSVPManager {
       });
     }
   }
+
 
   sendWhatsAppRSVP() {
     const hostPhone = (this.config.couple?.bride?.formattedPhone) || "9446162155";

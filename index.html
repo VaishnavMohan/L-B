@@ -37,10 +37,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500;600;700&family=Great+Vibes&display=swap" />
 
   <!-- Stylesheets with Cache-Busting -->
-  <link rel="stylesheet" href="css/style.css?v=28.0" />
-  <link rel="stylesheet" href="css/envelope.css?v=28.0" />
-  <link rel="stylesheet" href="css/scratch.css?v=28.0" />
+  <link rel="stylesheet" href="css/style.css?v=29.0" />
+  <link rel="stylesheet" href="css/envelope.css?v=29.0" />
+  <link rel="stylesheet" href="css/scratch.css?v=29.0" />
 </head>
+
 
 
 
@@ -632,52 +633,60 @@
             </button>
             <button type="button" class="choice-chip" id="chip-afar" data-value="💐 Sorry, Sending Blessings">
               <span class="chip-icon">💐</span>
-              <span class="chip-text">Sorry, Sending Blessings</span>
+              <span class="chip-text">Sorry, Can't Attend</span>
               <span class="chip-check">✓</span>
             </button>
           </div>
           <input type="hidden" id="rsvp-attendance" value="🌸 Yes, We Are Coming!" />
         </div>
 
-        <!-- 2. Visual Guest Counter & Quick Preset Pills -->
-        <div class="form-group" id="guest-count-group">
-          <label class="form-section-label">How many people are coming?</label>
-          <div class="guest-counter-wrap">
-            <button type="button" class="counter-btn" id="btn-guest-minus" aria-label="Decrease People">−</button>
-            <div class="guest-count-display">
-              <span id="guest-count-number">2</span>
-              <span class="guest-count-label" id="guest-count-label">People</span>
+        <!-- CONTAINER FOR ATTENDING GUESTS (Hidden if Sorry/Can't Attend is selected) -->
+        <div id="attending-details-container">
+          <!-- 2. Visual Guest Counter & Quick Preset Pills -->
+          <div class="form-group" id="guest-count-group">
+            <label class="form-section-label">How many people are coming?</label>
+            <div class="guest-counter-wrap">
+              <button type="button" class="counter-btn" id="btn-guest-minus" aria-label="Decrease People">−</button>
+              <div class="guest-count-display">
+                <span id="guest-count-number">2</span>
+                <span class="guest-count-label" id="guest-count-label">People</span>
+              </div>
+              <button type="button" class="counter-btn" id="btn-guest-plus" aria-label="Increase People">+</button>
             </div>
-            <button type="button" class="counter-btn" id="btn-guest-plus" aria-label="Increase People">+</button>
+            <!-- Quick Preset Pills (1, 2, 3, 4, 5, 10+) -->
+            <div class="guest-quick-pills">
+              <button type="button" class="guest-pill" data-count="1">1</button>
+              <button type="button" class="guest-pill active" data-count="2">2</button>
+              <button type="button" class="guest-pill" data-count="3">3</button>
+              <button type="button" class="guest-pill" data-count="4">4</button>
+              <button type="button" class="guest-pill" data-count="5">5</button>
+              <button type="button" class="guest-pill" data-count="10">10+</button>
+            </div>
+            <input type="hidden" id="rsvp-guest-count" value="2 People" />
           </div>
-          <!-- Quick Preset Pills -->
-          <div class="guest-quick-pills">
-            <button type="button" class="guest-pill" data-count="1">1</button>
-            <button type="button" class="guest-pill active" data-count="2">2</button>
-            <button type="button" class="guest-pill" data-count="3">3</button>
-            <button type="button" class="guest-pill" data-count="4">4</button>
-            <button type="button" class="guest-pill" data-count="5">5+</button>
-          </div>
-          <input type="hidden" id="rsvp-guest-count" value="2 People" />
-        </div>
 
-        <!-- 3. Visual 1-Tap Travel Assistance Card -->
-        <div class="form-group">
-          <label class="form-section-label">Travel &amp; Pickup Assistance</label>
-          <div class="travel-assistance-card" id="travel-toggle-card" role="button" tabindex="0">
-            <div class="travel-card-left">
-              <div class="travel-card-icon">🚗</div>
-              <div class="travel-card-info">
-                <div class="travel-card-title">Need travel or pickup assistance?</div>
+          <!-- 3. Visual 1-Tap Travel Assistance Card -->
+          <div class="form-group" id="travel-group">
+            <label class="form-section-label">Travel &amp; Pickup Assistance</label>
+            <div class="travel-assistance-card" id="travel-toggle-card" role="button" tabindex="0">
+              <div class="travel-card-left">
+                <div class="travel-card-icon">🚗</div>
+                <div class="travel-card-info">
+                  <div class="travel-card-title">Need travel or pickup assistance?</div>
+                  <div class="travel-card-passengers-note" id="travel-passengers-note" style="display: none; font-size: 0.75rem; color: var(--gold-primary); margin-top: 2px;">
+                    ✓ Transport pickup for <span id="travel-count-text">2</span> people
+                  </div>
+                </div>
+              </div>
+              <div class="travel-toggle-switch">
+                <span class="toggle-status-text" id="travel-status-text">NO</span>
+                <div class="toggle-knob"></div>
               </div>
             </div>
-            <div class="travel-toggle-switch">
-              <span class="toggle-status-text" id="travel-status-text">NO</span>
-              <div class="toggle-knob"></div>
-            </div>
+            <input type="hidden" id="need-travel-hidden" value="false" />
           </div>
-          <input type="hidden" id="need-travel-hidden" value="false" />
         </div>
+
 
         <!-- Blessing Message -->
         <div class="form-group">
@@ -771,15 +780,16 @@
   <div class="toast-notice" role="alert"></div>
 
   <!-- JavaScript Modules with Cache-Busting -->
-  <script src="js/config.js?v=28.0"></script>
-  <script src="js/petals.js?v=28.0"></script>
-  <script src="js/sparkles.js?v=28.0"></script>
-  <script src="js/audio.js?v=28.0"></script>
-  <script src="js/envelope.js?v=28.0"></script>
-  <script src="js/scratch.js?v=28.0"></script>
-  <script src="js/countdown.js?v=28.0"></script>
-  <script src="js/rsvp.js?v=28.0"></script>
-  <script src="js/main.js?v=28.0"></script>
+  <script src="js/config.js?v=29.0"></script>
+  <script src="js/petals.js?v=29.0"></script>
+  <script src="js/sparkles.js?v=29.0"></script>
+  <script src="js/audio.js?v=29.0"></script>
+  <script src="js/envelope.js?v=29.0"></script>
+  <script src="js/scratch.js?v=29.0"></script>
+  <script src="js/countdown.js?v=29.0"></script>
+  <script src="js/rsvp.js?v=29.0"></script>
+  <script src="js/main.js?v=29.0"></script>
+
 
 
 

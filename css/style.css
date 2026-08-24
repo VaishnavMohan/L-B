@@ -2258,6 +2258,68 @@ body::after {
     height: 38px;
     font-size: 0.95rem;
   }
+
+  /* Mobile-optimized Attendance Choice Chips */
+  .choice-chips-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .choice-chip {
+    padding: 10px 8px;
+    min-height: 48px;
+    font-size: 0.82rem;
+    gap: 6px;
+  }
+
+  .chip-icon {
+    font-size: 1rem;
+  }
+
+  /* Mobile-optimized Guest Counter */
+  .guest-counter-wrap {
+    padding: 6px 12px;
+    gap: 12px;
+  }
+
+  .counter-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  #guest-count-number {
+    font-size: 1.4rem;
+  }
+
+  .guest-quick-pills {
+    gap: 4px;
+  }
+
+  .guest-pill {
+    padding: 7px 0;
+    font-size: 0.8rem;
+  }
+
+  /* Mobile-optimized Travel Card */
+  .travel-assistance-card {
+    padding: 10px 12px;
+    min-height: 52px;
+  }
+
+  .travel-card-icon {
+    font-size: 1.3rem;
+  }
+
+  .travel-card-title {
+    font-size: 0.84rem;
+  }
+
+  /* Full-width buttons on mobile for easy thumb tapping */
+  #blessings-form .btn-luxury {
+    width: 100%;
+    margin-top: 4px;
+  }
 }
 
 @media (max-width: 380px) {
@@ -2277,6 +2339,17 @@ body::after {
   .section-headline {
     font-size: 1.38rem;
   }
+
+  .choice-chips-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .choice-chip {
+    justify-content: flex-start;
+    padding: 8px 12px;
+  }
 }
+
 
 
