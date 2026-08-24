@@ -82,9 +82,11 @@ function initThemeManager() {
 function renderCeremonyTimeline() {
   const container = document.getElementById('events-cards-container');
   if (!container || !window.WEDDING_CONFIG || !window.WEDDING_CONFIG.events) return;
+  if (container.children.length > 0) return; // Keep high-speed static HTML
 
   container.className = 'ceremony-timeline';
   container.innerHTML = '';
+
 
   // Beautiful inline SVG art illustrations for each ceremony type
   const ceremonyArt = {
