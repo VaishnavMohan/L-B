@@ -312,14 +312,12 @@ function setupActionButtons() {
   }
 }
 
-
-}
-
 /**
  * ===================================================================
  * TOAST NOTIFICATION UTILITY
  * ===================================================================
  */
+
 function showToast(message) {
   let toast = document.querySelector('.toast-notice');
   if (!toast) {

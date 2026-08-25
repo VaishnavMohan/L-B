@@ -2013,10 +2013,11 @@ body::after {
   -webkit-backdrop-filter: blur(20px) saturate(150%);
   padding: 8px 16px;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-md);
-  border: var(--border-subtle);
-  z-index: 100;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  border: 1.5px solid rgba(229, 197, 120, 0.4);
+  z-index: 9999;
   transition: var(--transition-smooth);
+  pointer-events: auto;
 }
 
 .floating-btn {
@@ -2027,23 +2028,26 @@ body::after {
   align-items: center;
   justify-content: center;
   background: var(--bg-card-elevated);
-  border: 1px solid rgba(197, 160, 89, 0.3);
-  color: var(--gold-dark);
+  border: 1.5px solid rgba(229, 197, 120, 0.35);
+  color: var(--gold-primary);
   cursor: pointer;
   transition: var(--transition-bounce);
   box-shadow: var(--shadow-sm);
   font-size: 1.1rem;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 [data-theme="dark"] .floating-btn {
   color: var(--gold-light);
-  border-color: rgba(212, 175, 55, 0.3);
+  border-color: rgba(229, 197, 120, 0.4);
 }
 
 .floating-btn:hover {
   transform: scale(1.12);
   background: var(--gold-gradient);
-  color: #2D2727;
+  color: #071914;
   box-shadow: var(--shadow-gold);
 }
 
@@ -2052,6 +2056,7 @@ body::after {
   height: 20px;
   fill: currentColor;
 }
+
 
 /* Equalizer Bars */
 .music-equalizer {
