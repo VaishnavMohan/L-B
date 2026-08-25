@@ -2004,7 +2004,7 @@ body::after {
   position: fixed;
   bottom: 24px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 25px);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -2016,9 +2016,20 @@ body::after {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   border: 1.5px solid rgba(229, 197, 120, 0.4);
   z-index: 9999;
-  transition: var(--transition-smooth);
-  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
 }
+
+body.doors-opened .floating-controls-bar,
+body:not(:has(#envelope-overlay)) .floating-controls-bar {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
 
 .floating-btn {
   width: 44px;

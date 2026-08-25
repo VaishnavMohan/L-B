@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // F. Smooth Dissolve into Digital Wedding Invitation Card (Always Top)
     setTimeout(() => {
       overlay.classList.add('opened');
+      document.body.classList.add('doors-opened');
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
@@ -113,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.revealSections();
       }
     }, 1400);
+
   }
 
 
