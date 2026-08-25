@@ -1,0 +1,450 @@
+/**
+ * ===================================================================
+ * EVENING RECEPTION GALA THEME
+ * ===================================================================
+ * Palette: Midnight Velvet Sapphire, Starry Indigo & Champagne Gold
+ */
+
+:root {
+  /* Midnight Sapphire & Starry Indigo */
+  --rec-bg-deep: #050814;
+  --rec-bg-dark: #0A1024;
+  --rec-bg-card: rgba(13, 21, 46, 0.88);
+  --rec-bg-card-hover: rgba(19, 31, 66, 0.94);
+  
+  /* Starry Champagne Gold */
+  --rec-gold-light: #FFF0C4;
+  --rec-gold-primary: #E5C378;
+  --rec-gold-deep: #B38E38;
+  --rec-gold-glow: rgba(229, 195, 120, 0.45);
+  
+  /* Text Accents */
+  --rec-text-cream: #FAF6EE;
+  --rec-text-muted: #B8C2D8;
+  --rec-border-gold: rgba(229, 195, 120, 0.32);
+}
+
+/* Base Body Override for Reception Theme */
+body.reception-theme {
+  background-color: var(--rec-bg-deep) !important;
+  color: var(--rec-text-cream) !important;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(26, 43, 94, 0.65) 0%, transparent 60%),
+    radial-gradient(circle at 15% 30%, rgba(20, 32, 70, 0.45) 0%, transparent 50%),
+    radial-gradient(circle at 85% 70%, rgba(26, 40, 85, 0.4) 0%, transparent 50%),
+    linear-gradient(180deg, #050814 0%, #0A1024 40%, #060A18 100%) !important;
+  background-attachment: fixed !important;
+}
+
+/* Starlight Fairy Lights & Chandelier Background Ambience */
+body.reception-theme::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #FFF, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, rgba(244, 224, 165, 0.8), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, #FFF, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, rgba(244, 224, 165, 0.9), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 230px 190px, #FFF, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 310px 80px, rgba(244, 224, 165, 0.7), rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 350px 350px;
+  opacity: 0.35;
+  z-index: 1;
+  animation: starlightTwinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes starlightTwinkle {
+  0% { opacity: 0.25; transform: translateY(0); }
+  100% { opacity: 0.45; transform: translateY(-4px); }
+}
+
+/* ── 3D GATEWAY / DOORWAY OPENING SCREEN (CRYSTAL CLEAR HIGH CONTRAST) ── */
+body.reception-theme #envelope-overlay {
+  background: radial-gradient(circle at 50% 30%, #15224A 0%, #0B132C 45%, #040712 100%) !important;
+}
+
+body.reception-theme .gateway-header-text h1,
+body.reception-theme .royal-title {
+  color: #FFF0C4 !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 25px rgba(229, 195, 120, 0.8) !important;
+}
+
+body.reception-theme .royal-subtitle {
+  color: #E5C378 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+}
+
+body.reception-theme .gateway-door-leaf {
+  background: linear-gradient(145deg, #0E1738 0%, #080E24 60%, #040712 100%) !important;
+  border-color: rgba(229, 195, 120, 0.45) !important;
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.85), 0 10px 30px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Brilliant High-Visibility Inner Sanctum Chamber */
+body.reception-theme .sanctum-glow-backdrop {
+  background: radial-gradient(ellipse at 50% 45%, #FFFDF7 0%, #FFF3D6 30%, #E5C378 65%, #14224A 100%) !important;
+  box-shadow: inset 0 0 45px rgba(229, 195, 120, 0.95), 0 0 40px rgba(229, 195, 120, 0.7) !important;
+}
+
+body.reception-theme .sanctum-together-tag {
+  color: #4A3008 !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+}
+
+body.reception-theme .sanctum-bride-name,
+body.reception-theme .sanctum-groom-name {
+  color: #1F1002 !important;
+  font-weight: 900 !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 15px rgba(229, 195, 120, 0.8) !important;
+}
+
+body.reception-theme .sanctum-ampersand {
+  color: #8C6518 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+}
+
+body.reception-theme .sanctum-date-badge {
+  color: #1F1002 !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1.5px solid #D4AF37 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
+
+body.reception-theme .sanctum-quote {
+  color: #3D2605 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+}
+
+body.reception-theme .central-monogram-lock {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8), 0 0 30px rgba(229, 195, 120, 0.6) !important;
+}
+
+body.reception-theme .gateway-tap-btn {
+  background: linear-gradient(135deg, #FFF0C4, #E5C378, #B38E38) !important;
+  color: #060A18 !important;
+  box-shadow: 0 8px 28px rgba(229, 195, 120, 0.5) !important;
+}
+
+/* Reception Card Containers (Glassmorphic Midnight Sapphire) */
+body.reception-theme .invitation-card-section {
+  background: var(--rec-bg-card) !important;
+  border: 1px solid var(--rec-border-gold) !important;
+  box-shadow: 0 12px 40px rgba(2, 5, 15, 0.75), 0 0 25px rgba(229, 195, 120, 0.08) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* Gold Typography & Accents */
+body.reception-theme .section-headline,
+body.reception-theme .bride-name,
+body.reception-theme .groom-name {
+  color: var(--rec-gold-light) !important;
+  text-shadow: 0 2px 14px rgba(229, 195, 120, 0.4) !important;
+}
+
+body.reception-theme .section-subtitle-tag {
+  color: var(--rec-gold-primary) !important;
+  background: rgba(229, 195, 120, 0.1) !important;
+  border: 1px solid rgba(229, 195, 120, 0.25) !important;
+}
+
+body.reception-theme .ganesha-text {
+  color: var(--rec-gold-light) !important;
+  letter-spacing: 0.18em !important;
+  text-shadow: 0 1px 8px rgba(229, 195, 120, 0.3) !important;
+}
+
+/* Couple Family Lineage Card */
+body.reception-theme .couple-family-lineage-grid {
+  background: rgba(10, 16, 36, 0.85) !important;
+  border: 1px solid rgba(229, 195, 120, 0.3) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.reception-theme .lineage-role {
+  background: linear-gradient(135deg, rgba(229, 195, 120, 0.25), rgba(179, 142, 56, 0.2)) !important;
+  color: var(--rec-gold-light) !important;
+  border: 1px solid rgba(229, 195, 120, 0.35) !important;
+}
+
+body.reception-theme .lineage-name {
+  color: var(--rec-text-cream) !important;
+}
+
+body.reception-theme .lineage-parents {
+  color: var(--rec-text-muted) !important;
+}
+
+/* Ceremony & Reception Event Card */
+body.reception-theme .ceremony-event-card {
+  background: rgba(9, 15, 34, 0.92) !important;
+  border: 1px solid rgba(229, 195, 120, 0.28) !important;
+}
+
+body.reception-theme .ceremony-banner-wrap {
+  border-color: rgba(229, 195, 120, 0.35) !important;
+}
+
+body.reception-theme .ceremony-banner-time-badge {
+  background: rgba(5, 8, 20, 0.88) !important;
+  color: var(--rec-gold-light) !important;
+  border: 1px solid rgba(229, 195, 120, 0.4) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+body.reception-theme .ceremony-sanskrit-verse {
+  color: var(--rec-gold-light) !important;
+  background: rgba(229, 195, 120, 0.08) !important;
+  border-color: rgba(229, 195, 120, 0.25) !important;
+}
+
+body.reception-theme .ritual-pill {
+  background: rgba(229, 195, 120, 0.1) !important;
+  border-color: rgba(229, 195, 120, 0.25) !important;
+  color: var(--rec-gold-light) !important;
+}
+
+/* Countdown Section */
+body.reception-theme .countdown-card {
+  background: rgba(8, 13, 30, 0.9) !important;
+  border: 1px solid rgba(229, 195, 120, 0.3) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.reception-theme .countdown-number {
+  color: var(--rec-gold-light) !important;
+  text-shadow: 0 2px 10px rgba(229, 195, 120, 0.5) !important;
+}
+
+body.reception-theme .countdown-unit {
+  color: var(--rec-gold-primary) !important;
+}
+
+/* ===================================================================
+   LUXURY VIP RECEPTION GALA PASS TICKET (CREATIVE & USER-FRIENDLY)
+   =================================================================== */
+
+.reception-gala-ticket {
+  position: relative;
+  max-width: 540px;
+  margin: 24px auto 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #0F1A3B 0%, #15224D 50%, #0A122B 100%);
+  border: 1.5px solid rgba(229, 195, 120, 0.45);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(229, 195, 120, 0.15);
+  overflow: hidden;
+  padding: 28px 24px;
+}
+
+.ticket-header-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(229, 195, 120, 0.35);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.ticket-badge-pill {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #050814;
+  background: linear-gradient(135deg, #FFF0C4, #E5C378);
+  padding: 4px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ticket-crest-symbol {
+  font-size: 1.3rem;
+  color: var(--rec-gold-light);
+  filter: drop-shadow(0 2px 6px rgba(229, 195, 120, 0.6));
+}
+
+.ticket-body-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.ticket-couple-names {
+  font-family: var(--font-royal);
+  font-size: 1.85rem;
+  color: var(--rec-gold-light);
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 12px rgba(229, 195, 120, 0.5);
+  margin-bottom: 2px;
+}
+
+.ticket-date-highlight {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(10, 16, 38, 0.85);
+  border: 1px solid rgba(229, 195, 120, 0.3);
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
+  margin: 4px 0;
+  width: 100%;
+  max-width: 420px;
+}
+
+.ticket-day {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--rec-gold-primary);
+}
+
+.ticket-num {
+  font-family: var(--font-royal);
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #FFF;
+  line-height: 1;
+  text-shadow: 0 0 15px rgba(229, 195, 120, 0.6);
+}
+
+.ticket-month {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--rec-gold-primary);
+}
+
+.ticket-details-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 6px 0 12px;
+  width: 100%;
+}
+
+.ticket-pill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(229, 195, 120, 0.12);
+  border: 1px solid rgba(229, 195, 120, 0.3);
+  color: var(--rec-gold-light);
+  padding: 7px 16px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.ticket-action-bar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.ticket-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.ticket-btn-primary {
+  background: linear-gradient(135deg, #FFF0C4, #E5C378);
+  color: #050814;
+  border: none;
+  box-shadow: 0 4px 16px rgba(229, 195, 120, 0.35);
+}
+
+.ticket-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(229, 195, 120, 0.55);
+}
+
+.ticket-btn-secondary {
+  background: rgba(229, 195, 120, 0.1);
+  color: var(--rec-gold-light);
+  border: 1.5px solid rgba(229, 195, 120, 0.4);
+}
+
+.ticket-btn-secondary:hover {
+  background: var(--rec-gold-primary);
+  color: #050814;
+}
+
+/* Venue Section */
+body.reception-theme .venue-overlay-badge {
+  background: rgba(5, 8, 20, 0.85) !important;
+  border: 1px solid rgba(229, 195, 120, 0.4) !important;
+  color: var(--rec-gold-light) !important;
+}
+
+/* RSVP Form Inputs */
+body.reception-theme .form-control-luxury {
+  background: rgba(7, 11, 26, 0.85) !important;
+  border-color: rgba(229, 195, 120, 0.3) !important;
+  color: var(--rec-text-cream) !important;
+}
+
+body.reception-theme .form-control-luxury:focus {
+  border-color: var(--rec-gold-primary) !important;
+  box-shadow: 0 0 15px rgba(229, 195, 120, 0.35) !important;
+}
+
+/* Buttons (Champagne Gold & Midnight Outlines) */
+body.reception-theme .btn-gold {
+  background: linear-gradient(135deg, #FFF0C4 0%, #E5C378 50%, #B38E38 100%) !important;
+  color: #060A18 !important;
+  box-shadow: 0 4px 18px rgba(229, 195, 120, 0.35) !important;
+}
+
+body.reception-theme .btn-gold:hover {
+  box-shadow: 0 6px 25px rgba(229, 195, 120, 0.55) !important;
+  transform: translateY(-2px) !important;
+}
+
+body.reception-theme .btn-outline-gold {
+  background: rgba(229, 195, 120, 0.08) !important;
+  border: 1.5px solid var(--rec-gold-primary) !important;
+  color: var(--rec-gold-light) !important;
+}
+
+body.reception-theme .btn-outline-gold:hover {
+  background: var(--rec-gold-primary) !important;
+  color: #060A18 !important;
+}
+
+/* Floating Controls Bar */
+body.reception-theme .floating-btn {
+  background: rgba(13, 21, 46, 0.92) !important;
+  border: 1px solid rgba(229, 195, 120, 0.35) !important;
+  color: var(--rec-gold-light) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+}

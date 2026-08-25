@@ -530,6 +530,72 @@ body::after {
   text-decoration: none;
 }
 
+/* Couple Family Lineage Honor Grid (For Couple-Hosted Invitations) */
+.couple-family-lineage-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  max-width: 580px;
+  margin: 20px auto 28px;
+  padding: 16px 20px;
+  background: rgba(197, 160, 89, 0.06);
+  border: 1px solid rgba(197, 160, 89, 0.22);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 560px) {
+  .couple-family-lineage-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+  .lineage-divider-dot {
+    display: none;
+  }
+}
+
+.lineage-card {
+  text-align: center;
+}
+
+.lineage-role {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  background: rgba(229, 197, 120, 0.12);
+  padding: 2px 10px;
+  border-radius: 9999px;
+  margin-bottom: 6px;
+}
+
+.lineage-name {
+  font-family: var(--font-royal);
+  font-size: 1.15rem;
+  color: var(--text-cream);
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+
+.lineage-parents {
+  font-family: var(--font-serif-classic);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  font-style: italic;
+}
+
+.lineage-divider-dot {
+  color: var(--gold-primary);
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
 .invite-statement {
   font-family: var(--font-serif-classic);
   font-size: 1.35rem;
@@ -539,6 +605,7 @@ body::after {
   max-width: 520px;
   margin: 0 auto 32px;
 }
+
 
 /* Couple Hero Names */
 .couple-name-banner {

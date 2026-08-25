@@ -252,15 +252,20 @@ class WeddingRSVPManager {
 
 
   sendWhatsAppRSVP() {
-    const hostPhone = (this.config.couple?.bride?.formattedPhone) || "9947324329";
+    const hostPhone = (this.config.rsvpPhone) || (this.config.couple?.rsvpPhone) || (this.config.couple?.groom?.formattedPhone) || (this.config.couple?.bride?.formattedPhone) || "9497387010";
     const name = document.getElementById('guest-name')?.value?.trim() || "";
 
     const attendance = document.getElementById('rsvp-attendance')?.value || "🌸 Yes, We Are Coming!";
     const guestCount = document.getElementById('rsvp-guest-count')?.value || "2 People";
     const needTravel = document.getElementById('need-travel-hidden')?.value === 'true';
     const message = document.getElementById('guest-message')?.value?.trim() || "";
+    const isReception = document.body.classList.contains('reception-theme') || !!this.config.isReception;
 
-    let text = `🌸 *Wedding Attendance & Wishes*\n*Keerthana & Sarath Wedding (13 Sep 2026)*\n\n`;
+    const eventTitle = isReception 
+      ? "*Sarath & Keerthana Wedding Reception (13 Sep 2026)*"
+      : "*Keerthana & Sarath Wedding (13 Sep 2026)*";
+
+    let text = `🌸 *Wedding Attendance & Wishes*\n${eventTitle}\n\n`;
 
     if (name) {
       text += `• *Family / Guest:* ${name}\n`;
@@ -271,15 +276,18 @@ class WeddingRSVPManager {
     } else {
       text += `\n`;
     }
-    text += `• *Travel Assistance:* ${needTravel ? '🚗 Yes, please coordinate transport / pickup' : 'No travel assistance required'}\n`;
+    if (!isReception) {
+      text += `• *Travel Assistance:* ${needTravel ? '🚗 Yes, please coordinate transport / pickup' : 'No travel assistance required'}\n`;
+    }
     
     if (message) {
       text += `• *Warm Wishes:* "${message}"\n`;
     }
-    text += `\nLooking forward to celebrating with you! ✨`;
+    text += `\nLooking forward to celebrating together! ✨`;
 
+    const cleanPhone = hostPhone.toString().replace(/\D/g, '').replace(/^91/, '');
     const encodedText = encodeURIComponent(text);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=91${hostPhone}&text=${encodedText}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=91${cleanPhone}&text=${encodedText}`;
     window.open(whatsappUrl, '_blank');
     if (window.showToast) {
       window.showToast("💬 Opening WhatsApp to send confirmation...");
