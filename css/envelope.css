@@ -3,12 +3,35 @@
    Ultra-Luxury, Romantic, Non-Religious 3D Grand Palace Door Opening
    =================================================================== */
 
+/* ── Prevent any background scrolling or scrollbar on entrance screen ── */
+html:not(:has(body.doors-opened)),
+body:not(.doors-opened) {
+  overflow: hidden !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  position: fixed;
+  width: 100%;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+body.doors-opened {
+  overflow-y: auto !important;
+  height: auto !important;
+  position: static !important;
+  overscroll-behavior: auto;
+  touch-action: auto !important;
+}
+
 /* ── Full Screen Ambient Sanctum Overlay ────────────────────────── */
 #envelope-overlay {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   background: radial-gradient(ellipse at 50% 45%, #180F0B 0%, #0D0806 55%, #050302 100%);
-  z-index: 9999;
+  z-index: 100000;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +40,10 @@
   overflow: hidden;
   cursor: pointer;
   perspective: 1400px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
   transition: opacity 1.3s cubic-bezier(0.65, 0, 0.35, 1),
               visibility 1.3s cubic-bezier(0.65, 0, 0.35, 1),
               transform 1.3s cubic-bezier(0.65, 0, 0.35, 1);
@@ -27,7 +54,9 @@
   visibility: hidden;
   pointer-events: none;
   transform: scale(1.18);
+  display: none !important;
 }
+
 
 /* ── Ambient Golden Atmosphere & Floating Fireflies ──────────────── */
 .gateway-ambient-light {
@@ -581,15 +610,20 @@
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   animation: btnPulseGlow 2.5s infinite ease-in-out;
   cursor: pointer;
-  pointer-events: all;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 20;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.gateway-tap-btn:hover {
+.gateway-tap-btn:hover,
+.gateway-tap-btn:active {
   transform: scale(1.06);
   border-color: #FFF3A8;
   box-shadow: 0 0 40px rgba(255, 215, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
+
 
 @keyframes btnPulseGlow {
   0%, 100% {

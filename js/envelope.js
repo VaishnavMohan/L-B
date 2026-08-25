@@ -118,14 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // Bind click & touch triggers
-  if (lock) {
-    lock.addEventListener('click', openRoyalGateway);
-  }
-  if (tapBtn) {
-    tapBtn.addEventListener('click', openRoyalGateway);
-  }
-  if (stage) {
-    stage.addEventListener('click', openRoyalGateway);
-  }
+  // Bind click & touch triggers everywhere on the gateway
+  const triggers = [lock, tapBtn, stage, overlay].filter(Boolean);
+  triggers.forEach(elem => {
+    elem.addEventListener('click', openRoyalGateway);
+    elem.addEventListener('touchend', openRoyalGateway, { passive: true });
+  });
 });
+
