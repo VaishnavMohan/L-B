@@ -252,8 +252,9 @@ class WeddingRSVPManager {
 
 
   sendWhatsAppRSVP() {
-    const hostPhone = (this.config.couple?.bride?.formattedPhone) || "9446162155";
+    const hostPhone = (this.config.couple?.bride?.formattedPhone) || "9947324329";
     const name = document.getElementById('guest-name')?.value?.trim() || "";
+
     const attendance = document.getElementById('rsvp-attendance')?.value || "🌸 Yes, We Are Coming!";
     const guestCount = document.getElementById('rsvp-guest-count')?.value || "2 People";
     const needTravel = document.getElementById('need-travel-hidden')?.value === 'true';

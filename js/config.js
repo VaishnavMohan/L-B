@@ -15,10 +15,11 @@ const WEDDING_CONFIG = {
       avatar: "assets/images/bride_cartoon.jpg",
       parents: "Mr. Narayanan K T & Mrs. Vasanthi Narayanan",
       residence: "Kattil thazhathethil House, Kololamba, Edappal",
-      phone: "+919446162155",
-      formattedPhone: "9446162155",
+      phone: "+919947324329",
+      formattedPhone: "9947324329",
       invitationNote: "With love and happiness, the family of the bride invites you to celebrate this sacred bond."
     },
+
     groom: {
       name: "Dr. Sarath",
       fullName: "Dr. Sarath",
@@ -75,8 +76,9 @@ const WEDDING_CONFIG = {
     ganeshaBlessing: "✦ With Joyful Hearts & Family Blessings ✦",
     divineQuote: "Together with their families",
     introLine: "We, Mr. Narayanan K T & Mrs. Vasanthi Narayanan",
-    residenceLine: "Kattil thazhathethil House, Kololamba, Edappal (Mob: 9446162155)",
+    residenceLine: "Kattil thazhathethil House, Kololamba, Edappal (Mob: 9947324329)",
     inviteBody: "are extremely glad to invite you and your family to the wedding of our beloved daughter",
+
     groomSubtitle: "S/o. Mr. Shaji K & Mrs. Sheeja K\nKodakkatt House, Ponnani",
     compliments: "With best compliments from:\nFriends and Family",
     emotionalQuote: "“Two hearts, one love, forever blessed. Together with our families, we joyfully step into a lifetime of happiness, shared dreams, and endless love.”"
@@ -108,8 +110,9 @@ const WEDDING_CONFIG = {
       iconSvg: "lamp",
       sanskritQuote: "✦ The Sacred Union of Two Hearts ✦",
       description: "The traditional Kerala wedding rituals including Kanyadhanam, Tying of the auspicious Mangalsutra Thali at the wedding mandap, and exchange of wedding garlands celebrating everlasting companionship.",
-      rituals: ["Thalikettu Ritual", "Pudavamuri Exchange", "Mandap Blessings & Garlands"],
+      rituals: ["Thalikettu Ritual", "Ring Exchange", "Mandap Blessings & Garlands"],
       locationName: "Puzhayoram Gardens, Thrissur",
+
       mapsUrl: "https://www.google.com/maps/search/?api=1&query=Puzhayoram+Gardens+Convention+Centre+Nadathara+Thrissur"
     },
     {
