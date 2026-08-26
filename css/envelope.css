@@ -3,18 +3,30 @@
    Lintu & Basil — September 06, 2026
    =================================================================== */
 
+/* Prevent background page scrolling while envelope is active */
+body:not(.envelope-opened) {
+  overflow: hidden !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  touch-action: none;
+  -webkit-overflow-scrolling: auto;
+}
+
 #envelope-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background: radial-gradient(circle at 50% 40%, #220A10 0%, #140508 60%, #080204 100%);
-  z-index: 999;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: clamp(12px, 2.8vh, 24px);
+  padding: clamp(16px, 3.5vh, 32px) 16px;
+  box-sizing: border-box;
   overflow: hidden;
   perspective: 1200px;
   transition: opacity 0.8s ease, visibility 0.8s ease;
@@ -29,11 +41,11 @@
 /* Ambient glow & drifting light */
 .envelope-ambient-glow {
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
-  height: 500px;
+  width: min(500px, 90vw);
+  height: min(500px, 90vw);
   background: radial-gradient(circle, rgba(232, 158, 155, 0.2) 0%, rgba(184, 142, 62, 0.1) 45%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
@@ -47,27 +59,27 @@
 
 /* Header Text */
 .envelope-header {
-  position: absolute;
-  top: 8vh;
+  position: relative;
   text-align: center;
   z-index: 10;
-  padding: 0 20px;
+  padding: 0 12px;
+  flex-shrink: 0;
 }
 
 .envelope-scripture {
   font-family: var(--font-serif-classic);
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 4vw, 1.25rem);
   font-style: italic;
   color: #FFF3B0;
   letter-spacing: 0.04em;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .envelope-subtitle {
   font-family: var(--font-royal);
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
+  font-size: clamp(0.68rem, 2.5vw, 0.75rem);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold-light);
   opacity: 0.85;
@@ -76,23 +88,18 @@
 /* 3D Envelope Stage */
 .envelope-stage {
   position: relative;
-  width: 350px;
-  height: 230px;
+  width: min(340px, 86vw);
+  height: min(220px, 56vw);
+  max-height: 220px;
   background: #FAF6F2;
   border-radius: 12px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(232, 158, 155, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(232, 158, 155, 0.25);
   transform-style: preserve-3d;
   transition: transform 0.4s ease-out;
   cursor: pointer;
   z-index: 5;
-  margin-top: 15px;
-}
-
-@media (max-width: 400px) {
-  .envelope-stage {
-    width: 295px;
-    height: 200px;
-  }
+  margin: 0;
+  flex-shrink: 0;
 }
 
 /* Envelope Flaps (Solid & Clean) */
@@ -290,27 +297,28 @@
 
 /* Envelope Bottom Footer & Tap Button */
 .envelope-footer {
-  position: absolute;
-  bottom: 8vh;
+  position: relative;
   text-align: center;
   z-index: 10;
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .envelope-open-btn {
   background: var(--gold-gradient);
   color: #2A1016;
   border: none;
-  padding: 14px 34px;
+  padding: clamp(11px, 2.2vh, 14px) clamp(22px, 5.5vw, 32px);
   border-radius: var(--radius-full);
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: clamp(0.82rem, 3.2vw, 0.92rem);
   font-weight: 700;
   letter-spacing: 0.05em;
   cursor: pointer;
   box-shadow: 0 8px 25px rgba(229, 197, 120, 0.35);
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   transition: var(--transition-smooth);
   animation: btnFloat 2s infinite ease-in-out;
 }
