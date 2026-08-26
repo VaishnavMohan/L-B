@@ -1,6 +1,7 @@
 /**
  * ===================================================================
  * LIVE WEDDING COUNTDOWN & CALENDAR INTEGRATION
+ * Lintu & Basil — September 06, 2026
  * ===================================================================
  */
 
@@ -14,8 +15,8 @@ class WeddingCountdown {
     this.googleCalBtn = document.getElementById('add-google-cal');
     this.icalBtn = document.getElementById('add-ical');
 
-    this.config = window.WEDDING_CONFIG ? window.WEDDING_CONFIG.event : {
-      targetDate: "2026-09-13T09:30:00"
+    this.config = (window.WEDDING_CONFIG && window.WEDDING_CONFIG.event) ? window.WEDDING_CONFIG.event : {
+      targetDate: "2026-09-06T11:30:00"
     };
 
     this.targetTime = new Date(this.config.targetDate).getTime();
@@ -69,10 +70,10 @@ class WeddingCountdown {
 
   openGoogleCalendar() {
     const cal = this.config.calendar || {};
-    const title = encodeURIComponent(cal.title || "Wedding of Dr. Keerthana & Dr. Sarath");
-    const details = encodeURIComponent(cal.description || "Wedding Ceremony of Dr. Keerthana & Dr. Sarath");
-    const location = encodeURIComponent(cal.location || "Puzhayoram Gardens Convention Centre, Thrissur");
-    const dates = `${cal.startIso || '20260913T093000'}/${cal.endIso || '20260913T140000'}`;
+    const title = encodeURIComponent(cal.title || "Engagement & Wedding Celebration of Lintu & Basil");
+    const details = encodeURIComponent(cal.description || "Engagement and Wedding Celebration of Lintu & Basil at St. Mary's Church Auditorium, Mulavoor");
+    const location = encodeURIComponent(cal.location || "St. Mary's Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha");
+    const dates = `${cal.startIso || '20260906T113000'}/${cal.endIso || '20260906T150000'}`;
 
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}&ctz=Asia/Kolkata`;
     window.open(url, '_blank');
@@ -80,22 +81,22 @@ class WeddingCountdown {
 
   downloadICal() {
     const cal = this.config.calendar || {};
-    const title = cal.title || "Wedding of Dr. Keerthana & Dr. Sarath";
-    const details = cal.description || "Wedding Ceremony of Dr. Keerthana & Dr. Sarath";
-    const location = cal.location || "Puzhayoram Gardens Convention Centre, Thrissur";
+    const title = cal.title || "Engagement & Wedding Celebration of Lintu & Basil";
+    const details = cal.description || "Engagement and Wedding Celebration of Lintu & Basil at St. Mary's Church Auditorium, Mulavoor";
+    const location = cal.location || "St. Mary's Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha";
 
     const icsContent = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//Keerthana and Sarath Wedding//EN',
+      'PRODID:-//Lintu and Basil Celebration//EN',
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
       'BEGIN:VEVENT',
       'SUMMARY:' + title,
       'DESCRIPTION:' + details,
       'LOCATION:' + location,
-      'DTSTART;TZID=Asia/Kolkata:20260913T093000',
-      'DTEND;TZID=Asia/Kolkata:20260913T140000',
+      'DTSTART;TZID=Asia/Kolkata:20260906T113000',
+      'DTEND;TZID=Asia/Kolkata:20260906T150000',
       'STATUS:CONFIRMED',
       'END:VEVENT',
       'END:VCALENDAR'
@@ -104,7 +105,7 @@ class WeddingCountdown {
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'Keerthana_Sarath_Wedding.ics');
+    link.setAttribute('download', 'Lintu_Basil_Celebration.ics');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

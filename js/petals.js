@@ -1,7 +1,7 @@
 /**
  * ===================================================================
- * FLOATING ROSE & MARIGOLD PETALS CELEBRATION SYSTEM
- * Rich, romantic, 3D fluttering petals for royal ambiance
+ * FLOATING BLUSH ROSE & EUCALYPTUS PETALS CELEBRATION SYSTEM
+ * Soft, romantic, 3D fluttering petals for Lintu & Basil
  * ===================================================================
  */
 
@@ -14,18 +14,18 @@ class PetalParticleSystem {
     this.petals = [];
     this.burstParticles = [];
     
-    // Rich, lush particle density
-    this.maxPetals = window.innerWidth < 768 ? 22 : 42;
+    // Smooth particle density
+    this.maxPetals = window.innerWidth < 768 ? 20 : 38;
     this.isRunning = true;
     this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Vibrant romantic Kerala wedding petal colors
+    // Romantic blush floral palette: Blush rose, peach rose, champagne gold, eucalyptus sage
     this.petalColors = [
-      { r: 255, g: 175, b: 190, a: 0.65 }, // Soft blush rose
-      { r: 228, g: 75, b: 105, a: 0.58 },  // Deep royal rose
-      { r: 255, g: 190, b: 90, a: 0.62 },  // Auspicious saffron marigold
-      { r: 255, g: 215, b: 130, a: 0.60 }, // Fragrant jasmine gold
-      { r: 235, g: 198, b: 72, a: 0.68 }   // 24k Champagne gold foil
+      { r: 247, g: 198, b: 204, a: 0.70, type: 'rose' }, // Soft blush rose
+      { r: 232, g: 155, b: 168, a: 0.65, type: 'rose' }, // Deep blush rose
+      { r: 250, g: 215, b: 195, a: 0.65, type: 'rose' }, // Soft peach rose
+      { r: 155, g: 180, b: 155, a: 0.55, type: 'leaf' }, // Eucalyptus sage leaf
+      { r: 228, g: 195, b: 115, a: 0.60, type: 'gold' }  // Warm champagne gold shimmer
     ];
 
     this.init();
@@ -47,7 +47,7 @@ class PetalParticleSystem {
   resize() {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
-    this.maxPetals = window.innerWidth < 768 ? 22 : 42;
+    this.maxPetals = window.innerWidth < 768 ? 20 : 38;
   }
 
   createPetal(randomY = false) {
@@ -57,17 +57,16 @@ class PetalParticleSystem {
       x: Math.random() * this.canvas.width,
       y: randomY ? Math.random() * this.canvas.height : -30,
       size: Math.random() * (isMobile ? 5 : 7) + 6,
-      speedY: Math.random() * 0.9 + 0.5, // Natural gentle falling speed
-      speedX: Math.random() * 0.9 - 0.45,
+      speedY: Math.random() * 0.8 + 0.4,
+      speedX: Math.random() * 0.8 - 0.4,
       rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() * 1.2 - 0.6),
-      sway: Math.random() * 2.2 + 1.0,
+      rotationSpeed: (Math.random() * 1.0 - 0.5),
+      sway: Math.random() * 2.0 + 1.0,
       swaySpeed: Math.random() * 0.02 + 0.01,
       swayAngle: Math.random() * Math.PI * 2,
       flipSpeed: Math.random() * 0.03 + 0.015,
       flipAngle: Math.random() * Math.PI * 2,
-      color: color,
-      gold: Math.random() > 0.82
+      color: color
     };
   }
 
@@ -76,11 +75,11 @@ class PetalParticleSystem {
     const x = originX || this.canvas.width / 2;
     const y = originY || this.canvas.height / 2;
     const isMobile = window.innerWidth < 768;
-    const actualCount = isMobile ? Math.min(count, 35) : count;
+    const actualCount = isMobile ? Math.min(count, 30) : count;
 
     for (let i = 0; i < actualCount; i++) {
       const angle = (Math.PI * 2 / actualCount) * i + (Math.random() * 0.5 - 0.25);
-      const velocity = Math.random() * 7 + 3.0;
+      const velocity = Math.random() * 6 + 2.5;
       const color = this.petalColors[Math.floor(Math.random() * this.petalColors.length)];
 
       this.burstParticles.push({
@@ -88,42 +87,45 @@ class PetalParticleSystem {
         y: y,
         vx: Math.cos(angle) * velocity,
         vy: Math.sin(angle) * velocity - 2.0,
-        gravity: 0.16,
-        size: Math.random() * (isMobile ? 7 : 10) + 5,
+        gravity: 0.15,
+        size: Math.random() * (isMobile ? 6 : 9) + 5,
         rotation: Math.random() * 360,
         rotationSpeed: (Math.random() * 8 - 4),
         flipAngle: Math.random() * Math.PI,
         flipSpeed: Math.random() * 0.06 + 0.03,
-        opacity: 0.85,
+        opacity: 0.9,
         fadeSpeed: Math.random() * 0.018 + 0.012,
-        color: color,
-        isGold: Math.random() > 0.45
+        color: color
       });
     }
   }
 
-  drawPetalShape(ctx, size, color, isGold, scaleX = 1) {
+  drawPetalShape(ctx, size, color, scaleX = 1) {
     ctx.save();
-    ctx.scale(scaleX, 1); // 3D flutter effect
+    ctx.scale(scaleX, 1);
 
     ctx.beginPath();
-    ctx.moveTo(0, -size);
-    ctx.bezierCurveTo(size * 0.75, -size * 0.5, size * 0.85, size * 0.5, 0, size);
-    ctx.bezierCurveTo(-size * 0.85, size * 0.5, -size * 0.75, -size * 0.5, 0, -size);
+    if (color.type === 'leaf') {
+      // Slender eucalyptus leaf
+      ctx.moveTo(0, -size * 1.2);
+      ctx.quadraticCurveTo(size * 0.5, 0, 0, size * 1.2);
+      ctx.quadraticCurveTo(-size * 0.5, 0, 0, -size * 1.2);
+    } else {
+      // Soft curved rose petal
+      ctx.moveTo(0, -size);
+      ctx.bezierCurveTo(size * 0.8, -size * 0.5, size * 0.85, size * 0.5, 0, size);
+      ctx.bezierCurveTo(-size * 0.85, size * 0.5, -size * 0.8, -size * 0.5, 0, -size);
+    }
     ctx.closePath();
 
-    if (isGold) {
-      ctx.fillStyle = `rgba(235, 198, 72, ${color.a * 0.9})`;
-    } else {
-      ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
-    }
+    ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
     ctx.fill();
 
-    // Subtle natural inner petal vein
+    // Subtle central vein
     ctx.beginPath();
     ctx.moveTo(0, -size * 0.7);
     ctx.lineTo(0, size * 0.6);
-    ctx.strokeStyle = `rgba(255, 255, 255, ${color.a * 0.35})`;
+    ctx.strokeStyle = `rgba(255, 255, 255, ${color.a * 0.4})`;
     ctx.lineWidth = 0.8;
     ctx.stroke();
 
@@ -135,7 +137,7 @@ class PetalParticleSystem {
 
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // 1. Draw floating ambient petals
+    // 1. Floating ambient petals
     for (let i = 0; i < this.petals.length; i++) {
       const p = this.petals[i];
 
@@ -145,9 +147,8 @@ class PetalParticleSystem {
       p.y += p.speedY;
       p.rotation += p.rotationSpeed;
 
-      const scaleX = Math.cos(p.flipAngle); // 3D tumble
+      const scaleX = Math.cos(p.flipAngle);
 
-      // Wrap around
       if (p.y > this.canvas.height + 30) {
         p.y = -30;
         p.x = Math.random() * this.canvas.width;
@@ -158,11 +159,11 @@ class PetalParticleSystem {
       this.ctx.save();
       this.ctx.translate(p.x, p.y);
       this.ctx.rotate(p.rotation * Math.PI / 180);
-      this.drawPetalShape(this.ctx, p.size, p.color, p.gold, scaleX);
+      this.drawPetalShape(this.ctx, p.size, p.color, scaleX);
       this.ctx.restore();
     }
 
-    // 2. Draw burst celebration particles
+    // 2. Burst celebration particles
     for (let i = this.burstParticles.length - 1; i >= 0; i--) {
       const bp = this.burstParticles[i];
 
@@ -184,7 +185,7 @@ class PetalParticleSystem {
       this.ctx.globalAlpha = bp.opacity;
       this.ctx.translate(bp.x, bp.y);
       this.ctx.rotate(bp.rotation * Math.PI / 180);
-      this.drawPetalShape(this.ctx, bp.size, bp.color, bp.isGold, scaleX);
+      this.drawPetalShape(this.ctx, bp.size, bp.color, scaleX);
       this.ctx.restore();
     }
 
@@ -207,4 +208,3 @@ window.petalSystem = null;
 document.addEventListener('DOMContentLoaded', () => {
   window.petalSystem = new PetalParticleSystem();
 });
-

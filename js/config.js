@@ -1,132 +1,122 @@
 /**
  * ===================================================================
- * WEDDING INVITATION CONFIGURATION
+ * WEDDING & ENGAGEMENT INVITATION CONFIGURATION
+ * Lintu & Basil — September 06, 2026
  * ===================================================================
- * Easily customize all details: names, date, venue, music, images & links.
  */
 
 const WEDDING_CONFIG = {
   // Couple Information
   couple: {
     bride: {
-      name: "Dr. Keerthana",
-      fullName: "Dr. Keerthana K T",
+      name: "Lintu",
+      fullName: "Lintu George",
       title: "The Bride",
       avatar: "assets/images/bride_cartoon.jpg",
-      parents: "Mr. Narayanan K T & Mrs. Vasanthi Narayanan",
-      residence: "Kattil thazhathethil House, Kololamba, Edappal",
-      phone: "+919947324329",
-      formattedPhone: "9947324329",
-      invitationNote: "With love and happiness, the family of the bride invites you to celebrate this sacred bond."
+      parents: "Mr. George T. V. & Mrs. Sani George",
+      residence: "Thachalamattathil House, Mulavoor, Muvattupuzha",
+      phone: "+917907751171",
+      formattedPhone: "7907751171",
+      invitationNote: "With love and joy, the family of the bride invites you to celebrate this blessed milestone."
     },
 
     groom: {
-      name: "Dr. Sarath",
-      fullName: "Dr. Sarath",
+      name: "Basil",
+      fullName: "Basil Baby",
       title: "The Groom",
       avatar: "assets/images/groom_cartoon.jpg",
-      parents: "Mr. Shaji K & Mrs. Sheeja K",
-      residence: "Kodakkatt House, Ponnani",
-      invitationNote: "With gratitude and joy, the family of the groom invites you to bless this beautiful union."
+      parents: "Mr. Baby P. J. & Mrs. Salomy Baby",
+      residence: "Perumbankudy House, Kothamangalam",
+      phone: "+917907751171",
+      formattedPhone: "7907751171",
+      invitationNote: "With gratitude and joy, the family of the groom invites you to bless this sacred union."
     },
-    heroImage: "assets/images/couple_cartoon_hero.jpg",
-    monogram: "K & S",
-    hashtag: "#KeerthanaWedsSarath"
+    monogram: "L & B",
+    hashtag: "#LintuAndBasil"
   },
 
-  // Wedding Date & Time
+  // Event Date & Time
   event: {
-    targetDate: "2026-09-13T09:30:00",
+    targetDate: "2026-09-06T11:30:00",
     dayOfWeek: "SUNDAY",
-    day: "13",
+    day: "06",
     month: "SEP",
     monthFull: "September",
     year: "2026",
-    formattedDate: "Sunday, 13 September 2026",
-    
-    // Ceremony Timings
-    muhurthamTime: "Between 9:30 AM – 10:30 AM",
-    receptionTime: "11:30 AM Onwards (Grand Sadhya Feast)",
+    formattedDate: "Sunday, 06 September 2026",
+    ceremonyTime: "11:30 AM",
+    lunchTime: "Thereafter for Lunch",
     
     // Calendar Event Info
     calendar: {
-      title: "Wedding of Dr. Keerthana & Dr. Sarath",
-      description: "Join us in celebrating the auspicious wedding ceremony of Dr. Keerthana and Dr. Sarath at Puzhayoram Gardens Convention Centre, Thrissur.",
-      location: "Puzhayoram Gardens Convention Centre, Eravimangalam, Nadathara, Thrissur, Kerala",
-      startIso: "20260913T093000",
-      endIso: "20260913T140000"
+      title: "Engagement & Wedding Celebration of Lintu & Basil",
+      description: "Join us in celebrating the engagement and wedding celebration of Lintu & Basil at St. Mary's Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha at 11:30 AM and thereafter for lunch.",
+      location: "St. Mary's Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha, Kerala",
+      startIso: "20260906T113000",
+      endIso: "20260906T150000"
     }
   },
 
   // Venue & Location
   venue: {
-    name: "Puzhayoram Gardens Convention Centre",
-    subLocation: "Eravimangalam, Nadathara",
-    city: "Thrissur",
+    name: "St. Mary's Church Auditorium",
+    subLocation: "Ponnirikaparamb, Mulavoor",
+    city: "Muvattupuzha",
     state: "Kerala",
-    fullAddress: "Puzhayoram Gardens Convention Centre, Eravimangalam, Nadathara, Thrissur, Kerala - 680751",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Puzhayoram+Gardens+Convention+Centre+Nadathara+Thrissur",
-    appleMapsUrl: "https://maps.apple.com/?q=Puzhayoram+Gardens+Convention+Centre+Thrissur",
-    image: "assets/images/venue.jpg",
-    embedMapUrl: "https://maps.google.com/maps?q=Puzhayoram+Gardens+Convention+Centre+Nadathara+Thrissur&t=&z=15&ie=UTF8&iwloc=&output=embed"
+    fullAddress: "St. Mary's Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha, Kerala",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha",
+    appleMapsUrl: "https://maps.apple.com/?q=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha",
+    embedMapUrl: "https://maps.google.com/maps?q=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha&t=&z=15&ie=UTF8&iwloc=&output=embed"
   },
 
-  // Invitation Messages
+  // Invitation Messages from the Card
   messages: {
-    ganeshaBlessing: "✦ With Joyful Hearts & Family Blessings ✦",
-    divineQuote: "Together with their families",
-    introLine: "We, Mr. Narayanan K T & Mrs. Vasanthi Narayanan",
-    residenceLine: "Kattil thazhathethil House, Kololamba, Edappal (Mob: 9947324329)",
-    inviteBody: "are extremely glad to invite you and your family to the wedding of our beloved daughter",
-
-    groomSubtitle: "S/o. Mr. Shaji K & Mrs. Sheeja K\nKodakkatt House, Ponnani",
-    compliments: "With best compliments from:\nFriends and Family",
-    emotionalQuote: "“Two hearts, one love, forever blessed. Together with our families, we joyfully step into a lifetime of happiness, shared dreams, and endless love.”"
+    scriptureQuote: "“ My beloved is mine, and I am His ”",
+    scriptureReference: "(Song of Solomon 2:16)",
+    introLine: "Mr. George T. V. & Mrs. Sani George",
+    residenceLine: "Thachalamattathil House, Mulavoor, Muvattupuzha",
+    inviteBody: "Invites you with your family to celebrate the engagement of our daughter",
+    groomSubtitle: "S/o. Mr. Baby P. J. & Mrs. Salomy Baby\nPerumbankudy House, Kothamangalam",
+    wishesContact: "Love and wishes from : Basil T. G.",
+    phone: "7907751171",
+    formattedPhone: "+91 7907751171"
   },
 
-  // Background Audio - Exact cut of O Rangrez from reference site
+  // Background Audio
   audio: {
     src: "assets/audio/wedding-music.mp3",
-    title: "O Rangrez (Wedding Music)",
+    title: "O Rangrez / Romantic Wedding Melody",
     autoPlayOnOpen: true,
     defaultVolume: 0.8
   },
 
-  // Scratch Card Settings
-  scratchCard: {
-    title: "Save The Auspicious Date",
-    instructions: "✨ Scratch the golden foil below to reveal the date & muhurtham ✨",
-    scratchPercentToUnlock: 40
-  },
-
-  // Wedding Events (Ceremony Timeline & Traditional Feast)
+  // Events Timeline
   events: [
     {
       step: "01",
-      title: "Thalikettu & Muhurtham",
-      subtitle: "The Sacred Wedding Ceremony",
-      time: "9:30 AM – 10:30 AM",
-      badgeText: "Auspicious Muhurtham",
-      iconSvg: "lamp",
-      sanskritQuote: "✦ The Sacred Union of Two Hearts ✦",
-      description: "The traditional Kerala wedding rituals including Kanyadhanam, Tying of the auspicious Mangalsutra Thali at the wedding mandap, and exchange of wedding garlands celebrating everlasting companionship.",
-      rituals: ["Thalikettu Ritual", "Ring Exchange", "Mandap Blessings & Garlands"],
-      locationName: "Puzhayoram Gardens, Thrissur",
-
-      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Puzhayoram+Gardens+Convention+Centre+Nadathara+Thrissur"
+      title: "Engagement Ceremony",
+      subtitle: "Sacred Church Service & Blessings",
+      time: "11:30 AM",
+      badgeText: "Holy Service",
+      iconSvg: "rings",
+      quote: "✦ United in God’s Eternal Grace ✦",
+      description: "Solemn engagement service, exchange of rings, and prayer blessings with family and beloved friends.",
+      rituals: ["Solemn Prayer", "Ring Exchange", "Family Blessings"],
+      locationName: "St. Mary's Church Auditorium, Mulavoor",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha"
     },
     {
       step: "02",
-      title: "Grand Wedding Sadhya",
-      subtitle: "Traditional Feast & Blessings",
-      time: "11:30 AM Onwards",
-      badgeText: "Traditional Sadhya",
+      title: "Celebration Feast & Lunch",
+      subtitle: "Joyful Gathering & Fellowship",
+      time: "Thereafter (12:30 PM Onwards)",
+      badgeText: "Grand Lunch",
       iconSvg: "feast",
-      sanskritQuote: "✦ Feasting, Joy & Celebrations ✦",
-      description: "Join the newlyweds and families for a celebratory feast featuring an authentic royal Kerala Sadhya served on fresh banana leaves with traditional payasams and heartfelt moments.",
-      rituals: ["Traditional Kerala Sadhya", "Meet & Congratulate the Couple", "Family Blessings & Photos"],
-      locationName: "Puzhayoram Gardens, Thrissur",
-      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Puzhayoram+Gardens+Convention+Centre+Nadathara+Thrissur"
+      quote: "✦ Feasting, Love & Warm Wishes ✦",
+      description: "Join us for a delicious celebratory lunch, warm conversations, photo moments, and joyful celebrations.",
+      rituals: ["Celebration Lunch", "Meet & Congratulate Couple", "Photos & Wishes"],
+      locationName: "St. Mary's Church Auditorium, Mulavoor",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha"
     }
   ]
 };

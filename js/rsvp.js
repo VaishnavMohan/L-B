@@ -1,7 +1,7 @@
 /**
  * ===================================================================
- * GUEST BLESSINGS WALL & 1-CLICK WHATSAPP RSVP
- * Dr. Keerthana & Dr. Sarath — September 13, 2026
+ * GUEST BLESSINGS WALL & WHATSAPP WISHES (SIMPLE & CLEAN)
+ * Lintu & Basil — September 06, 2026
  * ===================================================================
  */
 
@@ -9,45 +9,34 @@ class WeddingRSVPManager {
   constructor() {
     this.blessingsForm = document.getElementById('blessings-form');
     this.blessingsWall = document.getElementById('blessings-wall');
-    this.whatsappRsvpBtn = document.getElementById('btn-whatsapp-rsvp');
+    this.whatsappWishBtn = document.getElementById('btn-whatsapp-wish');
     
     this.config = window.WEDDING_CONFIG || {};
-    this.storageKey = 'wedding_blessings_keerthana_sarath';
+    this.storageKey = 'wedding_blessings_lintu_basil';
 
-    // No test blessings by default
-    this.defaultBlessings = [];
+    // Sample initial heartfelt blessing
+    this.defaultBlessings = [
+      {
+        id: "blessing-init-1",
+        name: "George & Sani Family",
+        message: "May God abundantly bless Lintu & Basil with endless joy, peace, and eternal love on this sacred new beginning!",
+        timestamp: Date.now() - 3600000 * 5,
+        likes: 12
+      }
+    ];
 
     this.init();
   }
 
   init() {
-    // Automatically purge any dummy "test" / "das" entry from previous runs
-    this.cleanTestEntries();
     this.renderBlessings();
-    this.setupInteractiveForm();
 
     if (this.blessingsForm) {
       this.blessingsForm.addEventListener('submit', (e) => this.handleSubmit(e));
     }
 
-    if (this.whatsappRsvpBtn) {
-      this.whatsappRsvpBtn.addEventListener('click', () => this.sendWhatsAppRSVP());
-    }
-  }
-
-
-  cleanTestEntries() {
-    try {
-      let stored = this.getStoredBlessings();
-      // Remove any test or single word dummy messages
-      stored = stored.filter(b => {
-        const name = (b.name || '').trim().toLowerCase();
-        const msg = (b.message || '').trim().toLowerCase();
-        return name !== 'test' && msg !== 'das' && msg.length > 2;
-      });
-      this.saveBlessings(stored);
-    } catch (e) {
-      // Ignore
+    if (this.whatsappWishBtn) {
+      this.whatsappWishBtn.addEventListener('click', () => this.sendWhatsAppWish());
     }
   }
 
@@ -68,13 +57,88 @@ class WeddingRSVPManager {
     }
   }
 
-  deleteBlessing(index) {
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('guest-name');
+    const messageInput = document.getElementById('guest-message');
+    const submitBtn = document.getElementById('btn-post-blessing');
+
+    if (!nameInput || !messageInput) return;
+
+    const name = nameInput.value.trim();
+    const message = messageInput.value.trim();
+
+    if (!name || !message) {
+      if (window.showToast) window.showToast("Please enter your name and blessing message");
+      return;
+    }
+
+    // Button loading state
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>✨</span> Posting Blessing...`;
+    }
+
+    setTimeout(() => {
+      const newBlessing = {
+        id: 'blessing-' + Date.now(),
+        name: name,
+        message: message,
+        timestamp: Date.now(),
+        likes: 1
+      };
+
+      const list = this.getStoredBlessings();
+      list.unshift(newBlessing);
+      this.saveBlessings(list);
+      this.renderBlessings();
+
+      // Trigger celebratory heart/petal shower
+      this.triggerBlessingCelebration();
+
+      // Reset form
+      nameInput.value = '';
+      messageInput.value = '';
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<span>🌸</span> Post Blessing on Wall`;
+      }
+
+      if (window.showToast) {
+        window.showToast("✨ Thank you for your warm blessing!");
+      }
+
+      // Smooth scroll to top of blessings wall
+      if (this.blessingsWall) {
+        this.blessingsWall.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 350);
+  }
+
+  likeBlessing(id) {
+    const list = this.getStoredBlessings();
+    const target = list.find(b => b.id === id);
+    if (target) {
+      target.likes = (target.likes || 0) + 1;
+      this.saveBlessings(list);
+      this.renderBlessings();
+      if (window.magicSparkleTrail) {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        window.magicSparkleTrail.burst(cx, cy, 20);
+      }
+    }
+  }
+
+  deleteBlessing(id) {
     let list = this.getStoredBlessings();
-    list.splice(index, 1);
+    list = list.filter(b => b.id !== id);
     this.saveBlessings(list);
     this.renderBlessings();
     if (window.showToast) {
-      window.showToast("Message removed");
+      window.showToast("Blessing message removed");
     }
   }
 
@@ -86,219 +150,120 @@ class WeddingRSVPManager {
 
     if (blessings.length === 0) {
       this.blessingsWall.innerHTML = `
-        <div style="text-align: center; color: var(--text-light); font-size: 0.82rem; font-style: italic; padding: 6px 10px; margin-top: 4px;">
-          Be the first to send your warm blessing to Keerthana &amp; Sarath! 🌸
+        <div class="empty-blessings-state">
+          <span>🌸</span>
+          <p>Be the first to share your warm love &amp; blessings for Lintu &amp; Basil!</p>
         </div>
       `;
       return;
     }
 
-
-    blessings.forEach((b, idx) => {
+    blessings.forEach((b) => {
       const card = document.createElement('div');
       card.className = 'blessing-card';
+      
+      const initials = (b.name || 'G')
+        .split(' ')
+        .map(w => w[0])
+        .slice(0, 2)
+        .join('')
+        .toUpperCase();
+
+      const timeAgo = this.formatTimeAgo(b.timestamp);
+
       card.innerHTML = `
-        <div class="blessing-author">
-          <span>${b.name}</span>
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span class="blessing-time">${b.time}</span>
-            <button type="button" class="btn-delete-blessing" title="Delete Blessing" style="background:none; border:none; color:var(--text-light); font-size:0.8rem; cursor:pointer; opacity:0.6;">✕</button>
+        <div class="blessing-card-header">
+          <div class="blessing-avatar">${initials}</div>
+          <div class="blessing-author-info">
+            <h4 class="blessing-author-name">${this.escapeHtml(b.name)}</h4>
+            <span class="blessing-time">${timeAgo}</span>
           </div>
         </div>
-        <p class="blessing-text">“${b.message}”</p>
+        <p class="blessing-card-text">“${this.escapeHtml(b.message)}”</p>
+        <div class="blessing-card-footer">
+          <button class="btn-like-blessing" type="button" data-id="${b.id}" aria-label="Like blessing">
+            <span>❤️</span> <span class="like-count">${b.likes || 1}</span>
+          </button>
+          <button class="btn-delete-blessing" type="button" data-id="${b.id}" aria-label="Delete message" title="Remove">
+            ✕
+          </button>
+        </div>
       `;
+
+      // Bind like & delete actions
+      const likeBtn = card.querySelector('.btn-like-blessing');
+      if (likeBtn) {
+        likeBtn.addEventListener('click', () => this.likeBlessing(b.id));
+      }
 
       const delBtn = card.querySelector('.btn-delete-blessing');
       if (delBtn) {
-        delBtn.addEventListener('click', () => this.deleteBlessing(idx));
+        delBtn.addEventListener('click', () => this.deleteBlessing(b.id));
       }
 
       this.blessingsWall.appendChild(card);
     });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-
+  sendWhatsAppWish() {
     const nameInput = document.getElementById('guest-name');
-    const messageInput = document.getElementById('guest-message');
+    const msgInput = document.getElementById('guest-message');
+    const guestName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Well Wisher";
+    const guestMsg = msgInput && msgInput.value.trim() 
+      ? msgInput.value.trim() 
+      : "Wishing you both a lifetime of love, joy and God's abundant blessings!";
 
-    if (!nameInput || !messageInput) return;
+    const text = encodeURIComponent(
+      `🌸 *Heartfelt Blessings for Lintu & Basil's Engagement* 🌸\n\n` +
+      `👤 *From:* ${guestName}\n` +
+      `💌 *Blessing:* "${guestMsg}"\n\n` +
+      `✨ _"My beloved is mine, and I am His" (Song of Solomon 2:16)_ ✨\n` +
+      `📅 *Date:* Sunday, 06 September 2026\n` +
+      `⛪ *Venue:* St. Mary's Church Auditorium, Mulavoor`
+    );
 
-    const name = nameInput.value.trim();
-    const message = messageInput.value.trim();
+    const phone = "917907751171"; // Basil T. G. (Ph: 7907751171)
+    const url = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+    window.open(url, '_blank');
+  }
 
-    if (!name || !message) {
-      alert("Please fill in your name and a sweet blessing message!");
-      return;
-    }
-
-    const newBlessing = {
-      name: name,
-      message: message,
-      time: "Just now"
-    };
-
-    const current = this.getStoredBlessings();
-    current.unshift(newBlessing);
-    this.saveBlessings(current);
-    this.renderBlessings();
-
-    // Trigger celebration petal pop
+  triggerBlessingCelebration() {
     if (window.petalSystem) {
-      window.petalSystem.burst(window.innerWidth / 2, window.innerHeight * 0.7, 45);
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight * 0.6;
+      window.petalSystem.burst(cx, cy, 35);
     }
-
-    if (window.showToast) {
-      window.showToast("🌸 Thank you for your heartfelt blessing!");
-    }
-
-    // Reset Form
-    nameInput.value = '';
-    messageInput.value = '';
-  }
-
-  setupInteractiveForm() {
-    // 1. Attendance Chips (Single tap switch)
-    const chipAttending = document.getElementById('chip-attending');
-    const chipAfar = document.getElementById('chip-afar');
-    const rsvpAttendanceInput = document.getElementById('rsvp-attendance');
-    const attendingContainer = document.getElementById('attending-details-container');
-
-    if (chipAttending && chipAfar && rsvpAttendanceInput) {
-      chipAttending.addEventListener('click', () => {
-        chipAttending.classList.add('active');
-        chipAfar.classList.remove('active');
-        rsvpAttendanceInput.value = '🌸 Yes, We Are Coming!';
-        if (attendingContainer) {
-          attendingContainer.style.display = 'block';
-        }
-      });
-
-      chipAfar.addEventListener('click', () => {
-        chipAfar.classList.add('active');
-        chipAttending.classList.remove('active');
-        rsvpAttendanceInput.value = "💐 Sorry, Can't Attend";
-        if (attendingContainer) {
-          attendingContainer.style.display = 'none';
-        }
-      });
-    }
-
-    // 2. Guest Count (+ / - and Quick Preset Pills)
-    let currentGuestCount = 2;
-    const countDisplay = document.getElementById('guest-count-number');
-    const countLabel = document.getElementById('guest-count-label');
-    const rsvpGuestCountInput = document.getElementById('rsvp-guest-count');
-    const travelCountText = document.getElementById('travel-count-text');
-    const minusBtn = document.getElementById('btn-guest-minus');
-    const plusBtn = document.getElementById('btn-guest-plus');
-    const pills = document.querySelectorAll('.guest-pill');
-
-    const updateGuestCount = (count) => {
-      currentGuestCount = Math.max(1, Math.min(30, count));
-      if (countDisplay) countDisplay.textContent = currentGuestCount;
-      if (countLabel) countLabel.textContent = currentGuestCount === 1 ? 'Person' : 'People';
-      if (rsvpGuestCountInput) rsvpGuestCountInput.value = `${currentGuestCount} ${currentGuestCount === 1 ? 'Person' : 'People'}`;
-      if (travelCountText) travelCountText.textContent = currentGuestCount;
-
-      pills.forEach(p => {
-        const pCount = parseInt(p.getAttribute('data-count'), 10);
-        if ((currentGuestCount >= 10 && pCount === 10) || pCount === currentGuestCount) {
-          p.classList.add('active');
-        } else {
-          p.classList.remove('active');
-        }
-      });
-    };
-
-    if (minusBtn) minusBtn.addEventListener('click', () => updateGuestCount(currentGuestCount - 1));
-    if (plusBtn) plusBtn.addEventListener('click', () => updateGuestCount(currentGuestCount + 1));
-
-    pills.forEach(p => {
-      p.addEventListener('click', () => {
-        const count = parseInt(p.getAttribute('data-count'), 10);
-        updateGuestCount(count);
-      });
-    });
-
-    // 3. Travel 1-Tap Toggle Card
-    const travelCard = document.getElementById('travel-toggle-card');
-    const travelHidden = document.getElementById('need-travel-hidden');
-    const travelStatusText = document.getElementById('travel-status-text');
-    const travelPassengersNote = document.getElementById('travel-passengers-note');
-
-    if (travelCard && travelHidden) {
-      const toggleTravel = () => {
-        const isActive = travelCard.classList.toggle('active');
-        travelHidden.value = isActive ? 'true' : 'false';
-        if (travelStatusText) {
-          travelStatusText.textContent = isActive ? 'YES ✓' : 'NO';
-        }
-        if (travelPassengersNote) {
-          travelPassengersNote.style.display = isActive ? 'block' : 'none';
-        }
-      };
-
-      travelCard.addEventListener('click', toggleTravel);
-      travelCard.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleTravel();
-        }
-      });
+    if (window.magicSparkleTrail) {
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight * 0.6;
+      window.magicSparkleTrail.burst(cx, cy, 30);
     }
   }
 
+  formatTimeAgo(timestamp) {
+    if (!timestamp) return 'Just now';
+    const seconds = Math.floor((Date.now() - timestamp) / 1000);
+    if (seconds < 60) return 'Just now';
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes}m ago`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.floor(hours / 24);
+    return `${days}d ago`;
+  }
 
-  sendWhatsAppRSVP() {
-    const hostPhone = (this.config.rsvpPhone) || (this.config.couple?.rsvpPhone) || (this.config.couple?.groom?.formattedPhone) || (this.config.couple?.bride?.formattedPhone) || "9497387010";
-    const name = document.getElementById('guest-name')?.value?.trim() || "";
-
-    const attendance = document.getElementById('rsvp-attendance')?.value || "🌸 Yes, We Are Coming!";
-    const guestCount = document.getElementById('rsvp-guest-count')?.value || "2 People";
-    const needTravel = document.getElementById('need-travel-hidden')?.value === 'true';
-    const message = document.getElementById('guest-message')?.value?.trim() || "";
-    const isReception = document.body.classList.contains('reception-theme') || !!this.config.isReception;
-
-    const eventTitle = isReception 
-      ? "*Sarath & Keerthana Wedding Reception (13 Sep 2026)*"
-      : "*Keerthana & Sarath Wedding (13 Sep 2026)*";
-
-    let text = `🌸 *Wedding Attendance & Wishes*\n${eventTitle}\n\n`;
-
-    if (name) {
-      text += `• *Family / Guest:* ${name}\n`;
-    }
-    text += `• *Attendance:* ${attendance}`;
-    if (!attendance.includes('Sorry')) {
-      text += ` (${guestCount})\n`;
-    } else {
-      text += `\n`;
-    }
-    if (!isReception) {
-      text += `• *Travel Assistance:* ${needTravel ? '🚗 Yes, please coordinate transport / pickup' : 'No travel assistance required'}\n`;
-    }
-    
-    if (message) {
-      text += `• *Warm Wishes:* "${message}"\n`;
-    }
-    text += `\nLooking forward to celebrating together! ✨`;
-
-    const cleanPhone = hostPhone.toString().replace(/\D/g, '').replace(/^91/, '');
-    const encodedText = encodeURIComponent(text);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=91${cleanPhone}&text=${encodedText}`;
-    window.open(whatsappUrl, '_blank');
-    if (window.showToast) {
-      window.showToast("💬 Opening WhatsApp to send confirmation...");
-    }
+  escapeHtml(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 }
 
-
-
-// Global instance
-window.weddingRSVP = null;
+// Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
   window.weddingRSVP = new WeddingRSVPManager();
 });

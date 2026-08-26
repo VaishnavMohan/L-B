@@ -1,7 +1,8 @@
 /**
  * ===================================================================
- * ROYAL GRAND PALACE GATEWAY (THE ROYAL KAVADAM)
- * Interactive 3D Temple Doors Opening Sequencer & Particle Burst
+ * LUXURY WAX SEAL ENVELOPE / WEDDING FOLIO
+ * Interactive Wax Seal Breaking & Invitation Reveal
+ * Lintu & Basil — September 06, 2026
  * ===================================================================
  */
 
@@ -17,16 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.scrollTop = 0;
 
   const overlay = document.getElementById('envelope-overlay');
-  const stage = document.querySelector('.gateway-stage');
-  const frame = document.querySelector('.gateway-frame');
-  const lock = document.querySelector('.central-monogram-lock');
-  const tapBtn = document.querySelector('.gateway-tap-btn');
+  const stage = document.querySelector('.envelope-stage');
+  const waxSeal = document.querySelector('.wax-seal-emblem');
+  const tapBtn = document.querySelector('.envelope-open-btn');
 
   if (!overlay) return;
 
   let hasOpened = false;
 
-  /* ── 1. 3D Perspective Tilt on Mouse Movement ────────────────── */
+  /* ── 1. 3D Perspective Tilt on Mouse / Device Movement ───────── */
   if (stage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     overlay.addEventListener('mousemove', (e) => {
       if (hasOpened) return;
@@ -36,23 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const deltaX = (e.clientX - centerX) / (window.innerWidth / 2);
       const deltaY = (e.clientY - centerY) / (window.innerHeight / 2);
 
-      const rotateY = deltaX * 12; // Max 12 deg
-      const rotateX = -deltaY * 10; // Max 10 deg
+      const rotateY = deltaX * 10;
+      const rotateX = -deltaY * 8;
 
-      if (frame) {
-        frame.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-      }
+      stage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
     });
 
     overlay.addEventListener('mouseleave', () => {
-      if (frame && !hasOpened) {
-        frame.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+      if (stage && !hasOpened) {
+        stage.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
       }
     });
   }
 
-  /* ── 2. Grand Gateway Unlock & Opening Sequence ───────────────── */
-  function openRoyalGateway(e) {
+  /* ── 2. Wax Seal Crack & Envelope Opening Sequence ───────────── */
+  function openEnvelope(e) {
     if (hasOpened) return;
     hasOpened = true;
 
@@ -61,51 +59,40 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 
-    // Reset frame tilt transform for clean 3D door swing
-    if (frame) {
-      frame.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+    if (stage) {
+      stage.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
     }
 
-    // A. Add opening state class to trigger door swing & god-rays
+    // A. Add opening state class
     overlay.classList.add('opening');
 
-    // B. Trigger Golden Shockwave Wave
-    const shockwave = document.createElement('div');
-    shockwave.className = 'gateway-shockwave fire';
-    overlay.appendChild(shockwave);
-
-    // C. Launch Canvas Golden Stardust & Fairy Sparkles in 360 degrees
+    // B. Launch Golden Stardust & Fairy Sparkles
     const cx = window.innerWidth / 2;
     const cy = window.innerHeight * 0.45;
 
     if (window.magicSparkleTrail) {
       window.magicSparkleTrail.burst(cx, cy, 40);
-      setTimeout(() => window.magicSparkleTrail.burst(cx, cy, 30), 300);
-      setTimeout(() => window.magicSparkleTrail.burst(cx, cy, 25), 600);
+      setTimeout(() => window.magicSparkleTrail.burst(cx, cy, 30), 250);
+      setTimeout(() => window.magicSparkleTrail.burst(cx, cy, 25), 500);
     }
 
-    // D. Start Background Music ("O Rangrez") & Chime
-    if (window.weddingAudio) {
-      window.weddingAudio.play();
-    }
-
-    // E. Shower of Fresh Rose & Marigold Petals from Sanctum Doorway
+    // C. Shower of Fresh Rose & Sage Petals
     if (window.petalSystem) {
-      setTimeout(() => window.petalSystem.burst(cx, cy, 45), 200);
-      setTimeout(() => window.petalSystem.burst(cx - 70, cy - 30, 30), 450);
-      setTimeout(() => window.petalSystem.burst(cx + 70, cy - 30, 30), 450);
-      setTimeout(() => window.petalSystem.burst(cx, cy - 60, 35), 750);
+      setTimeout(() => window.petalSystem.burst(cx, cy, 45), 180);
+      setTimeout(() => window.petalSystem.burst(cx - 80, cy - 30, 30), 380);
+      setTimeout(() => window.petalSystem.burst(cx + 80, cy - 30, 30), 380);
+      setTimeout(() => window.petalSystem.burst(cx, cy - 50, 35), 650);
     }
 
-    // F. Smooth Dissolve into Digital Wedding Invitation Card (Always Top)
+    // D. Smooth Dissolve into Digital Invitation
     setTimeout(() => {
       overlay.classList.add('opened');
-      document.body.classList.add('doors-opened');
+      document.body.classList.add('envelope-opened');
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
 
-      // Reveal all cards instantly with zero delay
+      // Reveal all cards instantly
       document.querySelectorAll('.reveal-on-scroll').forEach(el => {
         el.classList.add('is-revealed');
       });
@@ -113,16 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.revealSections) {
         window.revealSections();
       }
-    }, 1400);
-
+    }, 1100);
   }
 
-
-  // Bind click & touch triggers everywhere on the gateway
-  const triggers = [lock, tapBtn, stage, overlay].filter(Boolean);
+  // Bind click & touch triggers
+  const triggers = [waxSeal, tapBtn, stage, overlay].filter(Boolean);
   triggers.forEach(elem => {
-    elem.addEventListener('click', openRoyalGateway);
-    elem.addEventListener('touchend', openRoyalGateway, { passive: true });
+    elem.addEventListener('click', openEnvelope);
+    elem.addEventListener('touchend', openEnvelope, { passive: true });
   });
 });
-
