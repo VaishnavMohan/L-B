@@ -59,14 +59,14 @@ const WEDDING_CONFIG = {
 
   // Venue & Location
   venue: {
-    name: "St. Mary's Church Auditorium",
+    name: "St. Mary's Jacobite Syrian Church Auditorium",
     subLocation: "Ponnirikaparamb, Mulavoor",
     city: "Muvattupuzha",
     state: "Kerala",
-    fullAddress: "St. Mary's Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha, Kerala",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha",
-    appleMapsUrl: "https://maps.apple.com/?q=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha",
-    embedMapUrl: "https://maps.google.com/maps?q=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha&t=&z=15&ie=UTF8&iwloc=&output=embed"
+    fullAddress: "St. Mary's Jacobite Syrian Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha, Kerala",
+    googleMapsUrl: "https://maps.app.goo.gl/nBPsKmjpm6XqVsdw5",
+    appleMapsUrl: "https://maps.app.goo.gl/nBPsKmjpm6XqVsdw5",
+    embedMapUrl: "https://maps.google.com/maps?q=St.Mary's+Jacobite+Syrian+Church+Mulavoor&t=&z=15&ie=UTF8&iwloc=&output=embed"
   },
 
   // Invitation Messages from the Card
@@ -82,14 +82,6 @@ const WEDDING_CONFIG = {
     formattedPhone: "+91 7907751171"
   },
 
-  // Background Audio
-  audio: {
-    src: "assets/audio/wedding-music.mp3",
-    title: "O Rangrez / Romantic Wedding Melody",
-    autoPlayOnOpen: true,
-    defaultVolume: 0.8
-  },
-
   // Events Timeline
   events: [
     {
@@ -98,12 +90,11 @@ const WEDDING_CONFIG = {
       subtitle: "Sacred Church Service & Blessings",
       time: "11:30 AM",
       badgeText: "Holy Service",
-      iconSvg: "rings",
       quote: "✦ United in God’s Eternal Grace ✦",
-      description: "Solemn engagement service, exchange of rings, and prayer blessings with family and beloved friends.",
-      rituals: ["Solemn Prayer", "Ring Exchange", "Family Blessings"],
+      description: "Solemn engagement prayer service and divine blessings with family and beloved friends.",
+      rituals: ["Solemn Prayer", "Divine Blessings", "Family Felicitations"],
       locationName: "St. Mary's Church Auditorium, Mulavoor",
-      mapsUrl: "https://www.google.com/maps/search/?api=1&query=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha"
+      mapsUrl: "https://maps.app.goo.gl/nBPsKmjpm6XqVsdw5"
     },
     {
       step: "02",
@@ -111,12 +102,11 @@ const WEDDING_CONFIG = {
       subtitle: "Joyful Gathering & Fellowship",
       time: "Thereafter (12:30 PM Onwards)",
       badgeText: "Grand Lunch",
-      iconSvg: "feast",
       quote: "✦ Feasting, Love & Warm Wishes ✦",
       description: "Join us for a delicious celebratory lunch, warm conversations, photo moments, and joyful celebrations.",
       rituals: ["Celebration Lunch", "Meet & Congratulate Couple", "Photos & Wishes"],
       locationName: "St. Mary's Church Auditorium, Mulavoor",
-      mapsUrl: "https://www.google.com/maps/search/?api=1&query=St+Marys+Church+Auditorium+Mulavoor+Muvattupuzha"
+      mapsUrl: "https://maps.app.goo.gl/nBPsKmjpm6XqVsdw5"
     }
   ]
 };
