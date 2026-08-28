@@ -1,7 +1,7 @@
 /**
  * ===================================================================
  * FLOATING BLUSH ROSE & EUCALYPTUS PETALS CELEBRATION SYSTEM
- * Soft, romantic, 3D fluttering petals for Lintu & Basil
+ * Soft, romantic, 3D fluttering petals for Ashin & Vrinda
  * ===================================================================
  */
 

@@ -1,7 +1,7 @@
 /**
  * ===================================================================
  * LIVE WEDDING COUNTDOWN & CALENDAR INTEGRATION
- * Lintu & Basil — September 06, 2026
+ * Ashin & Vrinda — Sunday, September 06, 2026 (1202 Chingam 21)
  * ===================================================================
  */
 
@@ -16,7 +16,7 @@ class WeddingCountdown {
     this.icalBtn = document.getElementById('add-ical');
 
     this.config = (window.WEDDING_CONFIG && window.WEDDING_CONFIG.event) ? window.WEDDING_CONFIG.event : {
-      targetDate: "2026-09-06T11:30:00"
+      targetDate: "2026-09-06T11:59:00"
     };
 
     this.targetTime = new Date(this.config.targetDate).getTime();
@@ -70,10 +70,10 @@ class WeddingCountdown {
 
   openGoogleCalendar() {
     const cal = this.config.calendar || {};
-    const title = encodeURIComponent(cal.title || "Engagement & Wedding Celebration of Lintu & Basil");
-    const details = encodeURIComponent(cal.description || "Engagement and Wedding Celebration of Lintu & Basil at St. Mary's Church Auditorium, Mulavoor");
-    const location = encodeURIComponent(cal.location || "St. Mary's Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha");
-    const dates = `${cal.startIso || '20260906T113000'}/${cal.endIso || '20260906T150000'}`;
+    const title = encodeURIComponent(cal.title || "Wedding of Ashin & Vrinda");
+    const details = encodeURIComponent(cal.description || "Marriage of Ashin & Vrinda on Sunday, 06 September 2026 (1202 Chingam 21) at Pet Rose Event Centre Pathammile, Puthencruz. Muhurtham: Between 11.59 a.m. and 12.20 p.m. and for Lunch thereafter.");
+    const location = encodeURIComponent(cal.location || "Pet Rose Event Centre, Pathammile, Puthencruz, Kerala");
+    const dates = `${cal.startIso || '20260906T115900'}/${cal.endIso || '20260906T153000'}`;
 
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}&ctz=Asia/Kolkata`;
     window.open(url, '_blank');
@@ -81,22 +81,22 @@ class WeddingCountdown {
 
   downloadICal() {
     const cal = this.config.calendar || {};
-    const title = cal.title || "Engagement & Wedding Celebration of Lintu & Basil";
-    const details = cal.description || "Engagement and Wedding Celebration of Lintu & Basil at St. Mary's Church Auditorium, Mulavoor";
-    const location = cal.location || "St. Mary's Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha";
+    const title = cal.title || "Wedding of Ashin & Vrinda";
+    const details = cal.description || "Marriage of Ashin & Vrinda on Sunday, 06 September 2026 (1202 Chingam 21) at Pet Rose Event Centre Pathammile, Puthencruz. Muhurtham: Between 11.59 a.m. and 12.20 p.m. and for Lunch thereafter.";
+    const location = cal.location || "Pet Rose Event Centre, Pathammile, Puthencruz, Kerala";
 
     const icsContent = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//Lintu and Basil Celebration//EN',
+      'PRODID:-//Ashin and Vrinda Wedding//EN',
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
       'BEGIN:VEVENT',
       'SUMMARY:' + title,
       'DESCRIPTION:' + details,
       'LOCATION:' + location,
-      'DTSTART;TZID=Asia/Kolkata:20260906T113000',
-      'DTEND;TZID=Asia/Kolkata:20260906T150000',
+      'DTSTART;TZID=Asia/Kolkata:20260906T115900',
+      'DTEND;TZID=Asia/Kolkata:20260906T153000',
       'STATUS:CONFIRMED',
       'END:VEVENT',
       'END:VCALENDAR'
@@ -105,7 +105,7 @@ class WeddingCountdown {
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'Lintu_Basil_Celebration.ics');
+    link.setAttribute('download', 'Ashin_Vrinda_Wedding.ics');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

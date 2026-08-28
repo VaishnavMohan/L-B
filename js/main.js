@@ -1,7 +1,7 @@
 /**
  * ===================================================================
- * MAIN APPLICATION CONTROLLER, THEME ENGINE & TIMELINE RENDERER
- * Lintu & Basil — September 06, 2026
+ * MAIN APPLICATION CONTROLLER, THEME ENGINE & ACTIONS
+ * Ashin & Vrinda — September 06, 2026 (1202 Chingam 21)
  * ===================================================================
  */
 
@@ -40,12 +40,12 @@ function initThemeManager() {
 
     if (theme === 'dark') {
       if (themeToggleIcon) themeToggleIcon.textContent = '☀️';
-      if (metaThemeColor) metaThemeColor.setAttribute('content', '#16080B');
-      if (showNotification) showToast("🌙 Switched to Velvet Noir Theme");
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#0C1611');
+      if (showNotification) showToast("🌙 Switched to Midnight Emerald Theme");
     } else {
       if (themeToggleIcon) themeToggleIcon.textContent = '🌙';
-      if (metaThemeColor) metaThemeColor.setAttribute('content', '#FAF5EE');
-      if (showNotification) showToast("☀️ Switched to Romantic Blush Theme");
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#FAF7F2');
+      if (showNotification) showToast("☀️ Switched to Botanical Ivory Theme");
     }
   }
 
@@ -111,8 +111,8 @@ function setupActionButtons() {
   const shareBtn = document.getElementById('share-whatsapp-btn');
   if (shareBtn) {
     shareBtn.addEventListener('click', () => {
-      const title = "🌸 Wedding Invitation: Lintu & Basil";
-      const desc = "“My beloved is mine, and I am His” (Song of Solomon 2:16)\n\nTogether with their families, you are cordially invited to celebrate the engagement of Lintu & Basil on Sunday, 06 September 2026 at St. Mary's Church Auditorium, Mulavoor, Muvattupuzha at 11:30 AM and thereafter for lunch.\n\nTap to view the digital invitation card:";
+      const title = "🌿 Wedding Invitation: Ashin & Vrinda";
+      const desc = "Mrs. Sheeja Ajith Kumar & Mr. Ajith Kumar cordially invite your esteemed presence with family on the occasion of the marriage of their son Ashin with Vrinda (D/o Mrs. Sini. K. Damodharan & Mr. Sudhakaran) on Sunday, 6th September 2026 (1202 Chingam 21) at Pet Rose Event Centre Pathammile, Puthencruz.\n\nMuhurtham: Between 11.59 a.m. and 12.20 p.m. and for Lunch thereafter.\n\n✦ Tap to view the digital invitation card:";
       const url = window.location.href;
       const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(title + '\n\n' + desc + '\n' + url)}`;
       window.open(whatsappUrl, '_blank');
@@ -158,7 +158,7 @@ function setupCopyAddress() {
   copyBtn.addEventListener('click', () => {
     const address = (window.WEDDING_CONFIG && window.WEDDING_CONFIG.venue && window.WEDDING_CONFIG.venue.fullAddress)
       ? window.WEDDING_CONFIG.venue.fullAddress
-      : "St. Mary's Church Auditorium, Ponnirikaparamb, Mulavoor, Muvattupuzha, Kerala";
+      : "Pet Rose Event Centre, Pathammile, Vadayampady P.O., Puthencruz, Ernakulam, Kerala 682308";
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(address).then(() => {

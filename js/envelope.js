@@ -1,12 +1,11 @@
 /**
  * ===================================================================
- * LUXURY WAX SEAL ENVELOPE / WEDDING FOLIO
- * Interactive Wax Seal Breaking & Invitation Reveal
- * Lintu & Basil — September 06, 2026
+ * ROYAL WEDDING PRESENTATION BOX — 3D UNBOXING CONTROLLER
+ * Ashin & Vrinda — September 06, 2026
  * ===================================================================
  */
 
-// Ensure browser does not restore previous scroll position on refresh
+// Ensure browser starts at top of page on reload
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
@@ -18,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.scrollTop = 0;
 
   const overlay = document.getElementById('envelope-overlay');
-  const stage = document.querySelector('.envelope-stage');
-  const waxSeal = document.querySelector('.wax-seal-emblem');
-  const tapBtn = document.querySelector('.envelope-open-btn');
+  const stage = document.querySelector('.unboxing-stage');
+  const waxSeal = document.querySelector('.box-wax-seal');
+  const tapBtn = document.querySelector('.unboxing-tap-btn');
 
   if (!overlay) return;
 
@@ -36,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const deltaX = (e.clientX - centerX) / (window.innerWidth / 2);
       const deltaY = (e.clientY - centerY) / (window.innerHeight / 2);
 
-      const rotateY = deltaX * 10;
-      const rotateX = -deltaY * 8;
+      const rotateY = deltaX * 8;
+      const rotateX = -deltaY * 7;
 
       stage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
     });
@@ -49,12 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── 2. Wax Seal Crack & Envelope Opening Sequence ───────────── */
-  function openEnvelope(e) {
+  /* ── 2. Choreographed 3D Unboxing Sequence ───────────────────── */
+  function startUnboxing(e) {
     if (hasOpened) return;
     hasOpened = true;
 
-    // Force scroll to top immediately upon opening
+    // Reset scroll position immediately
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
@@ -63,28 +62,29 @@ document.addEventListener('DOMContentLoaded', () => {
       stage.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
     }
 
-    // A. Add opening state class
+    // A. Trigger Stage Opening Class (Crack Seal, Untie Ribbon, Swing Doors)
     overlay.classList.add('opening');
 
-    // B. Launch Golden Stardust & Fairy Sparkles
     const cx = window.innerWidth / 2;
-    const cy = window.innerHeight * 0.45;
+    const cy = window.innerHeight * 0.48;
 
+    // B. Stage 1: Golden Stardust & Magic Sparkle Flash
     if (window.magicSparkleTrail) {
-      window.magicSparkleTrail.burst(cx, cy, 40);
-      setTimeout(() => window.magicSparkleTrail.burst(cx, cy, 30), 250);
-      setTimeout(() => window.magicSparkleTrail.burst(cx, cy, 25), 500);
+      window.magicSparkleTrail.burst(cx, cy, 55);
+      setTimeout(() => window.magicSparkleTrail.burst(cx, cy, 40), 180);
+      setTimeout(() => window.magicSparkleTrail.burst(cx - 50, cy, 30), 380);
+      setTimeout(() => window.magicSparkleTrail.burst(cx + 50, cy, 30), 380);
     }
 
-    // C. Shower of Fresh Rose & Sage Petals
+    // C. Stage 2: Celebration Flower Petal Cascade
     if (window.petalSystem) {
-      setTimeout(() => window.petalSystem.burst(cx, cy, 45), 180);
-      setTimeout(() => window.petalSystem.burst(cx - 80, cy - 30, 30), 380);
-      setTimeout(() => window.petalSystem.burst(cx + 80, cy - 30, 30), 380);
-      setTimeout(() => window.petalSystem.burst(cx, cy - 50, 35), 650);
+      setTimeout(() => window.petalSystem.burst(cx, cy, 55), 250);
+      setTimeout(() => window.petalSystem.burst(cx - 80, cy - 30, 35), 450);
+      setTimeout(() => window.petalSystem.burst(cx + 80, cy - 30, 35), 450);
+      setTimeout(() => window.petalSystem.burst(cx, cy - 60, 40), 650);
     }
 
-    // D. Smooth Dissolve into Digital Invitation
+    // D. Stage 3: Smooth Dissolve into Digital Invitation & Couple Photo
     setTimeout(() => {
       overlay.classList.add('opened');
       document.body.classList.add('envelope-opened');
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Bind click & touch triggers
   const triggers = [waxSeal, tapBtn, stage, overlay].filter(Boolean);
   triggers.forEach(elem => {
-    elem.addEventListener('click', openEnvelope);
-    elem.addEventListener('touchend', openEnvelope, { passive: true });
+    elem.addEventListener('click', startUnboxing);
+    elem.addEventListener('touchend', startUnboxing, { passive: true });
   });
 });
